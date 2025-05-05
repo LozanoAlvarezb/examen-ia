@@ -1,4 +1,4 @@
-import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, Typography } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, Typography } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import NavigatorGrid from '../components/exam/NavigatorGrid';
@@ -8,13 +8,14 @@ import { connectToExamTimer, fetchExamWithQuestions, startExamAttempt, submitAtt
 import { formatRemainingTime, getAnsweredCount, useExamSessionStore } from '../store/examSessionStore';
 
 const ExamRunner = () => {
+  console.log('ExamRunner component rendered');
   const { id: examId } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
   // State from Zustand store
   const {
     exam, answers, remaining, isStarted, isFinished, attemptId,
-    setExam, startExam, finishExam, resetSession, updateTimer,
+    setExam, startExam, finishExam, updateTimer,
     negativeMark, timeLimit // Get these from the store now
   } = useExamSessionStore();
 
@@ -23,6 +24,7 @@ const ExamRunner = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showFinishDialog, setShowFinishDialog] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true); // Add a loading state
 
   // Calculate stats
   const totalQuestions = exam?.questions?.length || 0;
@@ -31,20 +33,26 @@ const ExamRunner = () => {
   // Initialize the exam
   useEffect(() => {
     const initExam = async () => {
+      setLoading(true);
       try {
         // Fetch exam data if not loaded
         if (!exam && examId) {
+          console.log('Fetching exam data...');
           const examData = await fetchExamWithQuestions(examId);
           setExam(examData);
         }
 
         // Start a new attempt if not started
         if (!isStarted && examId && !attemptId) {
+          console.log('Starting new attempt...');
           const { attemptId: newAttemptId, wsToken } = await startExamAttempt(examId, negativeMark, timeLimit);
           startExam(newAttemptId, wsToken);
         }
       } catch (error: any) {
+        console.error('Error initializing exam:', error);
         setError(error.message || 'Failed to initialize exam');
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -54,26 +62,72 @@ const ExamRunner = () => {
   // WebSocket connection for timer
   useEffect(() => {
     if (isStarted && attemptId && timeLimit && !isFinished) {
-      const connection = connectToExamTimer(
-        attemptId,
-        timeLimit, // minutos
-        (remainingSeconds) => {
-          updateTimer(remainingSeconds); // función que actualiza el estado del contador
-        },
-        () => {
-          finishExam();        // marca el examen como terminado
-          handleSubmitExam(); // envía las respuestas
-        }
-      );
+      console.log('Connecting to timer...');
+      let retryCount = 0;
+      const maxRetries = 3;
+      let retryTimeout: NodeJS.Timeout;
 
-      // Set up auto-save every 30 seconds
-      const autoSaveInterval = setInterval(() => {
-        connection.sendPartialSubmission(answers);
-      }, 30000);
+      function connectWebSocket() {
+        const connection = connectToExamTimer(
+          attemptId,
+          timeLimit,
+          (remainingSeconds) => {
+            updateTimer(remainingSeconds);
+          },
+          () => {
+            finishExam();
+            handleSubmitExam();
+          }
+        );
+
+        // Set up auto-save every 30 seconds
+        const autoSaveInterval = setInterval(() => {
+          if (connection) {
+            try {
+              connection.sendPartialSubmission(answers);
+            } catch (error) {
+              console.error('Failed to send partial submission:', error);
+            }
+          }
+        }, 30000);
+
+        // Return cleanup function
+        return () => {
+          if (connection) connection.close();
+          clearInterval(autoSaveInterval);
+          if (retryTimeout) clearTimeout(retryTimeout);
+        };
+      }
+
+      // Function to handle WebSocket reconnection
+      const handleReconnect = () => {
+        if (retryCount < maxRetries) {
+          retryCount++;
+          console.log(`Attempting to reconnect WebSocket: Attempt ${retryCount} of ${maxRetries}`);
+          const delay = Math.min(1000 * 2 ** retryCount, 30000); // Exponential backoff with 30s max
+          retryTimeout = setTimeout(() => {
+            cleanup = connectWebSocket();
+          }, delay);
+        } else {
+          console.error('Maximum WebSocket reconnection attempts reached');
+          setError('Failed to connect to exam timer. Please try refreshing the page.');
+        }
+      };
+
+      // Listen for WebSocket errors globally to detect disconnections
+      const handleWSError = () => {
+        handleReconnect();
+      };
+
+      // Add and remove global event listener
+      window.addEventListener('websocketerror', handleWSError);
+
+      // Initial connection
+      let cleanup = connectWebSocket();
 
       return () => {
-        connection.close();
-        clearInterval(autoSaveInterval);
+        cleanup();
+        window.removeEventListener('websocketerror', handleWSError);
       };
     }
   }, [isStarted, attemptId, timeLimit, isFinished, updateTimer, answers, finishExam]);
@@ -114,12 +168,50 @@ const ExamRunner = () => {
   };
 
   // Render loading state
-  if (!exam || !exam.questions) {
+  if (loading) {
     return (
-      <Container>
-        <Typography variant="h4" sx={{ mt: 4, textAlign: 'center' }}>
+      <Container sx={{ py: 5, textAlign: 'center' }}>
+        <CircularProgress size={60} />
+        <Typography variant="h5" sx={{ mt: 3 }}>
           Loading exam...
         </Typography>
+      </Container>
+    );
+  }
+
+  // Handle error state
+  if (error) {
+    return (
+      <Container sx={{ py: 5 }}>
+        <Paper sx={{ p: 3, bgcolor: 'error.light', color: 'error.contrastText' }}>
+          <Typography variant="h5" gutterBottom>Error Loading Exam</Typography>
+          <Typography>{error}</Typography>
+          <Button
+            variant="contained"
+            sx={{ mt: 2 }}
+            onClick={() => navigate('/')}
+          >
+            Return to Home
+          </Button>
+        </Paper>
+      </Container>
+    );
+  }
+
+  // Handle case when exam data is not available
+  if (!exam || !exam.questions || exam.questions.length === 0) {
+    return (
+      <Container sx={{ py: 5, textAlign: 'center' }}>
+        <Typography variant="h5" color="error">
+          Exam data is not available or has no questions
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ mt: 3 }}
+          onClick={() => navigate('/')}
+        >
+          Return to Home
+        </Button>
       </Container>
     );
   }
@@ -129,12 +221,6 @@ const ExamRunner = () => {
 
   return (
     <Container maxWidth="xl" sx={{ py: 3 }}>
-      {error && (
-        <Paper sx={{ p: 2, mb: 2, bgcolor: 'error.light', color: 'error.contrastText' }}>
-          <Typography>{error}</Typography>
-        </Paper>
-      )}
-
       <TimerBar
         remainingTime={remaining}
         formatTime={formatRemainingTime}

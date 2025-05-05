@@ -1,6 +1,9 @@
+import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material';
 import { FC } from 'react';
-import { Box, Button, Typography, Grid } from '@mui/material';
 import { AnswerMap } from 'shared/src/models';
+
+// Define valid button colors
+type ButtonColorType = 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'inherit' | undefined;
 
 interface NavigatorGridProps {
   totalQuestions: number;
@@ -16,34 +19,51 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
   totalQuestions,
   currentQuestion,
   answers,
-  questions,
+  questions = [], // Ensure questions has a default empty array
   onSelect,
   correctAnswers,
   reviewMode = false,
 }) => {
   // Generate button color based on answer status
-  const getButtonColor = (index: number) => {
-    const questionId = questions[index]?._id;
-    if (!questionId) return 'default';
-    
+  const getButtonColor = (index: number): ButtonColorType => {
+    // Safety check for questions array
+    if (!questions || !questions[index]) return 'inherit';
+
+    const questionId = questions[index]._id;
+    if (!questionId) return 'inherit';
+
+    // Safety check for answers object
+    if (!answers) return 'inherit';
+
     const answered = answers[questionId];
-    
+
     if (reviewMode && correctAnswers) {
-      if (!answered) return 'default'; // Not answered
+      if (!answered) return 'inherit'; // Not answered
       if (answered === correctAnswers[questionId]) return 'success'; // Correct
       return 'error'; // Incorrect
     }
-    
-    return answered ? 'primary' : 'default';
+
+    return answered ? 'primary' : 'inherit';
   };
-  
+
   // Generate grid of question buttons
   const renderQuestionButtons = () => {
+    // If questions aren't loaded yet, show a loading indicator
+    if (!questions || questions.length === 0) {
+      return (
+        <Grid item xs={12}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', p: 2 }}>
+            <CircularProgress size={24} />
+          </Box>
+        </Grid>
+      );
+    }
+
     const buttons = [];
-    
+
     for (let i = 0; i < totalQuestions; i++) {
       const buttonColor = getButtonColor(i);
-      
+
       buttons.push(
         <Grid item xs={2} key={i}>
           <Button
@@ -62,29 +82,36 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
         </Grid>
       );
     }
-    
+
     return buttons;
   };
-  
+
   // Generate summary of answers
   const getAnswerSummary = () => {
-    if (!questions.length) return { answered: 0, unanswered: 0, correct: 0, incorrect: 0 };
-    
+    if (!questions || !questions.length) return { answered: 0, unanswered: totalQuestions, correct: 0, incorrect: 0 };
+    if (!answers) return { answered: 0, unanswered: totalQuestions, correct: 0, incorrect: 0 };
+
     let answered = 0;
     let unanswered = 0;
     let correct = 0;
     let incorrect = 0;
-    
-    questions.forEach((q, i) => {
+
+    questions.forEach((q) => {
+      // Skip if question is undefined or missing _id
+      if (!q || !q._id) {
+        unanswered++;
+        return;
+      }
+
       const answer = answers[q._id];
-      
+
       if (!answer) {
         unanswered++;
         return;
       }
-      
+
       answered++;
-      
+
       if (reviewMode && correctAnswers) {
         if (answer === correctAnswers[q._id]) {
           correct++;
@@ -93,12 +120,12 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
         }
       }
     });
-    
+
     return { answered, unanswered, correct, incorrect };
   };
-  
+
   const summary = getAnswerSummary();
-  
+
   return (
     <Box>
       {/* Summary statistics */}
@@ -106,11 +133,11 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
         <Typography variant="body2">
           <strong>Answered:</strong> {summary.answered} / {totalQuestions}
         </Typography>
-        
+
         <Typography variant="body2">
           <strong>Unanswered:</strong> {summary.unanswered}
         </Typography>
-        
+
         {reviewMode && (
           <>
             <Typography variant="body2" color="success.main">
@@ -122,23 +149,23 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
           </>
         )}
       </Box>
-      
+
       {/* Question grid */}
       <Grid container spacing={1}>
         {renderQuestionButtons()}
       </Grid>
-      
+
       {/* Legend */}
       <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid', borderColor: 'divider' }}>
         <Typography variant="caption" component="div" sx={{ mb: 0.5 }}>
           Legend:
         </Typography>
-        
+
         <Grid container spacing={1} alignItems="center">
           <Grid item>
-            <Box sx={{ 
-              width: 16, 
-              height: 16, 
+            <Box sx={{
+              width: 16,
+              height: 16,
               borderRadius: '50%',
               border: '1px solid',
               borderColor: 'primary.main',
@@ -146,33 +173,33 @@ const NavigatorGrid: FC<NavigatorGridProps> = ({
             }} />
           </Grid>
           <Grid item><Typography variant="caption">Unanswered</Typography></Grid>
-          
+
           <Grid item>
-            <Box sx={{ 
-              width: 16, 
-              height: 16, 
+            <Box sx={{
+              width: 16,
+              height: 16,
               borderRadius: '50%',
               bgcolor: 'primary.main'
             }} />
           </Grid>
           <Grid item><Typography variant="caption">Answered</Typography></Grid>
-          
+
           {reviewMode && (
             <>
               <Grid item>
-                <Box sx={{ 
-                  width: 16, 
-                  height: 16, 
+                <Box sx={{
+                  width: 16,
+                  height: 16,
                   borderRadius: '50%',
                   bgcolor: 'success.main'
                 }} />
               </Grid>
               <Grid item><Typography variant="caption">Correct</Typography></Grid>
-              
+
               <Grid item>
-                <Box sx={{ 
-                  width: 16, 
-                  height: 16, 
+                <Box sx={{
+                  width: 16,
+                  height: 16,
                   borderRadius: '50%',
                   bgcolor: 'error.main'
                 }} />

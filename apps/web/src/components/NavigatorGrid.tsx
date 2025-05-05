@@ -1,6 +1,9 @@
 import { Box, Button, Grid, Tooltip } from '@mui/material';
 import { AnswerMap } from 'shared/src/models';
 
+// Define valid button colors
+type ButtonColorType = 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning' | 'inherit' | undefined;
+
 interface NavigatorGridProps {
   totalQuestions: number;
   currentIndex: number;
@@ -11,22 +14,22 @@ interface NavigatorGridProps {
 const NavigatorGrid = ({ totalQuestions, currentIndex, answers, onSelect }: NavigatorGridProps) => {
   // Create array of question indices (0-based)
   const questionIndices = Array.from({ length: totalQuestions }, (_, i) => i);
-  
+
   // Determine button color based on answer status
-  const getButtonColor = (index: number) => {
+  const getButtonColor = (index: number): ButtonColorType => {
     const questionId = Object.keys(answers)[index];
-    if (!questionId) return 'default';
-    
+    if (!questionId) return 'inherit';
+
     const answer = answers[questionId];
-    if (answer === null) return 'default';
+    if (answer === null) return 'inherit';
     return 'primary';
   };
-  
+
   // Get button variant based on current selection
   const getButtonVariant = (index: number) => {
     return index === currentIndex ? 'contained' : 'outlined';
   };
-  
+
   return (
     <Box sx={{ width: '100%' }}>
       <Grid container spacing={1}>

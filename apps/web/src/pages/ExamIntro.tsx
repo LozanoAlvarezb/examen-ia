@@ -23,6 +23,7 @@ import { fetchExamWithQuestions } from '../services/api';
 import { useExamSessionStore } from '../store/examSessionStore';
 
 const ExamIntro = () => {
+  console.log('ExamIntro component rendered');
   const { id: examId } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);

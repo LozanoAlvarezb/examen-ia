@@ -37,10 +37,10 @@ export const createExam = async (data: {
 
 // Attempt APIs
 export const startExamAttempt = async (examId: string, negativeMark?: number, timeLimit?: number) => {
-  const response = await axios.post<ExamResponse>(`${API_URL}/attempts`, { 
+  const response = await axios.post<ExamResponse>(`${API_URL}/attempts`, {
     examId,
     negativeMark,
-    timeLimit 
+    timeLimit
   });
   return response.data;
 };
@@ -70,41 +70,80 @@ export const connectToExamTimer = (
   onTick: (remainingSeconds: number) => void,
   onFinish: () => void
 ) => {
-  const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const host = window.location.host;
-  const wsUrl = `${wsProtocol}//${host}/ws?attemptId=${attemptId}&timeLimit=${timeLimit}`;
-  
+  // Important: Point directly to the backend server (port 4000)
+  // instead of relying on the proxy which might be causing issues
+  const wsUrl = `ws://localhost:4000/ws?attemptId=${attemptId}&timeLimit=${timeLimit}`;
+
+  console.log('Connecting WebSocket directly to backend:', wsUrl);
+
   const ws = new WebSocket(wsUrl);
-  
+
+  ws.onopen = () => {
+    console.log('WebSocket connection established successfully');
+  };
+
   ws.onmessage = (event) => {
-    const data = JSON.parse(event.data);
-    
-    if (data.type === 'TICK') {
-      onTick(data.remainingSeconds);
-    } else if (data.type === 'FINISH') {
-      onFinish();
+    try {
+      const data = JSON.parse(event.data);
+
+      if (data.type === 'TICK') {
+        onTick(data.remainingSeconds);
+      } else if (data.type === 'FINISH') {
+        onFinish();
+      }
+    } catch (error) {
+      console.error('Error parsing WebSocket message:', error);
     }
   };
-  
-  ws.onclose = () => {
-    console.log('WebSocket connection closed');
+
+  ws.onclose = (event) => {
+    console.log('WebSocket connection closed', event.code, event.reason);
+
+    // If closed unexpectedly (not a normal closure)
+    if (event.code !== 1000) {
+      // Create and dispatch a custom event for the reconnection logic to catch
+      const errorEvent = new CustomEvent('websocketerror', {
+        detail: {
+          code: event.code,
+          reason: event.reason,
+          wasClean: event.wasClean
+        }
+      });
+      window.dispatchEvent(errorEvent);
+    }
   };
-  
+
   ws.onerror = (error) => {
     console.error('WebSocket error:', error);
+
+    // Create and dispatch a custom event for the reconnection logic to catch
+    const errorEvent = new CustomEvent('websocketerror', {
+      detail: { error }
+    });
+    window.dispatchEvent(errorEvent);
   };
-  
+
   const sendPartialSubmission = (answers: AnswerMap) => {
     if (ws.readyState === WebSocket.OPEN) {
       ws.send(JSON.stringify({
         type: 'SUBMIT',
         answers
       }));
+    } else {
+      console.warn('WebSocket not open, cannot send partial submission');
     }
   };
-  
+
   return {
-    close: () => ws.close(),
+    close: () => {
+      try {
+        if (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING) {
+          ws.close(1000, "Closed normally");
+        }
+      } catch (error) {
+        console.error('Error closing WebSocket:', error);
+      }
+    },
     sendPartialSubmission
   };
 };
