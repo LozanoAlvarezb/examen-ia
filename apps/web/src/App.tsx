@@ -8,6 +8,7 @@ import MainLayout from './components/layouts/MainLayout';
 import ExamIntro from './pages/ExamIntro';
 import ExamResult from './pages/ExamResult';
 import ExamRunner from './pages/ExamRunner';
+import ExamUploadPage from './pages/ExamUploadPage';
 import HomePage from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
 import QuestionUploadPage from './pages/QuestionUploadPage';
@@ -24,6 +25,7 @@ function App() {
           <Route path="exam/:id/start" element={<ExamRunner />} />
           <Route path="exam/:id/result/:attemptId" element={<ExamResult />} />
           <Route path="admin/questions" element={<QuestionUploadPage />} />
+          <Route path="admin/exams" element={<ExamUploadPage />} />
         </Route>
 
         {/* 404 route */}

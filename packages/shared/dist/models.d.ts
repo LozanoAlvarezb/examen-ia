@@ -32,8 +32,6 @@ export interface Exam {
     _id: string;
     name: string;
     questionIds: string[];
-    negativeMark: number;
-    timeLimit: number;
     createdAt: Date;
 }
 export interface PublicExam extends Omit<Exam, 'questionIds'> {
@@ -44,10 +42,12 @@ export interface Attempt {
     examId: string;
     userId?: string | null;
     answers: AnswerMap;
+    negativeMark: number;
+    timeLimit: number;
     startedAt: Date;
     finishedAt?: Date;
     scoreTotal?: number;
-    scoreByTopic?: Record<string, number>;
+    scoreByTopic: Record<string, number>;
     correctCount?: number;
     wrongCount?: number;
     blankCount?: number;
@@ -73,4 +73,12 @@ export interface AttemptResultResponse {
     blankCount: number;
     startedAt: string;
     finishedAt: string;
+}
+export interface ExamSessionState {
+    exam: PublicExam | null;
+    answers: AnswerMap;
+    startTime: number;
+    remaining: number;
+    negativeMark: number;
+    timeLimit: number;
 }

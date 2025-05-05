@@ -1,11 +1,11 @@
-import { useState, useEffect, useCallback } from 'react';
+import { Box, Button, Container, Dialog, DialogActions, DialogContent, DialogTitle, Grid, Paper, Typography } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Box, Grid, Typography, Paper, Container, Button, Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
-import { fetchExamWithQuestions, startExamAttempt, submitAttempt, connectToExamTimer } from '../services/api';
-import { useExamSessionStore, formatRemainingTime, getAnsweredCount } from '../store/examSessionStore';
-import QuestionCard from '../components/exam/QuestionCard';
 import NavigatorGrid from '../components/exam/NavigatorGrid';
+import QuestionCard from '../components/exam/QuestionCard';
 import TimerBar from '../components/exam/TimerBar';
+import { connectToExamTimer, fetchExamWithQuestions, startExamAttempt, submitAttempt } from '../services/api';
+import { formatRemainingTime, getAnsweredCount, useExamSessionStore } from '../store/examSessionStore';
 
 const ExamRunner = () => {
   const { id: examId } = useParams<{ id: string }>();
@@ -14,7 +14,8 @@ const ExamRunner = () => {
   // State from Zustand store
   const { 
     exam, answers, remaining, isStarted, isFinished, attemptId,
-    setExam, startExam, finishExam, resetSession, updateTimer 
+    setExam, startExam, finishExam, resetSession, updateTimer,
+    negativeMark, timeLimit // Get these from the store now
   } = useExamSessionStore();
   
   // Local state
@@ -39,7 +40,7 @@ const ExamRunner = () => {
         
         // Start a new attempt if not started
         if (!isStarted && examId && !attemptId) {
-          const { attemptId: newAttemptId, wsToken } = await startExamAttempt(examId);
+          const { attemptId: newAttemptId, wsToken } = await startExamAttempt(examId, negativeMark, timeLimit);
           startExam(newAttemptId, wsToken);
         }
       } catch (error: any) {
@@ -48,11 +49,11 @@ const ExamRunner = () => {
     };
     
     initExam();
-  }, [examId, exam, isStarted, attemptId, setExam, startExam]);
+  }, [examId, exam, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
   
   // WebSocket connection for timer
   useEffect(() => {
-    if (isStarted && attemptId && exam?.timeLimit && !isFinished) {
+    if (isStarted && attemptId && timeLimit && !isFinished) {
       const wsToken = useExamSessionStore.getState().wsToken;
       
       if (!wsToken) return;
@@ -81,7 +82,7 @@ const ExamRunner = () => {
         clearInterval(autoSaveInterval);
       };
     }
-  }, [isStarted, attemptId, exam?.timeLimit, isFinished, updateTimer, answers, finishExam]);
+  }, [isStarted, attemptId, timeLimit, isFinished, updateTimer, answers, finishExam]);
   
   // Auto-navigate to results when finished
   useEffect(() => {

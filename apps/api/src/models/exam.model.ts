@@ -14,20 +14,6 @@ const ExamSchema = new mongoose.Schema(
       ref: 'Question',
       required: true,
     }],
-    negativeMark: {
-      type: Number,
-      required: true,
-      default: 0.25,
-      min: 0,
-      max: 1,
-    },
-    timeLimit: {
-      type: Number,
-      required: true,
-      default: 120, // 120 minutes (2 hours)
-      min: 10, // Minimum 10 minutes
-      max: 240, // Maximum 4 hours
-    },
   },
   {
     timestamps: true,

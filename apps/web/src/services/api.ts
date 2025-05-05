@@ -9,12 +9,12 @@ export const bulkImportQuestions = async (questions: any[]) => {
   return response.data;
 };
 
-export const getQuestion = async (id: string) => {
-  const response = await axios.get(`${API_URL}/questions/${id}`);
+// Exam APIs
+export const bulkImportExams = async (examName: string, questions: any[]) => {
+  const response = await axios.post(`${API_URL}/exams/bulk`, { name: examName, questions });
   return response.data;
 };
 
-// Exam APIs
 export const fetchExams = async () => {
   const response = await axios.get<Exam[]>(`${API_URL}/exams`);
   return response.data;
@@ -36,8 +36,12 @@ export const createExam = async (data: {
 };
 
 // Attempt APIs
-export const startExamAttempt = async (examId: string) => {
-  const response = await axios.post<ExamResponse>(`${API_URL}/attempts`, { examId });
+export const startExamAttempt = async (examId: string, negativeMark?: number, timeLimit?: number) => {
+  const response = await axios.post<ExamResponse>(`${API_URL}/attempts`, { 
+    examId,
+    negativeMark,
+    timeLimit 
+  });
   return response.data;
 };
 

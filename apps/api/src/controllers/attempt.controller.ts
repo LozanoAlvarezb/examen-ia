@@ -1,13 +1,13 @@
+import crypto from 'crypto';
 import { Request, Response } from 'express';
 import Attempt from '../models/attempt.model';
 import Exam from '../models/exam.model';
 import Question from '../models/question.model';
-import crypto from 'crypto';
 
 // Helper function to calculate scores
-const calculateScores = async (examId: string, answers: Record<string, string | null>) => {
+const calculateScores = async (attempt: any, answers: Record<string, string | null>) => {
   // Fetch exam and questions
-  const exam = await Exam.findById(examId);
+  const exam = await Exam.findById(attempt.examId);
   if (!exam) throw new Error('Exam not found');
 
   const questions = await Question.find({ _id: { $in: exam.questionIds } });
@@ -40,7 +40,7 @@ const calculateScores = async (examId: string, answers: Record<string, string | 
 
   // Calculate final scores
   const totalQuestions = questions.length;
-  const scoreTotal = ((correctCount - (wrongCount * exam.negativeMark)) * 100) / totalQuestions;
+  const scoreTotal = ((correctCount - (wrongCount * attempt.negativeMark)) * 100) / totalQuestions;
 
   // Calculate percentage scores by topic
   const scoreByTopic = Object.entries(topicScores).reduce((acc, [topic, scores]) => {
@@ -59,7 +59,7 @@ const calculateScores = async (examId: string, answers: Record<string, string | 
 
 export const startAttempt = async (req: Request, res: Response) => {
   try {
-    const { examId } = req.body;
+    const { examId, negativeMark, timeLimit } = req.body;
 
     if (!examId) {
       return res.status(400).json({
@@ -75,9 +75,11 @@ export const startAttempt = async (req: Request, res: Response) => {
       });
     }
 
-    // Create new attempt
+    // Create new attempt with optional negativeMark and timeLimit parameters
     const attempt = new Attempt({
       examId,
+      negativeMark: negativeMark !== undefined ? negativeMark : 0.25, // Default to 0.25 if not provided
+      timeLimit: timeLimit !== undefined ? timeLimit : 120, // Default to 120 minutes if not provided
       startedAt: new Date(),
     });
 
@@ -117,8 +119,8 @@ export const submitAnswers = async (req: Request, res: Response) => {
       });
     }
 
-    // Calculate scores
-    const scores = await calculateScores(attempt.examId.toString(), answers);
+    // Calculate scores - now passing the attempt object directly
+    const scores = await calculateScores(attempt, answers);
 
     // Update attempt with answers and scores
     attempt.answers = answers;

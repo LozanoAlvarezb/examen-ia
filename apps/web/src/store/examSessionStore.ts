@@ -1,6 +1,6 @@
+import { Answer, AnswerMap, ExamSessionState, PublicExam } from 'shared/src/models';
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Answer, AnswerMap, ExamSessionState, PublicExam } from 'shared/src/models';
 
 interface ExamSessionStore extends ExamSessionState {
   // Exam state properties
@@ -9,6 +9,8 @@ interface ExamSessionStore extends ExamSessionState {
   isFinished: boolean;
   attemptId: string | null;
   wsToken: string | null;
+  negativeMark: number;
+  timeLimit: number;
   
   // Actions
   setExam: (exam: PublicExam) => void;
@@ -30,6 +32,8 @@ const initialState = {
   isFinished: false,
   attemptId: null,
   wsToken: null,
+  negativeMark: 0.25, // Default negative mark
+  timeLimit: 120,     // Default time limit in minutes
 };
 
 // Create the store with persistence
@@ -79,6 +83,8 @@ export const useExamSessionStore = create<ExamSessionStore>()(
         isStarted: state.isStarted,
         isFinished: state.isFinished,
         attemptId: state.attemptId,
+        negativeMark: state.negativeMark,
+        timeLimit: state.timeLimit,
       }),
     }
   )

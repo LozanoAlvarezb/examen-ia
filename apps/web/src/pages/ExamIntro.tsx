@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import TimerIcon from '@mui/icons-material/Timer';
+import WarningIcon from '@mui/icons-material/Warning';
 import {
-  Container,
-  Typography,
-  Paper,
+  Alert,
   Box,
   Button,
+  CircularProgress,
+  Container,
+  InputAdornment,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  CircularProgress,
-  Alert,
+  Paper,
+  Slider,
+  TextField,
+  Typography,
 } from '@mui/material';
-import TimerIcon from '@mui/icons-material/Timer';
-import WarningIcon from '@mui/icons-material/Warning';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { fetchExamWithQuestions } from '../services/api';
 import { useExamSessionStore } from '../store/examSessionStore';
 
@@ -25,6 +28,10 @@ const ExamIntro = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { setExam, resetSession } = useExamSessionStore();
+  
+  // Add state for negativeMark and timeLimit
+  const [negativeMark, setNegativeMark] = useState(0.25);
+  const [timeLimit, setTimeLimit] = useState(120);
 
   useEffect(() => {
     const loadExam = async () => {
@@ -46,7 +53,24 @@ const ExamIntro = () => {
 
   const handleStartExam = () => {
     if (examId) {
+      // Store negativeMark and timeLimit in the exam session store
+      useExamSessionStore.setState(state => ({
+        ...state,
+        negativeMark,
+        timeLimit
+      }));
       navigate(`/exam/${examId}/start`);
+    }
+  };
+
+  const handleNegativeMarkChange = (_event: Event, value: number | number[]) => {
+    setNegativeMark(value as number);
+  };
+
+  const handleTimeLimitChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = parseInt(event.target.value);
+    if (!isNaN(value) && value >= 10 && value <= 240) {
+      setTimeLimit(value);
     }
   };
 
@@ -82,30 +106,73 @@ const ExamIntro = () => {
 
         <Paper sx={{ mt: 4, p: 4 }}>
           <Typography variant="h5" gutterBottom>
+            Exam Settings
+          </Typography>
+          
+          <Box sx={{ mt: 3, mb: 4 }}>
+            <Typography id="negative-mark-slider" gutterBottom>
+              Negative Marking
+            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ mr: 2 }}>
+                <WarningIcon color="warning" />
+              </Box>
+              <Box sx={{ width: '100%' }}>
+                <Slider
+                  value={negativeMark}
+                  onChange={handleNegativeMarkChange}
+                  aria-labelledby="negative-mark-slider"
+                  step={0.05}
+                  marks={[
+                    { value: 0, label: '0' },
+                    { value: 0.25, label: '0.25' },
+                    { value: 0.5, label: '0.5' },
+                    { value: 1, label: '1' }
+                  ]}
+                  min={0}
+                  max={1}
+                  valueLabelDisplay="auto"
+                />
+              </Box>
+            </Box>
+            <Typography variant="body2" color="text.secondary">
+              Points deducted for each incorrect answer. Set to 0 for no negative marking.
+            </Typography>
+          </Box>
+
+          <Box sx={{ mt: 3, mb: 4 }}>
+            <Typography gutterBottom>
+              Time Limit (minutes)
+            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Box sx={{ mr: 2 }}>
+                <TimerIcon color="primary" />
+              </Box>
+              <TextField
+                value={timeLimit}
+                onChange={handleTimeLimitChange}
+                type="number"
+                InputProps={{
+                  endAdornment: <InputAdornment position="end">min</InputAdornment>,
+                }}
+                inputProps={{
+                  min: 10,
+                  max: 240,
+                  step: 5
+                }}
+                fullWidth
+              />
+            </Box>
+            <Typography variant="body2" color="text.secondary">
+              Duration of the exam (10-240 minutes). The exam will auto-submit when time runs out.
+            </Typography>
+          </Box>
+
+          <Typography variant="h5" gutterBottom sx={{ mt: 4 }}>
             Important Instructions
           </Typography>
 
           <List sx={{ mt: 2 }}>
-            <ListItem>
-              <ListItemIcon>
-                <TimerIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText
-                primary={`Time Limit: ${exam.timeLimit} minutes`}
-                secondary="The exam will auto-submit when time runs out"
-              />
-            </ListItem>
-
-            <ListItem>
-              <ListItemIcon>
-                <WarningIcon color="warning" />
-              </ListItemIcon>
-              <ListItemText
-                primary={`Negative Marking: ${exam.negativeMark} marks`}
-                secondary="Points will be deducted for incorrect answers"
-              />
-            </ListItem>
-
             <ListItem>
               <ListItemIcon>
                 <CheckCircleIcon color="success" />

@@ -1,18 +1,23 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { 
-  Container, Typography, Grid, Card, CardContent, CardActions, 
-  Button, Box, Chip, CircularProgress, Paper 
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Chip, CircularProgress,
+  Container,
+  Grid,
+  Paper,
+  Typography
 } from '@mui/material';
-import TimerIcon from '@mui/icons-material/Timer';
-import WarningIcon from '@mui/icons-material/Warning';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { fetchExams } from '../services/api';
 
 interface Exam {
   _id: string;
   name: string;
-  timeLimit: number;
-  negativeMark: number;
+  createdAt: Date;
 }
 
 const HomePage = () => {
@@ -76,24 +81,6 @@ const HomePage = () => {
                 </Typography>
 
                 <Box sx={{ mt: 2 }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                    <TimerIcon sx={{ mr: 1, color: 'primary.main' }} />
-                    <Typography variant="body2">
-                      Time Limit: {exam.timeLimit} minutes
-                    </Typography>
-                  </Box>
-
-                  {exam.negativeMark > 0 && (
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <WarningIcon sx={{ mr: 1, color: 'warning.main' }} />
-                      <Typography variant="body2">
-                        Negative Marking: -{exam.negativeMark} per wrong answer
-                      </Typography>
-                    </Box>
-                  )}
-                </Box>
-
-                <Box sx={{ mt: 2 }}>
                   <Chip 
                     label="100 Questions" 
                     size="small" 
@@ -130,14 +117,21 @@ const HomePage = () => {
         )}
       </Grid>
 
-      {/* Import Questions Button */}
-      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center' }}>
+      {/* Import buttons */}
+      <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
         <Button 
           variant="outlined" 
           size="large"
           onClick={() => navigate('/admin/questions')}
         >
           Import Questions
+        </Button>
+        <Button 
+          variant="contained" 
+          size="large"
+          onClick={() => navigate('/admin/exams')}
+        >
+          Import Exam
         </Button>
       </Box>
     </Container>

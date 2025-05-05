@@ -2,6 +2,60 @@ import { Request, Response } from 'express';
 import Exam from '../models/exam.model';
 import Question from '../models/question.model';
 
+export const bulkImportExam = async (req: Request, res: Response) => {
+  try {
+    const { name, questions } = req.body;
+
+    // Validate required fields
+    if (!name || !Array.isArray(questions)) {
+      return res.status(400).json({
+        message: 'Name and questions array are required'
+      });
+    }
+
+    // Validate number of questions
+    if (questions.length !== 100) {
+      return res.status(400).json({
+        message: `Invalid number of questions. Expected 100, got ${questions.length}`
+      });
+    }
+
+    // First, insert all questions to database
+    const questionData = questions.map(q => ({
+      text: q.text,
+      options: q.options,
+      correct: q.correct,
+      topic: q.topic,
+      explanation: q.explanation
+    }));
+
+    // Insert questions and get their IDs
+    const insertedQuestions = await Question.insertMany(questionData);
+    const questionIds = insertedQuestions.map(q => q._id);
+
+    // Create the exam with the question IDs
+    const exam = new Exam({
+      name,
+      questionIds,
+      // negativeMark and timeLimit will use default values from the model
+    });
+
+    await exam.save();
+
+    res.status(201).json({
+      message: 'Successfully imported exam with 100 questions',
+      examId: exam._id,
+      name: exam.name
+    });
+  } catch (error: any) {
+    console.error('Error importing exam:', error);
+    res.status(500).json({
+      message: 'Failed to import exam',
+      error: error.message
+    });
+  }
+};
+
 export const createExam = async (req: Request, res: Response) => {
   try {
     const { name, questionIds, negativeMark, timeLimit } = req.body;
@@ -84,8 +138,6 @@ export const getExamWithQuestions = async (req: Request, res: Response) => {
     res.json({
       _id: exam._id,
       name: exam.name,
-      timeLimit: exam.timeLimit,
-      negativeMark: exam.negativeMark,
       questions,
       createdAt: exam.createdAt,
     });

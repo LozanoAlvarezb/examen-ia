@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { Attempt, Answer } from 'shared/src/models';
+import { Attempt } from 'shared/src/models';
 
 const AttemptSchema = new mongoose.Schema(
   {
@@ -8,6 +8,20 @@ const AttemptSchema = new mongoose.Schema(
       ref: 'Exam',
       required: true,
       index: true,
+    },
+    negativeMark: {
+      type: Number,
+      required: true,
+      default: 0.25,
+      min: 0,
+      max: 1,
+    },
+    timeLimit: {
+      type: Number,
+      required: true,
+      default: 120, // 120 minutes (2 hours)
+      min: 10, // Minimum 10 minutes
+      max: 240, // Maximum 4 hours
     },
     answers: {
       type: Map,
