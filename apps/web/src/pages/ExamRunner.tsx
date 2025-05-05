@@ -52,36 +52,30 @@ const ExamRunner = () => {
   }, [examId, exam, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
   
   // WebSocket connection for timer
-  useEffect(() => {
-    if (isStarted && attemptId && timeLimit && !isFinished) {
-      const wsToken = useExamSessionStore.getState().wsToken;
-      
-      if (!wsToken) return;
-      
-      const connection = connectToExamTimer(
-        attemptId,
-        wsToken,
-        // On timer tick
-        (remainingSeconds) => {
-          updateTimer(remainingSeconds);
-        },
-        // On forced finish by server
-        () => {
-          finishExam();
-          handleSubmitExam();
-        }
-      );
+useEffect(() => {
+  if (isStarted && attemptId && timeLimit && !isFinished) {
+    const connection = connectToExamTimer(
+      attemptId,
+      timeLimit, // minutos
+      (remainingSeconds) => {
+        updateTimer(remainingSeconds); // función que actualiza el estado del contador
+      },
+      () => {
+        finishExam();        // marca el examen como terminado
+        handleSubmitExam(); // envía las respuestas
+      }
+    );
       
       // Set up auto-save every 30 seconds
       const autoSaveInterval = setInterval(() => {
         connection.sendPartialSubmission(answers);
       }, 30000);
-      
-      return () => {
+
+    return () => {
         connection.close();
         clearInterval(autoSaveInterval);
-      };
-    }
+    };
+  }
   }, [isStarted, attemptId, timeLimit, isFinished, updateTimer, answers, finishExam]);
   
   // Auto-navigate to results when finished

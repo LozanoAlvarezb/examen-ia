@@ -48,12 +48,14 @@ export const useExamSessionStore = create<ExamSessionStore>()(
         isLoading: false 
       }),
       
-      startExam: (attemptId, wsToken) => set({ 
+      startExam: (attemptId, wsToken) => set((state) => ({ 
         attemptId, 
         wsToken,
         isStarted: true,
         startTime: Date.now(),
-      }),
+        negativeMark: state.negativeMark ?? initialState.negativeMark,
+        timeLimit: state.timeLimit ?? initialState.timeLimit
+      })),
       
       setAnswer: (questionId, answer) => set((state) => ({
         answers: {
