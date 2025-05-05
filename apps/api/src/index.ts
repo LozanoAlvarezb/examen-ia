@@ -3,8 +3,10 @@ import express from 'express';
 import helmet from 'helmet';
 import http from 'http';
 import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
 import WebSocket from 'ws';
 import { CORS_ORIGIN, PORT } from './config';
+import { specs } from './config/swagger';
 import connectDB from './utils/database';
 
 // Import routes
@@ -21,6 +23,9 @@ app.use(cors({ origin: CORS_ORIGIN }));
 app.use(morgan('dev'));
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
+
+// API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 // API Routes
 app.use('/api/questions', questionRoutes);
@@ -128,7 +133,7 @@ startServer();
 // Handle graceful shutdown
 process.on('SIGTERM', () => {
   console.log('SIGTERM received, shutting down gracefully');
-  
+
   // Close all WebSocket connections
   for (const [attemptId, session] of examSessions) {
     if (session.timer) {
@@ -136,7 +141,7 @@ process.on('SIGTERM', () => {
     }
     session.ws.close();
   }
-  
+
   server.close(() => {
     console.log('Server closed');
     process.exit(0);

@@ -28,7 +28,7 @@ const ExamIntro = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const { setExam, resetSession } = useExamSessionStore();
-  
+
   // Add state for negativeMark and timeLimit
   const [negativeMark, setNegativeMark] = useState(0.25);
   const [timeLimit, setTimeLimit] = useState(120);
@@ -108,7 +108,7 @@ const ExamIntro = () => {
           <Typography variant="h5" gutterBottom>
             Exam Settings
           </Typography>
-          
+
           <Box sx={{ mt: 3, mb: 4 }}>
             <Typography id="negative-mark-slider" gutterBottom>
               Negative Marking
