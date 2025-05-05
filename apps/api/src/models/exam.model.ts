@@ -28,11 +28,6 @@ const ExamSchema = new mongoose.Schema(
       min: 10, // Minimum 10 minutes
       max: 240, // Maximum 4 hours
     },
-    createdBy: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: false,
-    },
   },
   {
     timestamps: true,
@@ -40,11 +35,11 @@ const ExamSchema = new mongoose.Schema(
 );
 
 // Validate exactly 100 questions
-// ExamSchema.pre('save', function(next) {
-//   if (this.isModified('questionIds') && this.questionIds.length !== 100) {
-//     return next(new Error('Exam must contain exactly 100 questions'));
-//   }
-//   next();
-// });
+ExamSchema.pre('save', function(next) {
+  if (this.isModified('questionIds') && this.questionIds.length !== 100) {
+    return next(new Error('Exam must contain exactly 100 questions'));
+  }
+  next();
+});
 
 export default mongoose.model<Exam & mongoose.Document>('Exam', ExamSchema);

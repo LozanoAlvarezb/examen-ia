@@ -1,24 +1,12 @@
 import mongoose from 'mongoose';
 import { Attempt, Answer } from 'shared/src/models';
 
-const AnswerSchema = new mongoose.Schema({
-  type: String,
-  enum: ['A', 'B', 'C', 'D', null],
-  default: null,
-});
-
 const AttemptSchema = new mongoose.Schema(
   {
     examId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Exam',
       required: true,
-    },
-    userId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required: false, // null for anonymous attempts
-      sparse: true,
       index: true,
     },
     answers: {
@@ -26,6 +14,7 @@ const AttemptSchema = new mongoose.Schema(
       of: {
         type: String,
         enum: ['A', 'B', 'C', 'D', null],
+        default: null,
       },
       default: new Map(),
     },
@@ -70,7 +59,25 @@ const AttemptSchema = new mongoose.Schema(
   }
 );
 
-// Create compound index on examId and userId for faster queries
-AttemptSchema.index({ examId: 1, userId: 1 });
+// Create index on examId for faster queries
+AttemptSchema.index({ examId: 1 });
+
+// Method to check if attempt is finished
+AttemptSchema.methods.isFinished = function(): boolean {
+  return !!this.finishedAt;
+};
+
+// Method to calculate time taken in minutes
+AttemptSchema.methods.getTimeTaken = function(): number {
+  if (!this.finishedAt) return 0;
+  return Math.floor((this.finishedAt.getTime() - this.startedAt.getTime()) / (1000 * 60));
+};
+
+// Method to get percentage complete
+AttemptSchema.methods.getProgressPercentage = function(): number {
+  const total = 100; // Always 100 questions
+  const answered = [...this.answers.values()].filter(answer => answer !== null).length;
+  return (answered / total) * 100;
+};
 
 export default mongoose.model<Attempt & mongoose.Document>('Attempt', AttemptSchema);

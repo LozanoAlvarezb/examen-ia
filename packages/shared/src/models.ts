@@ -1,8 +1,10 @@
-import { ObjectId } from 'mongodb';
+// Basic types
+export type Answer = 'A' | 'B' | 'C' | 'D' | null;
+export type AnswerMap = Record<string, Answer>;
 
-// Question model
+// Question interfaces
 export interface Question {
-  _id: string | ObjectId;
+  _id: string;
   text: string;
   options: {
     A: string;
@@ -17,9 +19,8 @@ export interface Question {
   updatedAt?: Date;
 }
 
-// Question import format (from JSON)
 export interface QuestionImport {
-  id?: number; // Ignored by backend, which generates its own _id
+  id?: number;
   text: string;
   options: {
     A: string;
@@ -32,76 +33,58 @@ export interface QuestionImport {
   explanation: string;
 }
 
-// Exam model
+// Exam interfaces
 export interface Exam {
-  _id: string | ObjectId;
+  _id: string;
   name: string;
-  questionIds: (string | ObjectId)[];
+  questionIds: string[];
   negativeMark: number;
-  timeLimit: number; // in minutes
-  createdBy?: string | ObjectId;
+  timeLimit: number;
   createdAt: Date;
 }
 
-// Answer type
-export type Answer = 'A' | 'B' | 'C' | 'D' | null;
+export interface PublicExam extends Omit<Exam, 'questionIds'> {
+  questions: Omit<Question, 'correct' | 'explanation'>[];
+}
 
-// Answers mapping
-export type AnswerMap = Record<string, Answer>;
-
-// Exam Attempt model
+// Attempt interfaces
 export interface Attempt {
-  _id: string | ObjectId;
-  examId: string | ObjectId;
-  userId: string | ObjectId | null; // null for anonymous attempts
+  _id: string;
+  examId: string;
+  userId?: string | null;
   answers: AnswerMap;
   startedAt: Date;
   finishedAt?: Date;
-  scoreTotal?: number; // 0-100
+  scoreTotal?: number;
   scoreByTopic?: Record<string, number>;
   correctCount?: number;
   wrongCount?: number;
   blankCount?: number;
 }
 
-// User model
-export interface User {
-  _id: string | ObjectId;
-  email: string;
-  hashedPassword: string;
-  role: 'admin' | 'user';
+// WebSocket message types
+export interface WSMessage {
+  type: 'TICK' | 'FINISH' | 'SUBMIT';
+  remainingSeconds?: number;
+  answers?: AnswerMap;
 }
 
-// Auth request/response types
-export interface LoginRequest {
-  email: string;
-  password: string;
+// Response types
+export interface ExamResponse {
+  exam: PublicExam;
+  attemptId: string;
+  wsToken: string;
 }
 
-export interface RegisterRequest {
-  email: string;
-  password: string;
-}
-
-export interface AuthResponse {
-  accessToken: string;
-  refreshToken: string;
-  user: {
-    _id: string;
-    email: string;
-    role: 'admin' | 'user';
-  };
-}
-
-// Public exam response (without correct answers)
-export interface PublicExam extends Omit<Exam, 'questionIds'> {
-  questions: Omit<Question, 'correct'>[];
-}
-
-// Exam session state for frontend
-export interface ExamSessionState {
+export interface AttemptResultResponse {
   exam: Exam;
+  questions: Question[];
   answers: AnswerMap;
-  startTime: number;
-  remaining: number;
+  scoreTotal: number;
+  scoreByTopic: Record<string, number>;
+  correctCount: number;
+  wrongCount: number;
+  blankCount: number;
+  startedAt: string;
+  finishedAt: string;
 }

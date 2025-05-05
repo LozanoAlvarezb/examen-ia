@@ -7,90 +7,91 @@ export const bulkImport = async (req: Request, res: Response) => {
   try {
     const questions: QuestionImport[] = req.body;
 
-    // Validate that we have exactly 100 questions
+    // Validate array length
     if (!Array.isArray(questions) || questions.length !== 100) {
-      return res.status(400).json({ 
-        message: `Bulk import requires exactly 100 questions, received ${Array.isArray(questions) ? questions.length : 0}` 
+      return res.status(400).json({
+        message: `Invalid number of questions. Expected 100, got ${questions?.length || 0}`
       });
     }
 
-    // Validate question format
-    for (const question of questions) {
-      if (!question.text || 
-          !question.options || 
-          !question.options.A || 
-          !question.options.B || 
-          !question.options.C || 
-          !question.options.D || 
-          !question.correct || 
-          !question.topic || 
-          !question.explanation) {
-        return res.status(400).json({ 
-          message: 'All questions must have text, options (A,B,C,D), correct answer, topic, and explanation' 
+    // Generate hashes for duplicate detection
+    const hashes = questions.map(q => 
+      crypto.createHash('sha1').update(q.text).digest('hex')
+    );
+
+    // Check for duplicates within the import set
+    const uniqueHashes = new Set(hashes);
+    if (uniqueHashes.size !== questions.length) {
+      return res.status(400).json({
+        message: 'Duplicate questions detected in the import set'
+      });
+    }
+
+    // Check for existing questions in database
+    const existingQuestions = await Question.find({
+      textHash: { $in: Array.from(uniqueHashes) }
+    });
+
+    if (existingQuestions.length > 0) {
+      return res.status(400).json({
+        message: `${existingQuestions.length} questions already exist in the database`
+      });
+    }
+
+    // Validate each question
+    for (const [index, question] of questions.entries()) {
+      if (!question.text || !question.options || !question.correct || !question.topic || !question.explanation) {
+        return res.status(400).json({
+          message: `Question at index ${index} is missing required fields`
+        });
+      }
+
+      const { A, B, C, D } = question.options;
+      if (!A || !B || !C || !D) {
+        return res.status(400).json({
+          message: `Question at index ${index} is missing one or more options`
         });
       }
 
       if (!['A', 'B', 'C', 'D'].includes(question.correct)) {
-        return res.status(400).json({ 
-          message: `Invalid correct answer format: ${question.correct}. Must be 'A', 'B', 'C', or 'D'` 
+        return res.status(400).json({
+          message: `Question at index ${index} has invalid correct answer: ${question.correct}`
         });
       }
     }
 
-    // Check for duplicates in the current import set
-    const textHashes = new Set();
-    for (const question of questions) {
-      const hash = crypto.createHash('sha1').update(question.text).digest('hex');
-      if (textHashes.has(hash)) {
-        return res.status(400).json({ 
-          message: 'Duplicate questions detected in the import set' 
-        });
-      }
-      textHashes.add(hash);
-    }
+    // Create questions in database
+    await Question.insertMany(questions);
 
-    // Check for duplicates with existing questions in the database
-    const hashes = Array.from(textHashes);
-    const existingQuestions = await Question.find({ textHash: { $in: hashes } });
-    if (existingQuestions.length > 0) {
-      return res.status(409).json({ 
-        message: `${existingQuestions.length} questions already exist in the database` 
-      });
-    }
-
-    // Create new questions
-    const newQuestions = questions.map(q => ({
-      text: q.text,
-      options: q.options,
-      correct: q.correct,
-      topic: q.topic,
-      explanation: q.explanation
-    }));
-
-    const insertedQuestions = await Question.insertMany(newQuestions);
-
-    res.status(201).json({ 
-      message: `Successfully imported ${insertedQuestions.length} questions`,
-      questionIds: insertedQuestions.map(q => q._id)
+    res.status(201).json({
+      message: 'Successfully imported 100 questions'
     });
-  } catch (error) {
-    console.error('Bulk import error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error importing questions:', error);
+    res.status(500).json({
+      message: 'Failed to import questions',
+      error: error.message
+    });
   }
 };
 
 export const getById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    
     const question = await Question.findById(id);
+
     if (!question) {
-      return res.status(404).json({ message: 'Question not found' });
+      return res.status(404).json({
+        message: 'Question not found'
+      });
     }
-    
+
     res.json(question);
-  } catch (error) {
-    console.error('Get question error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error fetching question:', error);
+    res.status(500).json({
+      message: 'Failed to fetch question',
+      error: error.message
+    });
   }
 };

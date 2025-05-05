@@ -1,108 +1,99 @@
 import { Request, Response } from 'express';
 import Exam from '../models/exam.model';
 import Question from '../models/question.model';
-import mongoose from 'mongoose';
 
 export const createExam = async (req: Request, res: Response) => {
   try {
     const { name, questionIds, negativeMark, timeLimit } = req.body;
 
-    if (!name || !questionIds || !Array.isArray(questionIds)) {
+    // Validate required fields
+    if (!name || !Array.isArray(questionIds)) {
       return res.status(400).json({
-        message: 'Exam name and questionIds array are required'
+        message: 'Name and questionIds array are required'
       });
     }
 
-    // Validate we have exactly 100 questions
+    // Validate number of questions
     if (questionIds.length !== 100) {
       return res.status(400).json({
-        message: `Exam must contain exactly 100 questions, received ${questionIds.length}`
+        message: `Invalid number of questions. Expected 100, got ${questionIds.length}`
       });
     }
 
-    // Convert string IDs to ObjectIds
-    const objectIds = questionIds.map(id => new mongoose.Types.ObjectId(id));
-
-    // Verify all question IDs exist in the database
-    const existingQuestions = await Question.countDocuments({
-      _id: { $in: objectIds }
+    // Verify all questions exist
+    const questions = await Question.find({
+      _id: { $in: questionIds }
     });
 
-    if (existingQuestions !== 100) {
+    if (questions.length !== questionIds.length) {
       return res.status(400).json({
-        message: `Some question IDs are invalid. Found ${existingQuestions} out of 100 required questions`
+        message: 'One or more question IDs are invalid'
       });
     }
 
-    // Create the exam
+    // Create exam
     const exam = new Exam({
       name,
-      questionIds: objectIds,
-      negativeMark: negativeMark ?? 0.25,
-      timeLimit: timeLimit ?? 120,
-      createdBy: req.user?.userId
+      questionIds,
+      negativeMark: negativeMark || 0.25,
+      timeLimit: timeLimit || 120,
     });
 
     await exam.save();
 
-    res.status(201).json({
-      _id: exam._id,
-      name: exam.name,
-      negativeMark: exam.negativeMark,
-      timeLimit: exam.timeLimit,
-      createdBy: exam.createdBy,
-      createdAt: exam.createdAt
+    res.status(201).json(exam);
+  } catch (error: any) {
+    console.error('Error creating exam:', error);
+    res.status(500).json({
+      message: 'Failed to create exam',
+      error: error.message
     });
-  } catch (error) {
-    console.error('Create exam error:', error);
-    if (error instanceof mongoose.Error.ValidationError) {
-      return res.status(400).json({ message: error.message });
-    }
-    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-export const getExams = async (req: Request, res: Response) => {
+export const getExams = async (_req: Request, res: Response) => {
   try {
-    // Return list of exams with metadata (without questions)
-    const exams = await Exam.find({}, {
-      questionIds: 0 // Exclude questionIds from response
-    }).sort({ createdAt: -1 });
-
+    const exams = await Exam.find().select('-questionIds');
     res.json(exams);
-  } catch (error) {
-    console.error('Get exams error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error fetching exams:', error);
+    res.status(500).json({
+      message: 'Failed to fetch exams',
+      error: error.message
+    });
   }
 };
 
 export const getExamWithQuestions = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
-    
     const exam = await Exam.findById(id);
+
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({
+        message: 'Exam not found'
+      });
     }
-    
-    // Get all questions for this exam but exclude the correct answers
-    const questions = await Question.find(
-      { _id: { $in: exam.questionIds } },
-      { correct: 0, textHash: 0 } // Exclude correct answers and textHash
-    );
-    
-    // Return the exam with questions but without answers
+
+    // Fetch questions but exclude correct answers and explanations
+    const questions = await Question.find({
+      _id: { $in: exam.questionIds }
+    }).select('-correct -explanation');
+
+    // Return exam with questions but without sensitive data
     res.json({
       _id: exam._id,
       name: exam.name,
-      negativeMark: exam.negativeMark,
       timeLimit: exam.timeLimit,
-      createdBy: exam.createdBy,
+      negativeMark: exam.negativeMark,
+      questions,
       createdAt: exam.createdAt,
-      questions
     });
-  } catch (error) {
-    console.error('Get exam with questions error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error fetching exam:', error);
+    res.status(500).json({
+      message: 'Failed to fetch exam',
+      error: error.message
+    });
   }
 };

@@ -1,49 +1,101 @@
 import { Request, Response } from 'express';
-import mongoose from 'mongoose';
 import Attempt from '../models/attempt.model';
 import Exam from '../models/exam.model';
 import Question from '../models/question.model';
-import { generateWSToken } from '../utils/jwt';
-import { Answer } from 'shared/src/models';
+import crypto from 'crypto';
+
+// Helper function to calculate scores
+const calculateScores = async (examId: string, answers: Record<string, string | null>) => {
+  // Fetch exam and questions
+  const exam = await Exam.findById(examId);
+  if (!exam) throw new Error('Exam not found');
+
+  const questions = await Question.find({ _id: { $in: exam.questionIds } });
+
+  // Initialize counters and topic scores
+  let correctCount = 0;
+  let wrongCount = 0;
+  let blankCount = 0;
+  const topicScores: Record<string, { correct: number, total: number }> = {};
+
+  // Process each question
+  questions.forEach(question => {
+    const answer = answers[question._id.toString()];
+    
+    // Initialize topic counter if not exists
+    if (!topicScores[question.topic]) {
+      topicScores[question.topic] = { correct: 0, total: 0 };
+    }
+    topicScores[question.topic].total++;
+
+    if (!answer) {
+      blankCount++;
+    } else if (answer === question.correct) {
+      correctCount++;
+      topicScores[question.topic].correct++;
+    } else {
+      wrongCount++;
+    }
+  });
+
+  // Calculate final scores
+  const totalQuestions = questions.length;
+  const scoreTotal = ((correctCount - (wrongCount * exam.negativeMark)) * 100) / totalQuestions;
+
+  // Calculate percentage scores by topic
+  const scoreByTopic = Object.entries(topicScores).reduce((acc, [topic, scores]) => {
+    acc[topic] = (scores.correct * 100) / scores.total;
+    return acc;
+  }, {} as Record<string, number>);
+
+  return {
+    scoreTotal: Math.max(0, scoreTotal), // Ensure score doesn't go below 0
+    scoreByTopic,
+    correctCount,
+    wrongCount,
+    blankCount,
+  };
+};
 
 export const startAttempt = async (req: Request, res: Response) => {
   try {
     const { examId } = req.body;
-    
+
     if (!examId) {
-      return res.status(400).json({ message: 'Exam ID is required' });
+      return res.status(400).json({
+        message: 'Exam ID is required'
+      });
     }
-    
-    // Check if exam exists
+
+    // Verify exam exists
     const exam = await Exam.findById(examId);
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({
+        message: 'Exam not found'
+      });
     }
-    
-    // Create a new attempt
+
+    // Create new attempt
     const attempt = new Attempt({
       examId,
-      userId: req.user ? req.user.userId : null, // Use null for anonymous attempts
-      startedAt: new Date()
+      startedAt: new Date(),
     });
-    
+
     await attempt.save();
-    
-    // Generate WebSocket token for this attempt
-    const wsToken = generateWSToken(
-      attempt._id.toString(),
-      attempt.userId ? attempt.userId.toString() : null,
-      `${exam.timeLimit + 5}m` // 5 minutes extra to account for network issues
-    );
-    
+
+    // Generate WebSocket token
+    const wsToken = crypto.randomBytes(32).toString('hex');
+
     res.status(201).json({
       attemptId: attempt._id,
       wsToken,
-      timeLimit: exam.timeLimit
     });
-  } catch (error) {
-    console.error('Start attempt error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error starting attempt:', error);
+    res.status(500).json({
+      message: 'Failed to start attempt',
+      error: error.message
+    });
   }
 };
 
@@ -51,44 +103,41 @@ export const submitAnswers = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const { answers } = req.body;
-    
-    if (!answers || typeof answers !== 'object') {
-      return res.status(400).json({ message: 'Answers object is required' });
-    }
-    
-    // Find the attempt
+
     const attempt = await Attempt.findById(id);
     if (!attempt) {
-      return res.status(404).json({ message: 'Attempt not found' });
+      return res.status(404).json({
+        message: 'Attempt not found'
+      });
     }
-    
-    // Check if attempt is already finished
+
     if (attempt.finishedAt) {
-      return res.status(400).json({ message: 'This attempt has already been submitted' });
+      return res.status(400).json({
+        message: 'This attempt has already been submitted'
+      });
     }
-    
-    // Verify user owns this attempt or is admin
-    if (attempt.userId && req.user?.userId !== attempt.userId.toString() && req.user?.role !== 'admin') {
-      return res.status(403).json({ message: 'You do not have permission to submit this attempt' });
-    }
-    
-    // Update answers and mark as finished
+
+    // Calculate scores
+    const scores = await calculateScores(attempt.examId.toString(), answers);
+
+    // Update attempt with answers and scores
     attempt.answers = answers;
     attempt.finishedAt = new Date();
-    
-    // Calculate scores
-    await calculateScores(attempt);
-    
+    attempt.scoreTotal = scores.scoreTotal;
+    attempt.scoreByTopic = scores.scoreByTopic;
+    attempt.correctCount = scores.correctCount;
+    attempt.wrongCount = scores.wrongCount;
+    attempt.blankCount = scores.blankCount;
+
     await attempt.save();
-    
-    res.json({
-      message: 'Attempt submitted successfully',
-      attemptId: attempt._id,
-      scoreTotal: attempt.scoreTotal
+
+    res.json(attempt);
+  } catch (error: any) {
+    console.error('Error submitting answers:', error);
+    res.status(500).json({
+      message: 'Failed to submit answers',
+      error: error.message
     });
-  } catch (error) {
-    console.error('Submit attempt error:', error);
-    res.status(500).json({ message: 'Internal server error' });
   }
 };
 
@@ -96,132 +145,65 @@ export const getAttemptById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     
-    // Find the attempt with populated exam info
-    const attempt = await Attempt.findById(id)
-      .populate('examId', 'name negativeMark timeLimit');
-    
+    const attempt = await Attempt.findById(id);
     if (!attempt) {
-      return res.status(404).json({ message: 'Attempt not found' });
+      return res.status(404).json({
+        message: 'Attempt not found'
+      });
     }
-    
-    // Check if user has access to this attempt
-    if (attempt.userId && req.user?.userId !== attempt.userId.toString() && req.user?.role !== 'admin') {
-      return res.status(403).json({ message: 'You do not have permission to view this attempt' });
-    }
-    
-    // Check if attempt is finished
+
+    // Only return results if attempt is finished
     if (!attempt.finishedAt) {
-      return res.status(400).json({ message: 'This attempt has not been completed yet' });
+      return res.status(400).json({
+        message: 'This attempt is still in progress'
+      });
     }
-    
-    // Get all questions for this exam
+
+    // Fetch exam and questions for the response
     const exam = await Exam.findById(attempt.examId);
     if (!exam) {
-      return res.status(404).json({ message: 'Exam not found' });
+      return res.status(404).json({
+        message: 'Exam not found'
+      });
     }
-    
+
     const questions = await Question.find({ _id: { $in: exam.questionIds } });
-    
-    // Create detailed results with questions and correct answers
-    const results = {
-      _id: attempt._id,
-      exam: {
-        _id: exam._id,
-        name: exam.name,
-        negativeMark: exam.negativeMark,
-        timeLimit: exam.timeLimit
-      },
-      startedAt: attempt.startedAt,
-      finishedAt: attempt.finishedAt,
+
+    res.json({
+      exam,
+      questions,
+      answers: attempt.answers,
       scoreTotal: attempt.scoreTotal,
       scoreByTopic: attempt.scoreByTopic,
       correctCount: attempt.correctCount,
       wrongCount: attempt.wrongCount,
       blankCount: attempt.blankCount,
-      questions: questions.map(q => ({
-        _id: q._id,
-        text: q.text,
-        options: q.options,
-        topic: q.topic,
-        explanation: q.explanation,
-        correct: q.correct,
-        userAnswer: attempt.answers.get(q._id.toString()) || null
-      }))
-    };
-    
-    res.json(results);
-  } catch (error) {
-    console.error('Get attempt error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+      startedAt: attempt.startedAt,
+      finishedAt: attempt.finishedAt,
+    });
+  } catch (error: any) {
+    console.error('Error fetching attempt:', error);
+    res.status(500).json({
+      message: 'Failed to fetch attempt',
+      error: error.message
+    });
   }
 };
 
-export const getUserAttempts = async (req: Request, res: Response) => {
+// Get all attempts
+export const getUserAttempts = async (_req: Request, res: Response) => {
   try {
-    // Get the user's attempts
-    const attempts = await Attempt.find({ userId: req.user?.userId })
+    const attempts = await Attempt.find()
       .populate('examId', 'name')
-      .sort({ startedAt: -1 })
-      .select('-answers'); // Exclude detailed answers for performance
-    
+      .select('examId scoreTotal startedAt finishedAt')
+      .sort({ startedAt: -1 });
+
     res.json(attempts);
-  } catch (error) {
-    console.error('Get user attempts error:', error);
-    res.status(500).json({ message: 'Internal server error' });
+  } catch (error: any) {
+    console.error('Error fetching attempts:', error);
+    res.status(500).json({
+      message: 'Failed to fetch attempts',
+      error: error.message
+    });
   }
 };
-
-// Helper function to calculate scores for an attempt
-async function calculateScores(attempt: mongoose.Document & any): Promise<void> {
-  // Get the exam
-  const exam = await Exam.findById(attempt.examId);
-  if (!exam) {
-    throw new Error('Exam not found');
-  }
-  
-  // Get all questions
-  const questions = await Question.find({ _id: { $in: exam.questionIds } });
-  
-  // Prepare stats
-  const stats: { [topic: string]: { right: number, total: number } } = {};
-  let correct = 0;
-  let wrong = 0;
-  let blank = 0;
-  
-  // Process each question
-  for (const q of questions) {
-    const questionId = q._id.toString();
-    const userAnswer = attempt.answers.get(questionId) as Answer;
-    const topic = q.topic;
-    
-    // Initialize topic stats if needed
-    if (!stats[topic]) {
-      stats[topic] = { right: 0, total: 0 };
-    }
-    stats[topic].total++;
-    
-    if (userAnswer === null) {
-      blank++;
-    } else if (userAnswer === q.correct) {
-      correct++;
-      stats[topic].right++;
-    } else {
-      wrong++;
-    }
-  }
-  
-  // Calculate total score
-  const scoreTotal = Math.max(0, (correct - (wrong * exam.negativeMark)) * 100 / exam.questionIds.length);
-  
-  // Calculate topic scores
-  const scoreByTopic = Object.fromEntries(
-    Object.entries(stats).map(([topic, { right, total }]) => [topic, (right * 100) / total])
-  );
-  
-  // Update attempt with scores
-  attempt.scoreTotal = scoreTotal;
-  attempt.scoreByTopic = scoreByTopic;
-  attempt.correctCount = correct;
-  attempt.wrongCount = wrong;
-  attempt.blankCount = blank;
-}

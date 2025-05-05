@@ -1,22 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
 import App from './App';
-import theme from './utils/theme';
-import { AuthProvider } from './contexts/AuthContext';
-import './index.css';
+import { createAppTheme } from './utils/theme';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// Create the theme instance
+const theme = createAppTheme();
+
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AuthProvider>
-          <App />
-        </AuthProvider>
+        <App />
       </ThemeProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

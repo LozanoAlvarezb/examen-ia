@@ -43,7 +43,7 @@ const QuestionSchema = new mongoose.Schema(
 );
 
 // Generate SHA-1 hash of question text for duplicate detection
-QuestionSchema.pre('save', function (next) {
+QuestionSchema.pre('save', function(next) {
   if (this.isModified('text') || !this.get('textHash')) {
     this.set('textHash', crypto.createHash('sha1').update(this.get('text')).digest('hex'));
   }
