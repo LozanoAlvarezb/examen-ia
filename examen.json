@@ -1,1305 +1,1302 @@
-{
-  "questions": [
-    {
-      "id": 1,
-      "text": "En validación cruzada k‑fold estratificada sobre un conjunto muy desbalanceado, el objetivo principal de la estratificación es…",
-      "options": {
-        "A": "reducir el burn‑in del optimizador",
-        "B": "mantener la distribución de la variable objetivo en cada fold",
-        "C": "evitar fugas de datos entre entrenamiento y test",
-        "D": "minimizar la varianza de cada estimador individual"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Garantiza que la proporción de clases sea igual en cada fold, evitando sesgo de validación."
-    },
-    {
-      "id": 2,
-      "text": "En PostgreSQL, ¿qué plan se elige normalmente cuando la consulta filtra por una columna con índice B‑tree poco selectivo y la tabla cabe en memoria?",
-      "options": {
-        "A": "Index Only Scan",
-        "B": "Bitmap Index Scan",
-        "C": "Sequential Scan",
-        "D": "Index Scan con re‑check"
-      },
-      "correct": "C",
-      "topic": "Gestión de bases de datos: modelado y consulta",
-      "explanation": "Si la tabla está en caché y se leerán muchas filas, un barrido secuencial evita saltos de índice costosos."
-    },
-    {
-      "id": 3,
-      "text": "Según el Reglamento Europeo de IA (AI Act 2024), un sistema que decide automáticamente la calificación crediticia de un consumidor se clasifica como…",
-      "options": {
-        "A": "prohibido",
-        "B": "alto riesgo",
-        "C": "riesgo limitado (transparencia)",
-        "D": "sin riesgo"
-      },
-      "correct": "B",
-      "topic": "Reglamento europeo de la IA",
-      "explanation": "Los sistemas de scoring crediticio se incluyen explícitamente en la lista de alto riesgo (Anexo III)."
-    },
-    {
-      "id": 4,
-      "text": "En Apache Spark, los DataFrames superan a los RDD tradicionales principalmente porque…",
-      "options": {
-        "A": "aplican un modelo de objetos inmutables distribuido",
-        "B": "permiten transformaciones perezosas sobre datos heterogéneos",
-        "C": "ejecutan código Python puro dentro del driver",
-        "D": "optimizan los planes mediante Catalyst y Tungsten"
-      },
-      "correct": "D",
-      "topic": "Programación con Python y R: Spark",
-      "explanation": "Catalyst genera planes lógicos/físicos óptimos y Tungsten aplica vectorización y code‑gen nativo."
-    },
-    {
-      "id": 5,
-      "text": "La equidad demográfica (demographic parity) se cumple cuando…",
-      "options": {
-        "A": "la tasa de falsos positivos es idéntica entre grupos protegidos",
-        "B": "la distribución de la predicción positiva es independiente del atributo protegido",
-        "C": "P(atributo protegido | predicción+) es constante",
-        "D": "el modelo no usa atributos protegidos"
-      },
-      "correct": "B",
-      "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
-      "explanation": "Demographic parity exige que P(ŷ = 1) sea la misma para todos los grupos protegidos."
-    },
-    {
-      "id": 6,
-      "text": "En Python, el decorador @staticmethod se utiliza para…",
-      "options": {
-        "A": "asegurar la inmutabilidad de la instancia",
-        "B": "declarar un método que no recibe self ni cls",
-        "C": "crear un generador perezoso",
-        "D": "sobrecargar operadores"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "Los métodos estáticos actúan como funciones dentro del espacio de nombres de la clase."
-    },
-    {
-      "id": 7,
-      "text": "El estimador de máxima verosimilitud de la varianza σ² en una muestra normal i.i.d. se sesga porque…",
-      "options": {
-        "A": "divide por n en lugar de n‑1",
-        "B": "asume media cero",
-        "C": "usa log‑likelihood en vez de squared error",
-        "D": "ignora la covarianza entre observaciones"
-      },
-      "correct": "A",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Dividir por n subestima la varianza; el ajuste de Bessel (n‑1) la hace insesgada."
-    },
-    {
-      "id": 8,
-      "text": "En variables categóricas de alta cardinalidad, una alternativa a one‑hot que preserva similitudes es…",
-      "options": {
-        "A": "hashing trick",
-        "B": "target encoding con smoothing",
-        "C": "binarización ordinal",
-        "D": "label encoding simple"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Target encoding reemplaza cada categoría por la media suavizada del objetivo, reduciendo dimensionalidad."
-    },
-    {
-      "id": 9,
-      "text": "Un índice PRIMARY KEY en una base de datos relacional garantiza…",
-      "options": {
-        "A": "unicidad y no‑nulidad",
-        "B": "orden físico en disco",
-        "C": "replicación síncrona",
-        "D": "bloqueo exclusivo"
-      },
-      "correct": "A",
-      "topic": "Gestión de bases de datos: modelado y consulta",
-      "explanation": "La clave primaria impone unicidad y prohíbe valores NULL según estándar SQL."
-    },
-    {
-      "id": 10,
-      "text": "En la notación Big‑O, la expresión 3n log n + 2n pertenece a…",
-      "options": {
-        "A": "O(n)",
-        "B": "O(n log n)",
-        "C": "O(n²)",
-        "D": "Θ(log n)"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "El término dominante es n log n; los demás se descartan asintóticamente."
-    },
-    {
-      "id": 11,
-      "text": "El Principio de Parsimonia aplicado a modelos estadísticos implica…",
-      "options": {
-        "A": "minimizar la pérdida de entrenamiento",
-        "B": "elegir el modelo con menos parámetros que explique los datos",
-        "C": "maximizar la entropía condicional",
-        "D": "usar funciones objetivo cuadráticas"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Modelos más simples tienden a generalizar mejor salvo que la complejidad extra aporte ajuste significativo."
-    },
-    {
-      "id": 12,
-      "text": "En Docker, la instrucción COPY dentro de un Dockerfile…",
-      "options": {
-        "A": "descarga una imagen base",
-        "B": "copia ficheros del contexto de build al sistema de archivos de la imagen",
-        "C": "ejecuta un script de instalación",
-        "D": "crea un volumen persistente"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "COPY introduce archivos locales en la capa de la imagen de forma reproducible."
-    },
-    {
-      "id": 13,
-      "text": "El test χ² de independencia requiere como supuesto que…",
-      "options": {
-        "A": "los datos sean continuos",
-        "B": "los recuentos esperados en cada celda sean mayores que 5",
-        "C": "la muestra sea dependiente",
-        "D": "se conozca la varianza poblacional"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "La aproximación χ² es válida con recuentos esperados suficientemente grandes."
-    },
-    {
-      "id": 14,
-      "text": "¿Cuál es la salida de numpy.dot(A, B) si A es (2×3) y B es (3×1)?",
-      "options": {
-        "A": "Error de dimensiones",
-        "B": "un vector (1×2)",
-        "C": "una matriz (2×1)",
-        "D": "un escalar"
-      },
-      "correct": "C",
-      "topic": "Programación con Python y R",
-      "explanation": "La multiplicación de matrices 2×3 · 3×1 produce una matriz 2×1."
-    },
-    {
-      "id": 15,
-      "text": "En Git, el comando git rebase -i main sirve para…",
-      "options": {
-        "A": "fusionar ramas y conservar merge commits",
-        "B": "reescribir el historial de la rama actual sobre main de forma interactiva",
-        "C": "descartar confirmaciones locales",
-        "D": "crear una tag ligera"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "Permite reordenar, squash o editar commits antes de rebasarlos sobre main."
-    },
-    {
-      "id": 16,
-      "text": "La métrica AUROC es preferible a accuracy cuando…",
-      "options": {
-        "A": "las clases están equilibradas",
-        "B": "es crítico evaluar el ranking de puntuaciones",
-        "C": "se quiere medir solo precisión",
-        "D": "el umbral de decisión es fijo"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "AUROC mide la capacidad de ordenación sin depender del umbral ni del desbalance."
-    },
-    {
-      "id": 17,
-      "text": "En SQL, la cláusula WITH RECURSIVE se utiliza para…",
-      "options": {
-        "A": "crear vistas materializadas",
-        "B": "realizar CTE jerárquicas",
-        "C": "ejecutar transacciones anidadas",
-        "D": "actualizar en cascada"
-      },
-      "correct": "B",
-      "topic": "Gestión de bases de datos: modelado y consulta",
-      "explanation": "Permite recorrer jerarquías o grafos mediante consultas recursivas."
-    },
-    {
-      "id": 18,
-      "text": "El algoritmo K‑means minimiza explícitamente…",
-      "options": {
-        "A": "la varianza entre clusters",
-        "B": "la suma de distancias cuadráticas dentro del cluster",
-        "C": "la entropía condicional",
-        "D": "la suma de distancias Manhattan"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Su función objetivo es el Within‑Cluster Sum of Squares (WCSS)."
-    },
-    {
-      "id": 19,
-      "text": "El p‑valor en un contraste de hipótesis representa…",
-      "options": {
-        "A": "la probabilidad de la hipótesis nula",
-        "B": "la probabilidad de obtener un estadístico tan extremo como el observado si H₀ es cierta",
-        "C": "el nivel de confianza",
-        "D": "1 − potencia"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Cuantifica la evidencia contra H₀, no la probabilidad de que H₀ sea verdadera."
-    },
-    {
-      "id": 20,
-      "text": "En redes neuronales profundas, la inicialización He es idónea para…",
-      "options": {
-        "A": "funciones de activación ReLU",
-        "B": "softmax",
-        "C": "tanh",
-        "D": "lineal pura"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Mantiene la varianza de activaciones constante con funciones ReLU."
-    },
-    {
-      "id": 21,
-      "text": "La Ley Orgánica de Protección de Datos española exige que el consentimiento sea…",
-      "options": {
-        "A": "tácito si hay interés legítimo",
-        "B": "libre, específico, informado e inequívoco",
-        "C": "siempre por escrito y firmado",
-        "D": "irretractable"
-      },
-      "correct": "B",
-      "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
-      "explanation": "LOPD‑GDD y GDPR definen esos cuatro requisitos para un consentimiento válido."
-    },
-    {
-      "id": 22,
-      "text": "La arquitectura Lambda (batch + stream) nació para…",
-      "options": {
-        "A": "sustituir completamente Kappa",
-        "B": "combinar análisis en tiempo real y en lotes con una única vista de datos",
-        "C": "eliminar latencia en ETL",
-        "D": "evitar bases de datos NoSQL"
-      },
-      "correct": "B",
-      "topic": "Gestión de bases de datos / Big Data",
-      "explanation": "Integra pipelines de micro‑batch y batch manteniendo consistencia en la capa de servicio."
-    },
-    {
-      "id": 23,
-      "text": "En un boxplot los outliers se representan como…",
-      "options": {
-        "A": "valores dentro del IQR",
-        "B": "puntos fuera de 1,5×IQR desde los cuartiles",
-        "C": "la mediana",
-        "D": "el rango total"
-      },
-      "correct": "B",
-      "topic": "Visualización de datos",
-      "explanation": "Valores más allá de los bigotes (1,5·IQR) se marcan individualmente como posibles outliers."
-    },
-    {
-      "id": 24,
-      "text": "El algoritmo AdaBoost ajusta clasificadores débiles asignando…",
-      "options": {
-        "A": "pesos uniformes a todas las observaciones",
-        "B": "mayor peso a ejemplos mal clasificados previamente",
-        "C": "sub‑muestras bootstrap independientes",
-        "D": "regularización L2"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Re‑pondera las muestras para centrar el aprendizaje en los errores de rondas anteriores."
-    },
-    {
-      "id": 25,
-      "text": "GDPR define \"pseudonimización\" como…",
-      "options": {
-        "A": "cifrado irreversible",
-        "B": "tratamiento en el que los datos no pueden atribuirse a una persona sin información adicional separada",
-        "C": "anonimización total",
-        "D": "hash salado y destruido"
-      },
-      "correct": "B",
-      "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
-      "explanation": "Los identificadores se almacenan aparte; sigue existiendo la posibilidad de re‑identificar bajo controles estrictos."
-    },
-    {
-      "id": 26,
-      "text": "En NumPy, np.broadcast_to(x, (4,3))…",
-      "options": {
-        "A": "copia físicamente los datos",
-        "B": "crea una vista de solo lectura con strides 0 si es necesario",
-        "C": "lanza excepción si x es escalar",
-        "D": "devuelve siempre memoria contigua"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "Broadcasting genera vistas sin copiar, usando strides para repetir valores virtualmente."
-    },
-    {
-      "id": 27,
-      "text": "El teorema de Bayes permite actualizar…",
-      "options": {
-        "A": "la esperanza muestral",
-        "B": "la probabilidad a posteriori dado un suceso observado",
-        "C": "la varianza poblacional",
-        "D": "la distribución predictiva condicional"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Combina la hipótesis previa con la verosimilitud para obtener la probabilidad posterior."
-    },
-    {
-      "id": 28,
-      "text": "En CI/CD, el patrón blue‑green deployment consiste en…",
-      "options": {
-        "A": "dos versiones en paralelo y conmutación instantánea del tráfico",
-        "B": "canary incremental al 5 %",
-        "C": "despliegue directo con rollback manual",
-        "D": "pipeline sin test"
-      },
-      "correct": "A",
-      "topic": "Programación / DevOps",
-      "explanation": "Blue (producción) y Green (nueva) reciben tráfico mutuamente exclusivo, permitiendo rollback inmediato."
-    },
-    {
-      "id": 29,
-      "text": "La complejidad temporal de restar dos matrices densas n×n estándar es…",
-      "options": {
-        "A": "O(1)",
-        "B": "O(n)",
-        "C": "O(n²)",
-        "D": "O(n³)"
-      },
-      "correct": "C",
-      "topic": "Programación con Python y R",
-      "explanation": "Se visitan n² elementos; cada resta es O(1)."
-    },
-    {
-      "id": 30,
-      "text": "La regularización Dropout actúa…",
-      "options": {
-        "A": "penalizando la norma L1",
-        "B": "desactivando aleatoriamente unidades durante el entrenamiento",
-        "C": "aumentando el learning‑rate cíclico",
-        "D": "promediando modelos independientes"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Fuerza a la red a no depender de combinaciones específicas de neuronas, reduciendo overfitting."
-    },
-    {
-      "id": 31,
-      "text": "LoRA (Low‑Rank Adaptation) se emplea en LLMs porque…",
-      "options": {
-        "A": "reduce el tamaño del prompt",
-        "B": "actualiza solo matrices proyectadas de baja dimensión, reduciendo parámetros entrenables",
-        "C": "reutiliza embeddings sin back‑prop",
-        "D": "permite entrenamiento completamente sin supervisión"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Inserta factores de rango bajo (A·Bᵀ) y congela el resto, abaratando fine‑tuning y consumo de VRAM."
-    },
-    {
-      "id": 32,
-      "text": "En Transformers, la atención escalada divide el producto punto por √dₖ para…",
-      "options": {
-        "A": "reducir coste a O(n)",
-        "B": "evitar saturación en softmax estabilizando gradientes",
-        "C": "normalizar la salida FFN",
-        "D": "forzar sparsity"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de inteligencia artificial",
-      "explanation": "Sin el factor √d, los valores crecerían con la dimensión produciendo softmax extremadamente aguda."
-    },
-    {
-      "id": 33,
-      "text": "En un pipeline LLMOps, la fase que conecta el registry con la monitorización suele implementarse mediante…",
-      "options": {
-        "A": "un feature store",
-        "B": "control de versiones de datos (DVC)",
-        "C": "un servicio de inferencia que expone métricas a Prometheus",
-        "D": "pruebas de carga previas al despliegue"
-      },
-      "correct": "C",
-      "topic": "MLOps / LLMOps",
-      "explanation": "El servicio de inferencia registra versiones y publica métricas (latencia, drift) que luego consulta la monitorización."
-    },
-    {
-      "id": 34,
-      "text": "SHAP se prefiere frente a LIME cuando…",
-      "options": {
-        "A": "se necesita explicación local lineal",
-        "B": "las variables son colineales y se requiere consistencia aditiva",
-        "C": "el modelo es determinista",
-        "D": "la muestra es gigante"
-      },
-      "correct": "B",
-      "topic": "Interpretabilidad de modelos (XAI)",
-      "explanation": "Los valores Shapley satisfacen propiedades de consistencia y aditividad que LIME no garantiza bajo colinealidad."
-    },
-    {
-      "id": 35,
-      "text": "En clúster Kubernetes con GPU, para picos imprevisibles de inferencia la estrategia más eficiente suele ser…",
-      "options": {
-        "A": "GPU dedicada 24/7",
-        "B": "autoscaling por CPU",
-        "C": "nodos GPU spot/preemptible con colas request‑reply",
-        "D": "vertical scaling aumentando VRAM"
-      },
-      "correct": "C",
-      "topic": "MLOps / LLMOps",
-      "explanation": "Los nodos spot reducen coste; la cola desacopla picos y permite reintentar si se pre‑emptean instancias."
-    },
-    {
-      "id": 36,
-      "text": "Prefix‑tuning difiere del fine‑tuning completo en que…",
-      "options": {
-        "A": "ajusta todas las capas",
-        "B": "aprende vectores de contexto añadidos al prompt",
-        "C": "recalcula embeddings base",
-        "D": "requiere cuantización int8"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Inserta un \"prefijo\" aprendible delante de cada capa de atención, manteniendo congelados los pesos originales."
-    },
-    {
-      "id": 37,
-      "text": "Gradient checkpointing en entrenamiento de LLM sirve para…",
-      "options": {
-        "A": "reducir VRAM recomputando activaciones durante back‑prop",
-        "B": "guardar pesos en disco en cada batch",
-        "C": "congelar capas inferiores",
-        "D": "inyectar ruido adversarial"
-      },
-      "correct": "A",
-      "topic": "MLOps / LLMOps",
-      "explanation": "Almacena solo algunos checkpoints de activaciones y recalcula otras al retro‑propagar, ahorrando memoria."
-    },
-    {
-      "id": 38,
-      "text": "En RLHF, el paso clave consiste en…",
-      "options": {
-        "A": "fine‑tuning con cross‑entropy",
-        "B": "optimizar una recompensa basada en preferencias humanas",
-        "C": "aprendizaje no supervisado de máscaras",
-        "D": "podar pesos irrelevantes"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Se entrena primero un modelo de recompensa a partir de comparaciones humanas y luego se usa en PPO o similar."
-    },
-    {
-      "id": 39,
-      "text": "DeepSpeed ZeRO‑3 obtiene memoria extra principalmente…",
-      "options": {
-        "A": "dividiendo el batch en micro‑batches",
-        "B": "particionando pesos, gradientes y estados del optimizador entre nodos",
-        "C": "usando FP16 sin loss‑scaling",
-        "D": "comprimiendo Adam en CPU"
-      },
-      "correct": "B",
-      "topic": "MLOps / LLMOps",
-      "explanation": "ZeRO‑3 distribuye TODO (parámetros, grads y momentos) para escalar modelos billonarios."
-    },
-    {
-      "id": 40,
-      "text": "La métrica perplexity en modelos de lenguaje se interpreta como…",
-      "options": {
-        "A": "MAE token a token",
-        "B": "exponencial de la entropía cruzada promedio",
-        "C": "log‑likelihood negativa",
-        "D": "F1‑score"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Menor perplexity indica que el modelo asigna mayor probabilidad (menor sorpresa) a las secuencias reales."
-    },
-    {
-      "id": 41,
-      "text": "En knowledge distillation, usar temperature > 1 en softmax produce…",
-      "options": {
-        "A": "una distribución suavizada que revela \"conocimiento oscuro\"",
-        "B": "convergencia más lenta de gradientes",
-        "C": "regularización L1 implícita",
-        "D": "logits saturados"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Temperaturas altas aplanan la softmax para que el estudiante aprenda relaciones entre clases."
-    },
-    {
-      "id": 42,
-      "text": "Con Focal Loss, el término (1–p)^γ sirve para…",
-      "options": {
-        "A": "penalizar menos los ejemplos fáciles y centrar el aprendizaje en los difíciles",
-        "B": "aumentar el margen de separación",
-        "C": "equilibrar clases con pesos inversos",
-        "D": "reemplazar cross‑entropy"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Ejemplos con p≈1 reciben peso pequeño; los difíciles (p bajo) se amplifican."
-    },
-    {
-      "id": 43,
-      "text": "Un beam width demasiado grande en beam search puede causar…",
-      "options": {
-        "A": "mayor diversidad",
-        "B": "repetición y length‑bias",
-        "C": "menor tiempo de inferencia",
-        "D": "normalización incorrecta"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Beam ancho favorece secuencias más probables pero largas y repetitivas."
-    },
-    {
-      "id": 44,
-      "text": "El pre‑entrenamiento original de BERT incluye masked language modeling y…",
-      "options": {
-        "A": "causal LM",
-        "B": "next sentence prediction",
-        "C": "denoising autoencoding",
-        "D": "translation LM"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "NSP ayuda a aprender relaciones inter‑oracionales (ya no se usa en RoBERTa)."
-    },
-    {
-      "id": 45,
-      "text": "La cuantización post‑training a 8‑bit puede degradar rendimiento porque…",
-      "options": {
-        "A": "reduce ancho de banda pero aumenta latencia",
-        "B": "introduce error de redondeo sensible en capas como LayerNorm",
-        "C": "obliga a convoluciones separables",
-        "D": "elimina los bias"
-      },
-      "correct": "B",
-      "topic": "MLOps / LLMOps",
-      "explanation": "LayerNorm y Softmax son sensibles; se usan técnicas de calibración y mezclas (int8 + fp16)."
-    },
-    {
-      "id": 46,
-      "text": "PPO mantiene la estabilidad del aprendizaje por refuerzo…",
-      "options": {
-        "A": "clipando el cociente de probabilidad entre política nueva y vieja",
-        "B": "usando Q‑learning off‑policy",
-        "C": "Monte Carlo completo",
-        "D": "ventaja normalizada global"
-      },
-      "correct": "A",
-      "topic": "Aprendizaje por refuerzo",
-      "explanation": "El clip evita grandes actualizaciones que desestabilizarían la política."
-    },
-    {
-      "id": 47,
-      "text": "ONNX Runtime se usa para…",
-      "options": {
-        "A": "definir grafos de entrenamiento distribuido",
-        "B": "ejecutar inferencias portables en múltiples aceleradores",
-        "C": "compilar kernels CUDA",
-        "D": "monitorizar drift"
-      },
-      "correct": "B",
-      "topic": "MLOps / LLMOps",
-      "explanation": "ONNX define un formato intermedio y Runtime lo acelera en CPU, GPU, NNAPI, etc."
-    },
-    {
-      "id": 48,
-      "text": "Los métodos counterfactuals en XAI buscan…",
-      "options": {
-        "A": "importancia global de características",
-        "B": "el cambio mínimo en la entrada que altera la predicción",
-        "C": "descomponer la predicción en efectos aditivos",
-        "D": "generar saliency maps"
-      },
-      "correct": "B",
-      "topic": "Interpretabilidad de modelos (XAI)",
-      "explanation": "Ayudan a responder \"¿qué tendría que cambiar para obtener otro resultado?\"."
-    },
-    {
-      "id": 49,
-      "text": "Los TPU Edge destacan por…",
-      "options": {
-        "A": "arquitectura Von Neumann clásica",
-        "B": "matriz systolic optimizada para operaciones MAC",
-        "C": "soportar solo FP32",
-        "D": "uso exclusivo en cloud"
-      },
-      "correct": "B",
-      "topic": "Arquitectura hardware para IA",
-      "explanation": "Las matrices systolic realizan miles de MAC en paralelo con acceso predictivo a memoria."
-    },
-    {
-      "id": 50,
-      "text": "El concepto catastrophic forgetting describe…",
-      "options": {
-        "A": "colapso de modos en GAN",
-        "B": "pérdida de conocimiento previo al entrenar secuencialmente nuevas tareas",
-        "C": "sobre‑ajuste por regularización excesiva",
-        "D": "desbordamiento de gradientes"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Las redes sobre‑escriben pesos para la tarea nueva, degradando el rendimiento en la anterior."
-    },
-    {
-      "id": 51,
-      "text": "Las cadenas de pensamiento (chain‑of‑thought) en prompt engineering mejoran…",
-      "options": {
-        "A": "compresión de tokens",
-        "B": "razonamiento multi‑paso",
-        "C": "velocidad de inferencia",
-        "D": "desaprendizaje de sesgos"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Forzar al modelo a \"pensar en voz alta\" ayuda a resolver problemas lógicos o matemáticos."
-    },
-    {
-      "id": 52,
-      "text": "La técnica top‑p (nucleus) sampling selecciona…",
-      "options": {
-        "A": "siempre el token de máxima probabilidad",
-        "B": "los k mejores tokens fijos",
-        "C": "el conjunto mínimo cuya probabilidad acumulada excede p",
-        "D": "distribución uniforme entre todos los tokens"
-      },
-      "correct": "C",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Reduce repetición manteniendo adaptativamente un porcentaje de masa de probabilidad."
-    },
-    {
-      "id": 53,
-      "text": "El embedding Rotary (RoPE) usa…",
-      "options": {
-        "A": "codificación sinusoidal absoluta",
-        "B": "rotaciones dependientes de frecuencia aplicadas a consultas y claves",
-        "C": "índices aprendibles por token",
-        "D": "ventanas de convolución"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Proyecta posiciones como rotaciones complejas preservando distancias relativas y extrapolación."
-    },
-    {
-      "id": 54,
-      "text": "La búsqueda bayesiana de hiperparámetros se prefiere frente a grid search porque…",
-      "options": {
-        "A": "explora exhaustivamente",
-        "B": "modela la función objetivo y elige puntos prometedores basándose en incertidumbre",
-        "C": "solo funciona con hiperparámetros discretos",
-        "D": "requiere entrenamiento masivo paralelo"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Utiliza modelos probabilísticos (GP, TPE) para equilibrar exploración‑explotación."
-    },
-    {
-      "id": 55,
-      "text": "Zero‑shot Chain‑of‑Thought consiste en…",
-      "options": {
-        "A": "etiquetar pasos manualmente",
-        "B": "usar un prefijo \"Reason step‑by‑step\" sin ejemplos concretos",
-        "C": "fine‑tuning supervisado",
-        "D": "knowledge distillation"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Induce al modelo a auto‑razonar sin mostrar soluciones ejemplo."
-    },
-    {
-      "id": 56,
-      "text": "El fine‑tuning instruction‑following emplea datasets de…",
-      "options": {
-        "A": "traducción paralela",
-        "B": "pares (instrucción, respuesta) curados con revisión humana",
-        "C": "oración + POS‑tag",
-        "D": "eventos de clic de usuario"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Datasets como Alpaca, Dolly preparan al modelo para seguir instrucciones naturales."
-    },
-    {
-      "id": 57,
-      "text": "En despliegues multi‑tenant, serverless GPU inference reduce costes porque…",
-      "options": {
-        "A": "mantiene GPU caliente por usuario",
-        "B": "suspende contenedores y libera GPU al quedar inactivos",
-        "C": "exige compra anticipada",
-        "D": "deshabilita escalado horizontal"
-      },
-      "correct": "B",
-      "topic": "MLOps / LLMOps",
-      "explanation": "El proveedor des‑provisiona GPU cuando no hay peticiones y vuelve a montarla bajo demanda."
-    },
-    {
-      "id": 58,
-      "text": "Las vector databases como FAISS indexan embeddings mediante…",
-      "options": {
-        "A": "B‑trees",
-        "B": "ODBC",
-        "C": "Approximate Nearest Neighbors",
-        "D": "tablas hash perfectas"
-      },
-      "correct": "C",
-      "topic": "Gestión de bases de datos: NoSQL / ANN",
-      "explanation": "Usan técnicas como HNSW, IVF, PQ para búsquedas vectoriales sub‑milisegundo."
-    },
-    {
-      "id": 59,
-      "text": "La pérdida SimCLR utiliza…",
-      "options": {
-        "A": "contraste entre augmentations de la misma imagen frente a otras",
-        "B": "auto‑codificación reconstructiva",
-        "C": "predicción de máscaras de texto",
-        "D": "RLHF"
-      },
-      "correct": "A",
-      "topic": "Aprendizaje auto‑supervisado",
-      "explanation": "Maximiza similitud de vistas positivas y minimiza de pares negativos en el batch."
-    },
-    {
-      "id": 60,
-      "text": "Mixture of Experts distribuye cómputo porque…",
-      "options": {
-        "A": "cada token se enruta solo a un subconjunto de expertos activos",
-        "B": "todas las capas comparten pesos",
-        "C": "usa compresión Huffman",
-        "D": "evita back‑prop"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Gate routers eligen pocos expertos, reduciendo FLOPs linealmente con el total de expertos."
-    },
-    {
-      "id": 61,
-      "text": "El pruning estructurado que elimina filtros completos en CNN provoca…",
-      "options": {
-        "A": "aceleración real en hardware estándar",
-        "B": "solo compresión de parámetros sin velocidad",
-        "C": "peor cache hit",
-        "D": "incompatibilidad con batch norm"
-      },
-      "correct": "A",
-      "topic": "MLOps / Optimización de modelos",
-      "explanation": "Filtros completos permiten reducir canales enlazados y, por tanto, FLOPs reales."
-    },
-    {
-      "id": 62,
-      "text": "Transformer‑XL introduce segment‑level recurrence para…",
-      "options": {
-        "A": "reducir cabezas de atención",
-        "B": "capturar dependencias más largas que la ventana actual",
-        "C": "reemplazar posiciones absolutas",
-        "D": "compresión LZW"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de IA generativa",
-      "explanation": "Mantiene memoria de segmentos previos como contexto extendido."
-    },
-    {
-      "id": 63,
-      "text": "En federated learning, el ataque model inversion intenta…",
-      "options": {
-        "A": "subir modelos adversarios",
-        "B": "reconstruir datos de entrenamiento a partir de gradientes",
-        "C": "extraer claves API",
-        "D": "provocar buffer overflow"
-      },
-      "correct": "B",
-      "topic": "Seguridad y privacidad en IA",
-      "explanation": "Gradientes detallados pueden revelar features de entradas originales."
-    },
-    {
-      "id": 64,
-      "text": "Stop‑word removal en NLP se aplica para…",
-      "options": {
-        "A": "mejorar tokenización sub‑palabras",
-        "B": "eliminar ruido de palabras con poca aportación semántica",
-        "C": "detectar entidades",
-        "D": "expandir contracciones"
-      },
-      "correct": "B",
-      "topic": "Procesamiento de lenguaje natural",
-      "explanation": "Palabras muy frecuentes (el, la, de) aportan poco a la representación de documentos."
-    },
-    {
-      "id": 65,
-      "text": "Q‑LoRA combina LoRA con…",
-      "options": {
-        "A": "cuantización de 4 bits y des‑cuantización en inferencia",
-        "B": "weight tying",
-        "C": "prompts JSON",
-        "D": "distillation offline"
-      },
-      "correct": "A",
-      "topic": "MLOps / LLMOps",
-      "explanation": "Cuantiza pesos a 4 bits, aplica LoRA en 16 bits y hace de‑quant al vuelo, ahorrando RAM."
-    },
-    {
-      "id": 66,
-      "text": "Para contrastar si dos proporciones grandes difieren se usa…",
-      "options": {
-        "A": "test exacto de Fisher",
-        "B": "test z de diferencia de proporciones",
-        "C": "χ² con Yates",
-        "D": "t de Welch"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Con n grande la distribución de la diferencia se aproxima a normal estándar."
-    },
-    {
-      "id": 67,
-      "text": "En ARIMA, PACF que corta en p y ACF decae sugiere…",
-      "options": {
-        "A": "MA(q) puro",
-        "B": "AR(p) puro",
-        "C": "random walk",
-        "D": "diferenciación estacional"
-      },
-      "correct": "B",
-      "topic": "Modelos para series temporales",
-      "explanation": "Un corte brusco en la PACF y cola en ACF es característico de procesos AR."
-    },
-    {
-      "id": 68,
-      "text": "Para mitigar desequilibrio sin perder info se usa…",
-      "options": {
-        "A": "submuestreo aleatorio",
-        "B": "Tomek Links",
-        "C": "SMOTE",
-        "D": "umbral 0,5"
-      },
-      "correct": "C",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "SMOTE sintetiza ejemplos nuevos de la clase minoritaria en el espacio feature."
-    },
-    {
-      "id": 69,
-      "text": "El índice Silhouette es…",
-      "options": {
-        "A": "métrica externa",
-        "B": "coeficiente interno de cohesión‑separación",
-        "C": "test de estabilidad bootstrap",
-        "D": "específico de k‑means"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Combina distancia intra y extra cluster sin necesidad de etiquetas reales."
-    },
-    {
-      "id": 70,
-      "text": "Las puertas de olvido y entrada en LSTM resuelven…",
-      "options": {
-        "A": "gradientes explosivos",
-        "B": "gradientes que se desvanecen en secuencias largas",
-        "C": "bidireccionalidad",
-        "D": "dependencia de GPU"
-      },
-      "correct": "B",
-      "topic": "Modelos para series temporales",
-      "explanation": "Controlan el flujo de información manteniendo gradientes constantes a largo plazo."
-    },
-    {
-      "id": 71,
-      "text": "En PCA, la varianza explicada por el i‑ésimo componente es…",
-      "options": {
-        "A": "su autovalor",
-        "B": "su autovector",
-        "C": "determinante",
-        "D": "traza"
-      },
-      "correct": "A",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Los autovalores de la matriz de covarianza indican la varianza capturada."
-    },
-    {
-      "id": 72,
-      "text": "DBSCAN puede encontrar clusters…",
-      "options": {
-        "A": "solo convexos",
-        "B": "de forma arbitraria y detectar ruido",
-        "C": "de igual densidad siempre",
-        "D": "exactamente k clusters"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Agrupa puntos densamente conectados y etiqueta puntos esparcidos como ruido."
-    },
-    {
-      "id": 73,
-      "text": "En random forest, aumentar n_estimators tiende a…",
-      "options": {
-        "A": "reducir overfitting hasta saturar",
-        "B": "aumentar varianza",
-        "C": "disminuir estabilidad OOB",
-        "D": "romper independencia"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "El error general baja hasta que la varianza converge; el bias se mantiene."
-    },
-    {
-      "id": 74,
-      "text": "Time‑series cross‑validation (rolling origin) se diferencia de k‑fold porque…",
-      "options": {
-        "A": "baraja los datos",
-        "B": "respeta orden entrenando pasado y testeando futuro",
-        "C": "usa un hold‑out",
-        "D": "necesita estacionariedad"
-      },
-      "correct": "B",
-      "topic": "Modelos para series temporales",
-      "explanation": "Evita fugas de información temporal manteniendo la secuencia cronológica."
-    },
-    {
-      "id": 75,
-      "text": "Ridge regression añade penalización…",
-      "options": {
-        "A": "L1",
-        "B": "L2",
-        "C": "ElasticNet",
-        "D": "Dropout"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "La norma L2 reduce varianza y multicolinealidad sin eliminar variables."
-    },
-    {
-      "id": 76,
-      "text": "La prueba Durbin‑Watson comprueba…",
-      "options": {
-        "A": "heterocedasticidad",
-        "B": "autocorrelación de residuos",
-        "C": "normalidad de errores",
-        "D": "multicolinealidad"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Valores cercanos a 2 indican independencia; <2 correlación positiva."
-    },
-    {
-      "id": 77,
-      "text": "PageRank calcula la importancia de un nodo como…",
-      "options": {
-        "A": "grado total normalizado",
-        "B": "valor propio principal de la matriz de transición con damping",
-        "C": "longitud del camino mínimo",
-        "D": "clustering coefficient"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Es el vector propio asociado al mayor autovalor de la matriz estocástica modificada."
-    },
-    {
-      "id": 78,
-      "text": "Bag of Words ignora…",
-      "options": {
-        "A": "frecuencia de términos",
-        "B": "posición y contexto semántico",
-        "C": "vocabulario",
-        "D": "n‑gramas"
-      },
-      "correct": "B",
-      "topic": "Procesamiento de lenguaje natural",
-      "explanation": "El orden y la semántica contextual se pierden, solo cuenta la presencia/frecuencia."
-    },
-    {
-      "id": 79,
-      "text": "El estimador Kaplan‑Meier asume…",
-      "options": {
-        "A": "censura independiente",
-        "B": "riesgo proporcional",
-        "C": "eventos recurrentes",
-        "D": "covariables continuas"
-      },
-      "correct": "A",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "La censura no debe depender de la probabilidad de evento para ser no informativa."
-    },
-    {
-      "id": 80,
-      "text": "En clustering jerárquico, el criterio Ward minimiza…",
-      "options": {
-        "A": "distancia máxima entre puntos",
-        "B": "incremento de varianza intra‑grupo",
-        "C": "radio medio",
-        "D": "número de outliers"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Fusiona clusters que producen el menor aumento en la suma de cuadrados total."
-    },
-    {
-      "id": 81,
-      "text": "MAPE presenta problemas cuando…",
-      "options": {
-        "A": "valores reales se acercan a cero",
-        "B": "la serie es estacionaria",
-        "C": "hay estacionalidad",
-        "D": "la muestra es grande"
-      },
-      "correct": "A",
-      "topic": "Modelos para series temporales",
-      "explanation": "Errores relativos se disparan con denominador pequeño, inflando la métrica."
-    },
-    {
-      "id": 82,
-      "text": "El coeficiente de Pearson requiere datos…",
-      "options": {
-        "A": "ordinales",
-        "B": "intervalo y relación lineal",
-        "C": "nominales",
-        "D": "multimodales"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Supone normalidad aproximada y relación lineal entre variables de escala."
-    },
-    {
-      "id": 83,
-      "text": "Para árboles de decisión, escalar las variables…",
-      "options": {
-        "A": "es imprescindible",
-        "B": "no afecta al criterio de partición",
-        "C": "acelera el split",
-        "D": "reduce profundidad"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Los árboles usan umbrales sobre valores originales; la escala no cambia la partición."
-    },
-    {
-      "id": 84,
-      "text": "Prophet modela estacionalidades con…",
-      "options": {
-        "A": "wavelets",
-        "B": "términos de Fourier trigonométricos",
-        "C": "splines cúbicos",
-        "D": "filtro de Kalman"
-      },
-      "correct": "B",
-      "topic": "Modelos para series temporales",
-      "explanation": "Expande estacionalidad como serie de senos/cosenos con periodos definidos."
-    },
-    {
-      "id": 85,
-      "text": "Granger causality indica que X causa Y si…",
-      "options": {
-        "A": "X precede temporalmente a Y",
-        "B": "los rezagos de X mejoran la predicción de Y significativamente",
-        "C": "correlación contemporánea alta",
-        "D": "comparten tendencia"
-      },
-      "correct": "B",
-      "topic": "Modelos para series temporales",
-      "explanation": "Se testea si los coeficientes de X lag son jointly significativos en un VAR."
-    },
-    {
-      "id": 86,
-      "text": "Benjamini‑Hochberg controla…",
-      "options": {
-        "A": "error tipo I individual",
-        "B": "tasa de falsos descubrimientos (FDR)",
-        "C": "potencia estadística",
-        "D": "varianza intra‑grupo"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Ordena p‑valores y ajusta umbral para limitar la proporción de falsos positivos."
-    },
-    {
-      "id": 87,
-      "text": "Los archivos Parquet se prefieren en Spark porque…",
-      "options": {
-        "A": "almacenan columnas comprimidas y permiten predicate push‑down",
-        "B": "son binarios fila a fila",
-        "C": "requieren menos memoria que JSON",
-        "D": "no necesitan metadatos"
-      },
-      "correct": "A",
-      "topic": "Gestión de bases de datos: Big Data",
-      "explanation": "Columnar + push‑down reduce E/S y acelera filtrados."
-    },
-    {
-      "id": 88,
-      "text": "t‑SNE es especialmente sensible al hiperparámetro…",
-      "options": {
-        "A": "n_components",
-        "B": "perplexity",
-        "C": "alpha",
-        "D": "lambda"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Perplexity controla el balance entre estructura global y local; valores pobres distorsionan."
-    },
-    {
-      "id": 89,
-      "text": "Un intervalo de confianza al 95 % significa que…",
-      "options": {
-        "A": "hay 95 % de probabilidad de que el parámetro esté dentro",
-        "B": "si repitiéramos el muestreo, el 95 % de los IC incluiría el valor real",
-        "C": "el parámetro varía un 95 %",
-        "D": "error tipo II es 5 %"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "La interpretación frecuentista se basa en repetición hipotética de muestras."
-    },
-    {
-      "id": 90,
-      "text": "En regresión de Poisson el enlace canónico es…",
-      "options": {
-        "A": "log",
-        "B": "identidad",
-        "C": "logit",
-        "D": "probit"
-      },
-      "correct": "A",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "El log garantiza positividad de la media y linealidad del predictor."
-    },
-    {
-      "id": 91,
-      "text": "El bias‑variance trade‑off muestra que al aumentar la complejidad…",
-      "options": {
-        "A": "bias y varianza bajan",
-        "B": "bias disminuye y varianza aumenta",
-        "C": "ambos aumentan",
-        "D": "no cambia error total"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Modelos complejos se ajustan mejor (menos sesgo) pero son más sensibles a la muestra (más varianza)."
-    },
-    {
-      "id": 92,
-      "text": "En Graph Neural Networks, message passing implica…",
-      "options": {
-        "A": "convolución 2D clásica",
-        "B": "agregar y combinar características de nodos vecinos",
-        "C": "dropout estructurado",
-        "D": "path sampling aleatorio"
-      },
-      "correct": "B",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Las representaciones se actualizan con funciones de agregado (sum/mean/max) y mezcla."
-    },
-    {
-      "id": 93,
-      "text": "En dplyr, mutate() sirve para…",
-      "options": {
-        "A": "filtrar filas",
-        "B": "crear o transformar columnas",
-        "C": "resumir por grupos",
-        "D": "ordenar registros"
-      },
-      "correct": "B",
-      "topic": "Programación con Python y R",
-      "explanation": "Mutate añade nuevas columnas o modifica existentes sin cambiar número de filas."
-    },
-    {
-      "id": 94,
-      "text": "La separación de storage y compute en data warehouses permite…",
-      "options": {
-        "A": "escalar de forma independiente ambos recursos",
-        "B": "pago anticipado obligatorio",
-        "C": "latencia cero",
-        "D": "evitar redundancia"
-      },
-      "correct": "A",
-      "topic": "Gestión de bases de datos: Big Data",
-      "explanation": "Se paga por almacenamiento barato y se escalan clústeres de cómputo on‑demand."
-    },
-    {
-      "id": 95,
-      "text": "El test Jarque‑Bera comprueba…",
-      "options": {
-        "A": "homocedasticidad",
-        "B": "normalidad mediante asimetría y curtosis",
-        "C": "autocorrelación",
-        "D": "independencia serial"
-      },
-      "correct": "B",
-      "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
-      "explanation": "Usa skewness y kurtosis para contrastar la hipótesis de normalidad."
-    },
-    {
-      "id": 96,
-      "text": "La imputación k‑NN selecciona k…",
-      "options": {
-        "A": "registros más distantes",
-        "B": "registros más cercanos según una métrica",
-        "C": "clusters centrales",
-        "D": "valores promedio globales"
-      },
-      "correct": "B",
-      "topic": "Técnicas de análisis de datos",
-      "explanation": "Imputa con la media/moda de los vecinos más próximos en el espacio de características."
-    },
-    {
-      "id": 97,
-      "text": "LightGBM acelera entrenamiento usando…",
-      "options": {
-        "A": "histograms y crecimiento leaf‑wise con profundidad limitada",
-        "B": "bagging secuencial",
-        "C": "GPU siempre activa",
-        "D": "gini impurity"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Agrupa valores continuos en histogramas y expande la hoja más prometedora."
-    },
-    {
-      "id": 98,
-      "text": "Early stopping evita overfitting cuando…",
-      "options": {
-        "A": "la pérdida de validación deja de mejorar durante n iteraciones",
-        "B": "la pérdida de entrenamiento sube",
-        "C": "el learning rate es bajo",
-        "D": "se agota la memoria"
-      },
-      "correct": "A",
-      "topic": "Fundamentos de machine learning",
-      "explanation": "Se detiene el entrenamiento antes de que el modelo sobre‑ajuste al set de entrenamiento."
-    },
-    {
-      "id": 99,
-      "text": "TF‑IDF asigna mayor peso a un término cuando…",
-      "options": {
-        "A": "aparece muchas veces en el documento y pocas en la colección",
-        "B": "es muy común en la colección",
-        "C": "solo aparece una vez en todo el corpus",
-        "D": "está en stop‑words"
-      },
-      "correct": "A",
-      "topic": "Procesamiento de lenguaje natural",
-      "explanation": "Alta frecuencia local y rareza global maximizan el producto TF × IDF."
-    },
-    {
-      "id": 100,
-      "text": "El modelo SARIMA extiende ARIMA añadiendo…",
-      "options": {
-        "A": "términos de estacionalidad multiplicativos (p,d,q)s",
-        "B": "regresores exógenos",
-        "C": "ruido ARCH",
-        "D": "tendencia polinómica"
-      },
-      "correct": "A",
-      "topic": "Modelos para series temporales",
-      "explanation": "Introduce un segundo conjunto (P,D,Q)_S para capturar patrones estacionales."
-    }
-  ]
-}
-
+[
+  {
+    "id": 1,
+    "text": "En validación cruzada k‑fold estratificada sobre un conjunto muy desbalanceado, el objetivo principal de la estratificación es…",
+    "options": {
+      "A": "reducir el burn‑in del optimizador",
+      "B": "mantener la distribución de la variable objetivo en cada fold",
+      "C": "evitar fugas de datos entre entrenamiento y test",
+      "D": "minimizar la varianza de cada estimador individual"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Garantiza que la proporción de clases sea igual en cada fold, evitando sesgo de validación."
+  },
+  {
+    "id": 2,
+    "text": "En PostgreSQL, ¿qué plan se elige normalmente cuando la consulta filtra por una columna con índice B‑tree poco selectivo y la tabla cabe en memoria?",
+    "options": {
+      "A": "Index Only Scan",
+      "B": "Bitmap Index Scan",
+      "C": "Sequential Scan",
+      "D": "Index Scan con re‑check"
+    },
+    "correct": "C",
+    "topic": "Gestión de bases de datos: modelado y consulta",
+    "explanation": "Si la tabla está en caché y se leerán muchas filas, un barrido secuencial evita saltos de índice costosos."
+  },
+  {
+    "id": 3,
+    "text": "Según el Reglamento Europeo de IA (AI Act 2024), un sistema que decide automáticamente la calificación crediticia de un consumidor se clasifica como…",
+    "options": {
+      "A": "prohibido",
+      "B": "alto riesgo",
+      "C": "riesgo limitado (transparencia)",
+      "D": "sin riesgo"
+    },
+    "correct": "B",
+    "topic": "Reglamento europeo de la IA",
+    "explanation": "Los sistemas de scoring crediticio se incluyen explícitamente en la lista de alto riesgo (Anexo III)."
+  },
+  {
+    "id": 4,
+    "text": "En Apache Spark, los DataFrames superan a los RDD tradicionales principalmente porque…",
+    "options": {
+      "A": "aplican un modelo de objetos inmutables distribuido",
+      "B": "permiten transformaciones perezosas sobre datos heterogéneos",
+      "C": "ejecutan código Python puro dentro del driver",
+      "D": "optimizan los planes mediante Catalyst y Tungsten"
+    },
+    "correct": "D",
+    "topic": "Programación con Python y R: Spark",
+    "explanation": "Catalyst genera planes lógicos/físicos óptimos y Tungsten aplica vectorización y code‑gen nativo."
+  },
+  {
+    "id": 5,
+    "text": "La equidad demográfica (demographic parity) se cumple cuando…",
+    "options": {
+      "A": "la tasa de falsos positivos es idéntica entre grupos protegidos",
+      "B": "la distribución de la predicción positiva es independiente del atributo protegido",
+      "C": "P(atributo protegido | predicción+) es constante",
+      "D": "el modelo no usa atributos protegidos"
+    },
+    "correct": "B",
+    "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
+    "explanation": "Demographic parity exige que P(ŷ = 1) sea la misma para todos los grupos protegidos."
+  },
+  {
+    "id": 6,
+    "text": "En Python, el decorador @staticmethod se utiliza para…",
+    "options": {
+      "A": "asegurar la inmutabilidad de la instancia",
+      "B": "declarar un método que no recibe self ni cls",
+      "C": "crear un generador perezoso",
+      "D": "sobrecargar operadores"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "Los métodos estáticos actúan como funciones dentro del espacio de nombres de la clase."
+  },
+  {
+    "id": 7,
+    "text": "El estimador de máxima verosimilitud de la varianza σ² en una muestra normal i.i.d. se sesga porque…",
+    "options": {
+      "A": "divide por n en lugar de n‑1",
+      "B": "asume media cero",
+      "C": "usa log‑likelihood en vez de squared error",
+      "D": "ignora la covarianza entre observaciones"
+    },
+    "correct": "A",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Dividir por n subestima la varianza; el ajuste de Bessel (n‑1) la hace insesgada."
+  },
+  {
+    "id": 8,
+    "text": "En variables categóricas de alta cardinalidad, una alternativa a one‑hot que preserva similitudes es…",
+    "options": {
+      "A": "hashing trick",
+      "B": "target encoding con smoothing",
+      "C": "binarización ordinal",
+      "D": "label encoding simple"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Target encoding reemplaza cada categoría por la media suavizada del objetivo, reduciendo dimensionalidad."
+  },
+  {
+    "id": 9,
+    "text": "Un índice PRIMARY KEY en una base de datos relacional garantiza…",
+    "options": {
+      "A": "unicidad y no‑nulidad",
+      "B": "orden físico en disco",
+      "C": "replicación síncrona",
+      "D": "bloqueo exclusivo"
+    },
+    "correct": "A",
+    "topic": "Gestión de bases de datos: modelado y consulta",
+    "explanation": "La clave primaria impone unicidad y prohíbe valores NULL según estándar SQL."
+  },
+  {
+    "id": 10,
+    "text": "En la notación Big‑O, la expresión 3n log n + 2n pertenece a…",
+    "options": {
+      "A": "O(n)",
+      "B": "O(n log n)",
+      "C": "O(n²)",
+      "D": "Θ(log n)"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "El término dominante es n log n; los demás se descartan asintóticamente."
+  },
+  {
+    "id": 11,
+    "text": "El Principio de Parsimonia aplicado a modelos estadísticos implica…",
+    "options": {
+      "A": "minimizar la pérdida de entrenamiento",
+      "B": "elegir el modelo con menos parámetros que explique los datos",
+      "C": "maximizar la entropía condicional",
+      "D": "usar funciones objetivo cuadráticas"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Modelos más simples tienden a generalizar mejor salvo que la complejidad extra aporte ajuste significativo."
+  },
+  {
+    "id": 12,
+    "text": "En Docker, la instrucción COPY dentro de un Dockerfile…",
+    "options": {
+      "A": "descarga una imagen base",
+      "B": "copia ficheros del contexto de build al sistema de archivos de la imagen",
+      "C": "ejecuta un script de instalación",
+      "D": "crea un volumen persistente"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "COPY introduce archivos locales en la capa de la imagen de forma reproducible."
+  },
+  {
+    "id": 13,
+    "text": "El test χ² de independencia requiere como supuesto que…",
+    "options": {
+      "A": "los datos sean continuos",
+      "B": "los recuentos esperados en cada celda sean mayores que 5",
+      "C": "la muestra sea dependiente",
+      "D": "se conozca la varianza poblacional"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "La aproximación χ² es válida con recuentos esperados suficientemente grandes."
+  },
+  {
+    "id": 14,
+    "text": "¿Cuál es la salida de numpy.dot(A, B) si A es (2×3) y B es (3×1)?",
+    "options": {
+      "A": "Error de dimensiones",
+      "B": "un vector (1×2)",
+      "C": "una matriz (2×1)",
+      "D": "un escalar"
+    },
+    "correct": "C",
+    "topic": "Programación con Python y R",
+    "explanation": "La multiplicación de matrices 2×3 · 3×1 produce una matriz 2×1."
+  },
+  {
+    "id": 15,
+    "text": "En Git, el comando git rebase -i main sirve para…",
+    "options": {
+      "A": "fusionar ramas y conservar merge commits",
+      "B": "reescribir el historial de la rama actual sobre main de forma interactiva",
+      "C": "descartar confirmaciones locales",
+      "D": "crear una tag ligera"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "Permite reordenar, squash o editar commits antes de rebasarlos sobre main."
+  },
+  {
+    "id": 16,
+    "text": "La métrica AUROC es preferible a accuracy cuando…",
+    "options": {
+      "A": "las clases están equilibradas",
+      "B": "es crítico evaluar el ranking de puntuaciones",
+      "C": "se quiere medir solo precisión",
+      "D": "el umbral de decisión es fijo"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "AUROC mide la capacidad de ordenación sin depender del umbral ni del desbalance."
+  },
+  {
+    "id": 17,
+    "text": "En SQL, la cláusula WITH RECURSIVE se utiliza para…",
+    "options": {
+      "A": "crear vistas materializadas",
+      "B": "realizar CTE jerárquicas",
+      "C": "ejecutar transacciones anidadas",
+      "D": "actualizar en cascada"
+    },
+    "correct": "B",
+    "topic": "Gestión de bases de datos: modelado y consulta",
+    "explanation": "Permite recorrer jerarquías o grafos mediante consultas recursivas."
+  },
+  {
+    "id": 18,
+    "text": "El algoritmo K‑means minimiza explícitamente…",
+    "options": {
+      "A": "la varianza entre clusters",
+      "B": "la suma de distancias cuadráticas dentro del cluster",
+      "C": "la entropía condicional",
+      "D": "la suma de distancias Manhattan"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Su función objetivo es el Within‑Cluster Sum of Squares (WCSS)."
+  },
+  {
+    "id": 19,
+    "text": "El p‑valor en un contraste de hipótesis representa…",
+    "options": {
+      "A": "la probabilidad de la hipótesis nula",
+      "B": "la probabilidad de obtener un estadístico tan extremo como el observado si H₀ es cierta",
+      "C": "el nivel de confianza",
+      "D": "1 − potencia"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Cuantifica la evidencia contra H₀, no la probabilidad de que H₀ sea verdadera."
+  },
+  {
+    "id": 20,
+    "text": "En redes neuronales profundas, la inicialización He es idónea para…",
+    "options": {
+      "A": "funciones de activación ReLU",
+      "B": "softmax",
+      "C": "tanh",
+      "D": "lineal pura"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Mantiene la varianza de activaciones constante con funciones ReLU."
+  },
+  {
+    "id": 21,
+    "text": "La Ley Orgánica de Protección de Datos española exige que el consentimiento sea…",
+    "options": {
+      "A": "tácito si hay interés legítimo",
+      "B": "libre, específico, informado e inequívoco",
+      "C": "siempre por escrito y firmado",
+      "D": "irretractable"
+    },
+    "correct": "B",
+    "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
+    "explanation": "LOPD‑GDD y GDPR definen esos cuatro requisitos para un consentimiento válido."
+  },
+  {
+    "id": 22,
+    "text": "La arquitectura Lambda (batch + stream) nació para…",
+    "options": {
+      "A": "sustituir completamente Kappa",
+      "B": "combinar análisis en tiempo real y en lotes con una única vista de datos",
+      "C": "eliminar latencia en ETL",
+      "D": "evitar bases de datos NoSQL"
+    },
+    "correct": "B",
+    "topic": "Gestión de bases de datos / Big Data",
+    "explanation": "Integra pipelines de micro‑batch y batch manteniendo consistencia en la capa de servicio."
+  },
+  {
+    "id": 23,
+    "text": "En un boxplot los outliers se representan como…",
+    "options": {
+      "A": "valores dentro del IQR",
+      "B": "puntos fuera de 1,5×IQR desde los cuartiles",
+      "C": "la mediana",
+      "D": "el rango total"
+    },
+    "correct": "B",
+    "topic": "Visualización de datos",
+    "explanation": "Valores más allá de los bigotes (1,5·IQR) se marcan individualmente como posibles outliers."
+  },
+  {
+    "id": 24,
+    "text": "El algoritmo AdaBoost ajusta clasificadores débiles asignando…",
+    "options": {
+      "A": "pesos uniformes a todas las observaciones",
+      "B": "mayor peso a ejemplos mal clasificados previamente",
+      "C": "sub‑muestras bootstrap independientes",
+      "D": "regularización L2"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Re‑pondera las muestras para centrar el aprendizaje en los errores de rondas anteriores."
+  },
+  {
+    "id": 25,
+    "text": "GDPR define \"pseudonimización\" como…",
+    "options": {
+      "A": "cifrado irreversible",
+      "B": "tratamiento en el que los datos no pueden atribuirse a una persona sin información adicional separada",
+      "C": "anonimización total",
+      "D": "hash salado y destruido"
+    },
+    "correct": "B",
+    "topic": "Aspectos éticos en el uso de la inteligencia artificial y ciencia de datos",
+    "explanation": "Los identificadores se almacenan aparte; sigue existiendo la posibilidad de re‑identificar bajo controles estrictos."
+  },
+  {
+    "id": 26,
+    "text": "En NumPy, np.broadcast_to(x, (4,3))…",
+    "options": {
+      "A": "copia físicamente los datos",
+      "B": "crea una vista de solo lectura con strides 0 si es necesario",
+      "C": "lanza excepción si x es escalar",
+      "D": "devuelve siempre memoria contigua"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "Broadcasting genera vistas sin copiar, usando strides para repetir valores virtualmente."
+  },
+  {
+    "id": 27,
+    "text": "El teorema de Bayes permite actualizar…",
+    "options": {
+      "A": "la esperanza muestral",
+      "B": "la probabilidad a posteriori dado un suceso observado",
+      "C": "la varianza poblacional",
+      "D": "la distribución predictiva condicional"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Combina la hipótesis previa con la verosimilitud para obtener la probabilidad posterior."
+  },
+  {
+    "id": 28,
+    "text": "En CI/CD, el patrón blue‑green deployment consiste en…",
+    "options": {
+      "A": "dos versiones en paralelo y conmutación instantánea del tráfico",
+      "B": "canary incremental al 5 %",
+      "C": "despliegue directo con rollback manual",
+      "D": "pipeline sin test"
+    },
+    "correct": "A",
+    "topic": "Programación / DevOps",
+    "explanation": "Blue (producción) y Green (nueva) reciben tráfico mutuamente exclusivo, permitiendo rollback inmediato."
+  },
+  {
+    "id": 29,
+    "text": "La complejidad temporal de restar dos matrices densas n×n estándar es…",
+    "options": {
+      "A": "O(1)",
+      "B": "O(n)",
+      "C": "O(n²)",
+      "D": "O(n³)"
+    },
+    "correct": "C",
+    "topic": "Programación con Python y R",
+    "explanation": "Se visitan n² elementos; cada resta es O(1)."
+  },
+  {
+    "id": 30,
+    "text": "La regularización Dropout actúa…",
+    "options": {
+      "A": "penalizando la norma L1",
+      "B": "desactivando aleatoriamente unidades durante el entrenamiento",
+      "C": "aumentando el learning‑rate cíclico",
+      "D": "promediando modelos independientes"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Fuerza a la red a no depender de combinaciones específicas de neuronas, reduciendo overfitting."
+  },
+  {
+    "id": 31,
+    "text": "LoRA (Low‑Rank Adaptation) se emplea en LLMs porque…",
+    "options": {
+      "A": "reduce el tamaño del prompt",
+      "B": "actualiza solo matrices proyectadas de baja dimensión, reduciendo parámetros entrenables",
+      "C": "reutiliza embeddings sin back‑prop",
+      "D": "permite entrenamiento completamente sin supervisión"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Inserta factores de rango bajo (A·Bᵀ) y congela el resto, abaratando fine‑tuning y consumo de VRAM."
+  },
+  {
+    "id": 32,
+    "text": "En Transformers, la atención escalada divide el producto punto por √dₖ para…",
+    "options": {
+      "A": "reducir coste a O(n)",
+      "B": "evitar saturación en softmax estabilizando gradientes",
+      "C": "normalizar la salida FFN",
+      "D": "forzar sparsity"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de inteligencia artificial",
+    "explanation": "Sin el factor √d, los valores crecerían con la dimensión produciendo softmax extremadamente aguda."
+  },
+  {
+    "id": 33,
+    "text": "En un pipeline LLMOps, la fase que conecta el registry con la monitorización suele implementarse mediante…",
+    "options": {
+      "A": "un feature store",
+      "B": "control de versiones de datos (DVC)",
+      "C": "un servicio de inferencia que expone métricas a Prometheus",
+      "D": "pruebas de carga previas al despliegue"
+    },
+    "correct": "C",
+    "topic": "MLOps / LLMOps",
+    "explanation": "El servicio de inferencia registra versiones y publica métricas (latencia, drift) que luego consulta la monitorización."
+  },
+  {
+    "id": 34,
+    "text": "SHAP se prefiere frente a LIME cuando…",
+    "options": {
+      "A": "se necesita explicación local lineal",
+      "B": "las variables son colineales y se requiere consistencia aditiva",
+      "C": "el modelo es determinista",
+      "D": "la muestra es gigante"
+    },
+    "correct": "B",
+    "topic": "Interpretabilidad de modelos (XAI)",
+    "explanation": "Los valores Shapley satisfacen propiedades de consistencia y aditividad que LIME no garantiza bajo colinealidad."
+  },
+  {
+    "id": 35,
+    "text": "En clúster Kubernetes con GPU, para picos imprevisibles de inferencia la estrategia más eficiente suele ser…",
+    "options": {
+      "A": "GPU dedicada 24/7",
+      "B": "autoscaling por CPU",
+      "C": "nodos GPU spot/preemptible con colas request‑reply",
+      "D": "vertical scaling aumentando VRAM"
+    },
+    "correct": "C",
+    "topic": "MLOps / LLMOps",
+    "explanation": "Los nodos spot reducen coste; la cola desacopla picos y permite reintentar si se pre‑emptean instancias."
+  },
+  {
+    "id": 36,
+    "text": "Prefix‑tuning difiere del fine‑tuning completo en que…",
+    "options": {
+      "A": "ajusta todas las capas",
+      "B": "aprende vectores de contexto añadidos al prompt",
+      "C": "recalcula embeddings base",
+      "D": "requiere cuantización int8"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Inserta un \"prefijo\" aprendible delante de cada capa de atención, manteniendo congelados los pesos originales."
+  },
+  {
+    "id": 37,
+    "text": "Gradient checkpointing en entrenamiento de LLM sirve para…",
+    "options": {
+      "A": "reducir VRAM recomputando activaciones durante back‑prop",
+      "B": "guardar pesos en disco en cada batch",
+      "C": "congelar capas inferiores",
+      "D": "inyectar ruido adversarial"
+    },
+    "correct": "A",
+    "topic": "MLOps / LLMOps",
+    "explanation": "Almacena solo algunos checkpoints de activaciones y recalcula otras al retro‑propagar, ahorrando memoria."
+  },
+  {
+    "id": 38,
+    "text": "En RLHF, el paso clave consiste en…",
+    "options": {
+      "A": "fine‑tuning con cross‑entropy",
+      "B": "optimizar una recompensa basada en preferencias humanas",
+      "C": "aprendizaje no supervisado de máscaras",
+      "D": "podar pesos irrelevantes"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Se entrena primero un modelo de recompensa a partir de comparaciones humanas y luego se usa en PPO o similar."
+  },
+  {
+    "id": 39,
+    "text": "DeepSpeed ZeRO‑3 obtiene memoria extra principalmente…",
+    "options": {
+      "A": "dividiendo el batch en micro‑batches",
+      "B": "particionando pesos, gradientes y estados del optimizador entre nodos",
+      "C": "usando FP16 sin loss‑scaling",
+      "D": "comprimiendo Adam en CPU"
+    },
+    "correct": "B",
+    "topic": "MLOps / LLMOps",
+    "explanation": "ZeRO‑3 distribuye TODO (parámetros, grads y momentos) para escalar modelos billonarios."
+  },
+  {
+    "id": 40,
+    "text": "La métrica perplexity en modelos de lenguaje se interpreta como…",
+    "options": {
+      "A": "MAE token a token",
+      "B": "exponencial de la entropía cruzada promedio",
+      "C": "log‑likelihood negativa",
+      "D": "F1‑score"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Menor perplexity indica que el modelo asigna mayor probabilidad (menor sorpresa) a las secuencias reales."
+  },
+  {
+    "id": 41,
+    "text": "En knowledge distillation, usar temperature > 1 en softmax produce…",
+    "options": {
+      "A": "una distribución suavizada que revela \"conocimiento oscuro\"",
+      "B": "convergencia más lenta de gradientes",
+      "C": "regularización L1 implícita",
+      "D": "logits saturados"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Temperaturas altas aplanan la softmax para que el estudiante aprenda relaciones entre clases."
+  },
+  {
+    "id": 42,
+    "text": "Con Focal Loss, el término (1–p)^γ sirve para…",
+    "options": {
+      "A": "penalizar menos los ejemplos fáciles y centrar el aprendizaje en los difíciles",
+      "B": "aumentar el margen de separación",
+      "C": "equilibrar clases con pesos inversos",
+      "D": "reemplazar cross‑entropy"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Ejemplos con p≈1 reciben peso pequeño; los difíciles (p bajo) se amplifican."
+  },
+  {
+    "id": 43,
+    "text": "Un beam width demasiado grande en beam search puede causar…",
+    "options": {
+      "A": "mayor diversidad",
+      "B": "repetición y length‑bias",
+      "C": "menor tiempo de inferencia",
+      "D": "normalización incorrecta"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Beam ancho favorece secuencias más probables pero largas y repetitivas."
+  },
+  {
+    "id": 44,
+    "text": "El pre‑entrenamiento original de BERT incluye masked language modeling y…",
+    "options": {
+      "A": "causal LM",
+      "B": "next sentence prediction",
+      "C": "denoising autoencoding",
+      "D": "translation LM"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "NSP ayuda a aprender relaciones inter‑oracionales (ya no se usa en RoBERTa)."
+  },
+  {
+    "id": 45,
+    "text": "La cuantización post‑training a 8‑bit puede degradar rendimiento porque…",
+    "options": {
+      "A": "reduce ancho de banda pero aumenta latencia",
+      "B": "introduce error de redondeo sensible en capas como LayerNorm",
+      "C": "obliga a convoluciones separables",
+      "D": "elimina los bias"
+    },
+    "correct": "B",
+    "topic": "MLOps / LLMOps",
+    "explanation": "LayerNorm y Softmax son sensibles; se usan técnicas de calibración y mezclas (int8 + fp16)."
+  },
+  {
+    "id": 46,
+    "text": "PPO mantiene la estabilidad del aprendizaje por refuerzo…",
+    "options": {
+      "A": "clipando el cociente de probabilidad entre política nueva y vieja",
+      "B": "usando Q‑learning off‑policy",
+      "C": "Monte Carlo completo",
+      "D": "ventaja normalizada global"
+    },
+    "correct": "A",
+    "topic": "Aprendizaje por refuerzo",
+    "explanation": "El clip evita grandes actualizaciones que desestabilizarían la política."
+  },
+  {
+    "id": 47,
+    "text": "ONNX Runtime se usa para…",
+    "options": {
+      "A": "definir grafos de entrenamiento distribuido",
+      "B": "ejecutar inferencias portables en múltiples aceleradores",
+      "C": "compilar kernels CUDA",
+      "D": "monitorizar drift"
+    },
+    "correct": "B",
+    "topic": "MLOps / LLMOps",
+    "explanation": "ONNX define un formato intermedio y Runtime lo acelera en CPU, GPU, NNAPI, etc."
+  },
+  {
+    "id": 48,
+    "text": "Los métodos counterfactuals en XAI buscan…",
+    "options": {
+      "A": "importancia global de características",
+      "B": "el cambio mínimo en la entrada que altera la predicción",
+      "C": "descomponer la predicción en efectos aditivos",
+      "D": "generar saliency maps"
+    },
+    "correct": "B",
+    "topic": "Interpretabilidad de modelos (XAI)",
+    "explanation": "Ayudan a responder \"¿qué tendría que cambiar para obtener otro resultado?\"."
+  },
+  {
+    "id": 49,
+    "text": "Los TPU Edge destacan por…",
+    "options": {
+      "A": "arquitectura Von Neumann clásica",
+      "B": "matriz systolic optimizada para operaciones MAC",
+      "C": "soportar solo FP32",
+      "D": "uso exclusivo en cloud"
+    },
+    "correct": "B",
+    "topic": "Arquitectura hardware para IA",
+    "explanation": "Las matrices systolic realizan miles de MAC en paralelo con acceso predictivo a memoria."
+  },
+  {
+    "id": 50,
+    "text": "El concepto catastrophic forgetting describe…",
+    "options": {
+      "A": "colapso de modos en GAN",
+      "B": "pérdida de conocimiento previo al entrenar secuencialmente nuevas tareas",
+      "C": "sobre‑ajuste por regularización excesiva",
+      "D": "desbordamiento de gradientes"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Las redes sobre‑escriben pesos para la tarea nueva, degradando el rendimiento en la anterior."
+  },
+  {
+    "id": 51,
+    "text": "Las cadenas de pensamiento (chain‑of‑thought) en prompt engineering mejoran…",
+    "options": {
+      "A": "compresión de tokens",
+      "B": "razonamiento multi‑paso",
+      "C": "velocidad de inferencia",
+      "D": "desaprendizaje de sesgos"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Forzar al modelo a \"pensar en voz alta\" ayuda a resolver problemas lógicos o matemáticos."
+  },
+  {
+    "id": 52,
+    "text": "La técnica top‑p (nucleus) sampling selecciona…",
+    "options": {
+      "A": "siempre el token de máxima probabilidad",
+      "B": "los k mejores tokens fijos",
+      "C": "el conjunto mínimo cuya probabilidad acumulada excede p",
+      "D": "distribución uniforme entre todos los tokens"
+    },
+    "correct": "C",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Reduce repetición manteniendo adaptativamente un porcentaje de masa de probabilidad."
+  },
+  {
+    "id": 53,
+    "text": "El embedding Rotary (RoPE) usa…",
+    "options": {
+      "A": "codificación sinusoidal absoluta",
+      "B": "rotaciones dependientes de frecuencia aplicadas a consultas y claves",
+      "C": "índices aprendibles por token",
+      "D": "ventanas de convolución"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Proyecta posiciones como rotaciones complejas preservando distancias relativas y extrapolación."
+  },
+  {
+    "id": 54,
+    "text": "La búsqueda bayesiana de hiperparámetros se prefiere frente a grid search porque…",
+    "options": {
+      "A": "explora exhaustivamente",
+      "B": "modela la función objetivo y elige puntos prometedores basándose en incertidumbre",
+      "C": "solo funciona con hiperparámetros discretos",
+      "D": "requiere entrenamiento masivo paralelo"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Utiliza modelos probabilísticos (GP, TPE) para equilibrar exploración‑explotación."
+  },
+  {
+    "id": 55,
+    "text": "Zero‑shot Chain‑of‑Thought consiste en…",
+    "options": {
+      "A": "etiquetar pasos manualmente",
+      "B": "usar un prefijo \"Reason step‑by‑step\" sin ejemplos concretos",
+      "C": "fine‑tuning supervisado",
+      "D": "knowledge distillation"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Induce al modelo a auto‑razonar sin mostrar soluciones ejemplo."
+  },
+  {
+    "id": 56,
+    "text": "El fine‑tuning instruction‑following emplea datasets de…",
+    "options": {
+      "A": "traducción paralela",
+      "B": "pares (instrucción, respuesta) curados con revisión humana",
+      "C": "oración + POS‑tag",
+      "D": "eventos de clic de usuario"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Datasets como Alpaca, Dolly preparan al modelo para seguir instrucciones naturales."
+  },
+  {
+    "id": 57,
+    "text": "En despliegues multi‑tenant, serverless GPU inference reduce costes porque…",
+    "options": {
+      "A": "mantiene GPU caliente por usuario",
+      "B": "suspende contenedores y libera GPU al quedar inactivos",
+      "C": "exige compra anticipada",
+      "D": "deshabilita escalado horizontal"
+    },
+    "correct": "B",
+    "topic": "MLOps / LLMOps",
+    "explanation": "El proveedor des‑provisiona GPU cuando no hay peticiones y vuelve a montarla bajo demanda."
+  },
+  {
+    "id": 58,
+    "text": "Las vector databases como FAISS indexan embeddings mediante…",
+    "options": {
+      "A": "B‑trees",
+      "B": "ODBC",
+      "C": "Approximate Nearest Neighbors",
+      "D": "tablas hash perfectas"
+    },
+    "correct": "C",
+    "topic": "Gestión de bases de datos: NoSQL / ANN",
+    "explanation": "Usan técnicas como HNSW, IVF, PQ para búsquedas vectoriales sub‑milisegundo."
+  },
+  {
+    "id": 59,
+    "text": "La pérdida SimCLR utiliza…",
+    "options": {
+      "A": "contraste entre augmentations de la misma imagen frente a otras",
+      "B": "auto‑codificación reconstructiva",
+      "C": "predicción de máscaras de texto",
+      "D": "RLHF"
+    },
+    "correct": "A",
+    "topic": "Aprendizaje auto‑supervisado",
+    "explanation": "Maximiza similitud de vistas positivas y minimiza de pares negativos en el batch."
+  },
+  {
+    "id": 60,
+    "text": "Mixture of Experts distribuye cómputo porque…",
+    "options": {
+      "A": "cada token se enruta solo a un subconjunto de expertos activos",
+      "B": "todas las capas comparten pesos",
+      "C": "usa compresión Huffman",
+      "D": "evita back‑prop"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Gate routers eligen pocos expertos, reduciendo FLOPs linealmente con el total de expertos."
+  },
+  {
+    "id": 61,
+    "text": "El pruning estructurado que elimina filtros completos en CNN provoca…",
+    "options": {
+      "A": "aceleración real en hardware estándar",
+      "B": "solo compresión de parámetros sin velocidad",
+      "C": "peor cache hit",
+      "D": "incompatibilidad con batch norm"
+    },
+    "correct": "A",
+    "topic": "MLOps / Optimización de modelos",
+    "explanation": "Filtros completos permiten reducir canales enlazados y, por tanto, FLOPs reales."
+  },
+  {
+    "id": 62,
+    "text": "Transformer‑XL introduce segment‑level recurrence para…",
+    "options": {
+      "A": "reducir cabezas de atención",
+      "B": "capturar dependencias más largas que la ventana actual",
+      "C": "reemplazar posiciones absolutas",
+      "D": "compresión LZW"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de IA generativa",
+    "explanation": "Mantiene memoria de segmentos previos como contexto extendido."
+  },
+  {
+    "id": 63,
+    "text": "En federated learning, el ataque model inversion intenta…",
+    "options": {
+      "A": "subir modelos adversarios",
+      "B": "reconstruir datos de entrenamiento a partir de gradientes",
+      "C": "extraer claves API",
+      "D": "provocar buffer overflow"
+    },
+    "correct": "B",
+    "topic": "Seguridad y privacidad en IA",
+    "explanation": "Gradientes detallados pueden revelar features de entradas originales."
+  },
+  {
+    "id": 64,
+    "text": "Stop‑word removal en NLP se aplica para…",
+    "options": {
+      "A": "mejorar tokenización sub‑palabras",
+      "B": "eliminar ruido de palabras con poca aportación semántica",
+      "C": "detectar entidades",
+      "D": "expandir contracciones"
+    },
+    "correct": "B",
+    "topic": "Procesamiento de lenguaje natural",
+    "explanation": "Palabras muy frecuentes (el, la, de) aportan poco a la representación de documentos."
+  },
+  {
+    "id": 65,
+    "text": "Q‑LoRA combina LoRA con…",
+    "options": {
+      "A": "cuantización de 4 bits y des‑cuantización en inferencia",
+      "B": "weight tying",
+      "C": "prompts JSON",
+      "D": "distillation offline"
+    },
+    "correct": "A",
+    "topic": "MLOps / LLMOps",
+    "explanation": "Cuantiza pesos a 4 bits, aplica LoRA en 16 bits y hace de‑quant al vuelo, ahorrando RAM."
+  },
+  {
+    "id": 66,
+    "text": "Para contrastar si dos proporciones grandes difieren se usa…",
+    "options": {
+      "A": "test exacto de Fisher",
+      "B": "test z de diferencia de proporciones",
+      "C": "χ² con Yates",
+      "D": "t de Welch"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Con n grande la distribución de la diferencia se aproxima a normal estándar."
+  },
+  {
+    "id": 67,
+    "text": "En ARIMA, PACF que corta en p y ACF decae sugiere…",
+    "options": {
+      "A": "MA(q) puro",
+      "B": "AR(p) puro",
+      "C": "random walk",
+      "D": "diferenciación estacional"
+    },
+    "correct": "B",
+    "topic": "Modelos para series temporales",
+    "explanation": "Un corte brusco en la PACF y cola en ACF es característico de procesos AR."
+  },
+  {
+    "id": 68,
+    "text": "Para mitigar desequilibrio sin perder info se usa…",
+    "options": {
+      "A": "submuestreo aleatorio",
+      "B": "Tomek Links",
+      "C": "SMOTE",
+      "D": "umbral 0,5"
+    },
+    "correct": "C",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "SMOTE sintetiza ejemplos nuevos de la clase minoritaria en el espacio feature."
+  },
+  {
+    "id": 69,
+    "text": "El índice Silhouette es…",
+    "options": {
+      "A": "métrica externa",
+      "B": "coeficiente interno de cohesión‑separación",
+      "C": "test de estabilidad bootstrap",
+      "D": "específico de k‑means"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Combina distancia intra y extra cluster sin necesidad de etiquetas reales."
+  },
+  {
+    "id": 70,
+    "text": "Las puertas de olvido y entrada en LSTM resuelven…",
+    "options": {
+      "A": "gradientes explosivos",
+      "B": "gradientes que se desvanecen en secuencias largas",
+      "C": "bidireccionalidad",
+      "D": "dependencia de GPU"
+    },
+    "correct": "B",
+    "topic": "Modelos para series temporales",
+    "explanation": "Controlan el flujo de información manteniendo gradientes constantes a largo plazo."
+  },
+  {
+    "id": 71,
+    "text": "En PCA, la varianza explicada por el i‑ésimo componente es…",
+    "options": {
+      "A": "su autovalor",
+      "B": "su autovector",
+      "C": "determinante",
+      "D": "traza"
+    },
+    "correct": "A",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Los autovalores de la matriz de covarianza indican la varianza capturada."
+  },
+  {
+    "id": 72,
+    "text": "DBSCAN puede encontrar clusters…",
+    "options": {
+      "A": "solo convexos",
+      "B": "de forma arbitraria y detectar ruido",
+      "C": "de igual densidad siempre",
+      "D": "exactamente k clusters"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Agrupa puntos densamente conectados y etiqueta puntos esparcidos como ruido."
+  },
+  {
+    "id": 73,
+    "text": "En random forest, aumentar n_estimators tiende a…",
+    "options": {
+      "A": "reducir overfitting hasta saturar",
+      "B": "aumentar varianza",
+      "C": "disminuir estabilidad OOB",
+      "D": "romper independencia"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "El error general baja hasta que la varianza converge; el bias se mantiene."
+  },
+  {
+    "id": 74,
+    "text": "Time‑series cross‑validation (rolling origin) se diferencia de k‑fold porque…",
+    "options": {
+      "A": "baraja los datos",
+      "B": "respeta orden entrenando pasado y testeando futuro",
+      "C": "usa un hold‑out",
+      "D": "necesita estacionariedad"
+    },
+    "correct": "B",
+    "topic": "Modelos para series temporales",
+    "explanation": "Evita fugas de información temporal manteniendo la secuencia cronológica."
+  },
+  {
+    "id": 75,
+    "text": "Ridge regression añade penalización…",
+    "options": {
+      "A": "L1",
+      "B": "L2",
+      "C": "ElasticNet",
+      "D": "Dropout"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "La norma L2 reduce varianza y multicolinealidad sin eliminar variables."
+  },
+  {
+    "id": 76,
+    "text": "La prueba Durbin‑Watson comprueba…",
+    "options": {
+      "A": "heterocedasticidad",
+      "B": "autocorrelación de residuos",
+      "C": "normalidad de errores",
+      "D": "multicolinealidad"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Valores cercanos a 2 indican independencia; <2 correlación positiva."
+  },
+  {
+    "id": 77,
+    "text": "PageRank calcula la importancia de un nodo como…",
+    "options": {
+      "A": "grado total normalizado",
+      "B": "valor propio principal de la matriz de transición con damping",
+      "C": "longitud del camino mínimo",
+      "D": "clustering coefficient"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Es el vector propio asociado al mayor autovalor de la matriz estocástica modificada."
+  },
+  {
+    "id": 78,
+    "text": "Bag of Words ignora…",
+    "options": {
+      "A": "frecuencia de términos",
+      "B": "posición y contexto semántico",
+      "C": "vocabulario",
+      "D": "n‑gramas"
+    },
+    "correct": "B",
+    "topic": "Procesamiento de lenguaje natural",
+    "explanation": "El orden y la semántica contextual se pierden, solo cuenta la presencia/frecuencia."
+  },
+  {
+    "id": 79,
+    "text": "El estimador Kaplan‑Meier asume…",
+    "options": {
+      "A": "censura independiente",
+      "B": "riesgo proporcional",
+      "C": "eventos recurrentes",
+      "D": "covariables continuas"
+    },
+    "correct": "A",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "La censura no debe depender de la probabilidad de evento para ser no informativa."
+  },
+  {
+    "id": 80,
+    "text": "En clustering jerárquico, el criterio Ward minimiza…",
+    "options": {
+      "A": "distancia máxima entre puntos",
+      "B": "incremento de varianza intra‑grupo",
+      "C": "radio medio",
+      "D": "número de outliers"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Fusiona clusters que producen el menor aumento en la suma de cuadrados total."
+  },
+  {
+    "id": 81,
+    "text": "MAPE presenta problemas cuando…",
+    "options": {
+      "A": "valores reales se acercan a cero",
+      "B": "la serie es estacionaria",
+      "C": "hay estacionalidad",
+      "D": "la muestra es grande"
+    },
+    "correct": "A",
+    "topic": "Modelos para series temporales",
+    "explanation": "Errores relativos se disparan con denominador pequeño, inflando la métrica."
+  },
+  {
+    "id": 82,
+    "text": "El coeficiente de Pearson requiere datos…",
+    "options": {
+      "A": "ordinales",
+      "B": "intervalo y relación lineal",
+      "C": "nominales",
+      "D": "multimodales"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Supone normalidad aproximada y relación lineal entre variables de escala."
+  },
+  {
+    "id": 83,
+    "text": "Para árboles de decisión, escalar las variables…",
+    "options": {
+      "A": "es imprescindible",
+      "B": "no afecta al criterio de partición",
+      "C": "acelera el split",
+      "D": "reduce profundidad"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Los árboles usan umbrales sobre valores originales; la escala no cambia la partición."
+  },
+  {
+    "id": 84,
+    "text": "Prophet modela estacionalidades con…",
+    "options": {
+      "A": "wavelets",
+      "B": "términos de Fourier trigonométricos",
+      "C": "splines cúbicos",
+      "D": "filtro de Kalman"
+    },
+    "correct": "B",
+    "topic": "Modelos para series temporales",
+    "explanation": "Expande estacionalidad como serie de senos/cosenos con periodos definidos."
+  },
+  {
+    "id": 85,
+    "text": "Granger causality indica que X causa Y si…",
+    "options": {
+      "A": "X precede temporalmente a Y",
+      "B": "los rezagos de X mejoran la predicción de Y significativamente",
+      "C": "correlación contemporánea alta",
+      "D": "comparten tendencia"
+    },
+    "correct": "B",
+    "topic": "Modelos para series temporales",
+    "explanation": "Se testea si los coeficientes de X lag son jointly significativos en un VAR."
+  },
+  {
+    "id": 86,
+    "text": "Benjamini‑Hochberg controla…",
+    "options": {
+      "A": "error tipo I individual",
+      "B": "tasa de falsos descubrimientos (FDR)",
+      "C": "potencia estadística",
+      "D": "varianza intra‑grupo"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Ordena p‑valores y ajusta umbral para limitar la proporción de falsos positivos."
+  },
+  {
+    "id": 87,
+    "text": "Los archivos Parquet se prefieren en Spark porque…",
+    "options": {
+      "A": "almacenan columnas comprimidas y permiten predicate push‑down",
+      "B": "son binarios fila a fila",
+      "C": "requieren menos memoria que JSON",
+      "D": "no necesitan metadatos"
+    },
+    "correct": "A",
+    "topic": "Gestión de bases de datos: Big Data",
+    "explanation": "Columnar + push‑down reduce E/S y acelera filtrados."
+  },
+  {
+    "id": 88,
+    "text": "t‑SNE es especialmente sensible al hiperparámetro…",
+    "options": {
+      "A": "n_components",
+      "B": "perplexity",
+      "C": "alpha",
+      "D": "lambda"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Perplexity controla el balance entre estructura global y local; valores pobres distorsionan."
+  },
+  {
+    "id": 89,
+    "text": "Un intervalo de confianza al 95 % significa que…",
+    "options": {
+      "A": "hay 95 % de probabilidad de que el parámetro esté dentro",
+      "B": "si repitiéramos el muestreo, el 95 % de los IC incluiría el valor real",
+      "C": "el parámetro varía un 95 %",
+      "D": "error tipo II es 5 %"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "La interpretación frecuentista se basa en repetición hipotética de muestras."
+  },
+  {
+    "id": 90,
+    "text": "En regresión de Poisson el enlace canónico es…",
+    "options": {
+      "A": "log",
+      "B": "identidad",
+      "C": "logit",
+      "D": "probit"
+    },
+    "correct": "A",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "El log garantiza positividad de la media y linealidad del predictor."
+  },
+  {
+    "id": 91,
+    "text": "El bias‑variance trade‑off muestra que al aumentar la complejidad…",
+    "options": {
+      "A": "bias y varianza bajan",
+      "B": "bias disminuye y varianza aumenta",
+      "C": "ambos aumentan",
+      "D": "no cambia error total"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Modelos complejos se ajustan mejor (menos sesgo) pero son más sensibles a la muestra (más varianza)."
+  },
+  {
+    "id": 92,
+    "text": "En Graph Neural Networks, message passing implica…",
+    "options": {
+      "A": "convolución 2D clásica",
+      "B": "agregar y combinar características de nodos vecinos",
+      "C": "dropout estructurado",
+      "D": "path sampling aleatorio"
+    },
+    "correct": "B",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Las representaciones se actualizan con funciones de agregado (sum/mean/max) y mezcla."
+  },
+  {
+    "id": 93,
+    "text": "En dplyr, mutate() sirve para…",
+    "options": {
+      "A": "filtrar filas",
+      "B": "crear o transformar columnas",
+      "C": "resumir por grupos",
+      "D": "ordenar registros"
+    },
+    "correct": "B",
+    "topic": "Programación con Python y R",
+    "explanation": "Mutate añade nuevas columnas o modifica existentes sin cambiar número de filas."
+  },
+  {
+    "id": 94,
+    "text": "La separación de storage y compute en data warehouses permite…",
+    "options": {
+      "A": "escalar de forma independiente ambos recursos",
+      "B": "pago anticipado obligatorio",
+      "C": "latencia cero",
+      "D": "evitar redundancia"
+    },
+    "correct": "A",
+    "topic": "Gestión de bases de datos: Big Data",
+    "explanation": "Se paga por almacenamiento barato y se escalan clústeres de cómputo on‑demand."
+  },
+  {
+    "id": 95,
+    "text": "El test Jarque‑Bera comprueba…",
+    "options": {
+      "A": "homocedasticidad",
+      "B": "normalidad mediante asimetría y curtosis",
+      "C": "autocorrelación",
+      "D": "independencia serial"
+    },
+    "correct": "B",
+    "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+    "explanation": "Usa skewness y kurtosis para contrastar la hipótesis de normalidad."
+  },
+  {
+    "id": 96,
+    "text": "La imputación k‑NN selecciona k…",
+    "options": {
+      "A": "registros más distantes",
+      "B": "registros más cercanos según una métrica",
+      "C": "clusters centrales",
+      "D": "valores promedio globales"
+    },
+    "correct": "B",
+    "topic": "Técnicas de análisis de datos",
+    "explanation": "Imputa con la media/moda de los vecinos más próximos en el espacio de características."
+  },
+  {
+    "id": 97,
+    "text": "LightGBM acelera entrenamiento usando…",
+    "options": {
+      "A": "histograms y crecimiento leaf‑wise con profundidad limitada",
+      "B": "bagging secuencial",
+      "C": "GPU siempre activa",
+      "D": "gini impurity"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Agrupa valores continuos en histogramas y expande la hoja más prometedora."
+  },
+  {
+    "id": 98,
+    "text": "Early stopping evita overfitting cuando…",
+    "options": {
+      "A": "la pérdida de validación deja de mejorar durante n iteraciones",
+      "B": "la pérdida de entrenamiento sube",
+      "C": "el learning rate es bajo",
+      "D": "se agota la memoria"
+    },
+    "correct": "A",
+    "topic": "Fundamentos de machine learning",
+    "explanation": "Se detiene el entrenamiento antes de que el modelo sobre‑ajuste al set de entrenamiento."
+  },
+  {
+    "id": 99,
+    "text": "TF‑IDF asigna mayor peso a un término cuando…",
+    "options": {
+      "A": "aparece muchas veces en el documento y pocas en la colección",
+      "B": "es muy común en la colección",
+      "C": "solo aparece una vez en todo el corpus",
+      "D": "está en stop‑words"
+    },
+    "correct": "A",
+    "topic": "Procesamiento de lenguaje natural",
+    "explanation": "Alta frecuencia local y rareza global maximizan el producto TF × IDF."
+  },
+  {
+    "id": 100,
+    "text": "El modelo SARIMA extiende ARIMA añadiendo…",
+    "options": {
+      "A": "términos de estacionalidad multiplicativos (p,d,q)s",
+      "B": "regresores exógenos",
+      "C": "ruido ARCH",
+      "D": "tendencia polinómica"
+    },
+    "correct": "A",
+    "topic": "Modelos para series temporales",
+    "explanation": "Introduce un segundo conjunto (P,D,Q)_S para capturar patrones estacionales."
+  }
+]

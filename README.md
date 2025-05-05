@@ -13,7 +13,7 @@ A local application for creating and taking exams with support for AI and data s
 
 ## Prerequisites
 
-- Node.js 16+ 
+- Node.js 16+
 - MongoDB 4.4+
 - pnpm (install with `npm install -g pnpm`)
 
@@ -21,11 +21,13 @@ A local application for creating and taking exams with support for AI and data s
 
 1. Clone the repository
 2. Install dependencies:
+
    ```bash
    pnpm install
    ```
 
 3. Start MongoDB locally:
+
    ```bash
    mongod --dbpath /path/to/data/directory
    ```
@@ -36,12 +38,14 @@ A local application for creating and taking exams with support for AI and data s
    ```
 
 The application will be available at:
+
 - Frontend: http://localhost:3000
 - Backend: http://localhost:4000
 
 ## Adding Questions
 
 1. Create a JSON file with 100 questions in the following format:
+
    ```json
    [
      {
