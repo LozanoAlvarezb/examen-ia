@@ -179,7 +179,7 @@ const ExamIntro = () => {
                 <CheckCircleIcon color="success" />
               </ListItemIcon>
               <ListItemText
-                primary="100 Multiple Choice Questions"
+                primary="Multiple Choice Questions"
                 secondary="Each question has exactly one correct answer"
               />
             </ListItem>

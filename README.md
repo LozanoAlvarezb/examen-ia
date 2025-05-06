@@ -4,7 +4,7 @@ A local application for creating and taking exams with support for AI and data s
 
 ## Features
 
-- Import 100-question exams with support for Markdown formatting
+- Import exams with support for Markdown formatting
 - Real-time exam timer with auto-submission
 - Topic-wise scoring and performance analysis
 - Negative marking support
@@ -33,6 +33,7 @@ A local application for creating and taking exams with support for AI and data s
    ```
 
 4. Start the development servers:
+
    ```bash
    pnpm dev
    ```
@@ -44,7 +45,7 @@ The application will be available at:
 
 ## Adding Questions
 
-1. Create a JSON file with 100 questions in the following format:
+1. Create a JSON file with questions in the following format:
 
    ```json
    [
@@ -60,7 +61,7 @@ The application will be available at:
        "topic": "Topic Name",
        "explanation": "Explanation for the correct answer"
      }
-     // ... 99 more questions
+     // ... more questions
    ]
    ```
 

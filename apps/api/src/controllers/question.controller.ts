@@ -1,21 +1,21 @@
-import { Request, Response } from 'express';
-import Question from '../models/question.model';
-import { QuestionImport } from 'shared/src/models';
 import crypto from 'crypto';
+import { Request, Response } from 'express';
+import { QuestionImport } from 'shared/src/models';
+import Question from '../models/question.model';
 
 export const bulkImport = async (req: Request, res: Response) => {
   try {
     const questions: QuestionImport[] = req.body;
 
     // Validate array length
-    if (!Array.isArray(questions) || questions.length !== 100) {
+    if (!Array.isArray(questions)) {
       return res.status(400).json({
-        message: `Invalid number of questions. Expected 100, got ${questions?.length || 0}`
+        message: `Invalid number of questions.`
       });
     }
 
     // Generate hashes for duplicate detection
-    const hashes = questions.map(q => 
+    const hashes = questions.map(q =>
       crypto.createHash('sha1').update(q.text).digest('hex')
     );
 
@@ -64,7 +64,7 @@ export const bulkImport = async (req: Request, res: Response) => {
     await Question.insertMany(questions);
 
     res.status(201).json({
-      message: 'Successfully imported 100 questions'
+      message: `Successfully imported ${questions.length} questions`
     });
   } catch (error: any) {
     console.error('Error importing questions:', error);

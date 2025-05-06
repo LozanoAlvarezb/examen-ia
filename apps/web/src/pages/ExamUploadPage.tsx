@@ -1,12 +1,12 @@
 import {
-    Alert,
-    Box, Button,
-    CircularProgress,
-    Container,
-    List, ListItem, ListItemText,
-    Paper,
-    TextField,
-    Typography
+  Alert,
+  Box, Button,
+  CircularProgress,
+  Container,
+  List, ListItem, ListItemText,
+  Paper,
+  TextField,
+  Typography
 } from '@mui/material';
 import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
@@ -41,9 +41,7 @@ const ExamUploadPage = () => {
       return 'Invalid file format: content must be an array';
     }
 
-    if (questions.length !== 100) {
-      return `Invalid number of questions: found ${questions.length}, expected 100`;
-    }
+
 
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
@@ -72,11 +70,11 @@ const ExamUploadPage = () => {
 
     setLoading(true);
     setError(null);
-    
+
     try {
       const content = await file.text();
       const questions = JSON.parse(content);
-      
+
       // Validate questions
       const validationError = validateQuestions(questions);
       if (validationError) {
@@ -88,7 +86,7 @@ const ExamUploadPage = () => {
       // Upload exam with questions
       await bulkImportExams(examName.trim(), questions);
       setSuccess(true);
-      
+
       // Navigate back to home after 2 seconds
       setTimeout(() => {
         navigate('/');
@@ -113,19 +111,19 @@ const ExamUploadPage = () => {
           </Typography>
           <List>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary="Enter an exam name"
                 secondary="This will be displayed to students when taking the exam"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
-                primary="JSON file containing exactly 100 questions"
+              <ListItemText
+                primary="JSON file containing questions"
                 secondary="The file must be in the correct format with all required fields"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary="Each question must have:"
                 secondary={`
                   - text: Question text (supports Markdown)
@@ -150,9 +148,9 @@ const ExamUploadPage = () => {
           />
 
           {/* Dropzone */}
-          <Box 
-            {...getRootProps()} 
-            sx={{ 
+          <Box
+            {...getRootProps()}
+            sx={{
               mt: 3,
               p: 3,
               border: '2px dashed',
@@ -193,16 +191,16 @@ const ExamUploadPage = () => {
           )}
 
           <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-            <Button 
-              variant="contained" 
-              onClick={handleUpload} 
+            <Button
+              variant="contained"
+              onClick={handleUpload}
               disabled={!file || !examName.trim() || loading}
             >
               {loading ? <CircularProgress size={24} /> : 'Upload Exam'}
             </Button>
-            
-            <Button 
-              variant="outlined" 
+
+            <Button
+              variant="outlined"
               onClick={() => navigate('/')}
               disabled={loading}
             >

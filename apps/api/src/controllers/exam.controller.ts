@@ -14,11 +14,6 @@ export const bulkImportExam = async (req: Request, res: Response) => {
     }
 
     // Validate number of questions
-    if (questions.length !== 100) {
-      return res.status(400).json({
-        message: `Invalid number of questions. Expected 100, got ${questions.length}`
-      });
-    }
 
     // First, insert all questions to database
     const questionData = questions.map(q => ({
@@ -43,7 +38,7 @@ export const bulkImportExam = async (req: Request, res: Response) => {
     await exam.save();
 
     res.status(201).json({
-      message: 'Successfully imported exam with 100 questions',
+      message: `Successfully imported exam with ${questionIds.length} questions`,
       examId: exam._id,
       name: exam.name
     });
@@ -67,12 +62,7 @@ export const createExam = async (req: Request, res: Response) => {
       });
     }
 
-    // Validate number of questions
-    if (questionIds.length !== 100) {
-      return res.status(400).json({
-        message: `Invalid number of questions. Expected 100, got ${questionIds.length}`
-      });
-    }
+
 
     // Verify all questions exist
     const questions = await Question.find({

@@ -77,19 +77,19 @@ const AttemptSchema = new mongoose.Schema(
 AttemptSchema.index({ examId: 1 });
 
 // Method to check if attempt is finished
-AttemptSchema.methods.isFinished = function(): boolean {
+AttemptSchema.methods.isFinished = function (): boolean {
   return !!this.finishedAt;
 };
 
 // Method to calculate time taken in minutes
-AttemptSchema.methods.getTimeTaken = function(): number {
+AttemptSchema.methods.getTimeTaken = function (): number {
   if (!this.finishedAt) return 0;
   return Math.floor((this.finishedAt.getTime() - this.startedAt.getTime()) / (1000 * 60));
 };
 
 // Method to get percentage complete
-AttemptSchema.methods.getProgressPercentage = function(): number {
-  const total = 100; // Always 100 questions
+AttemptSchema.methods.getProgressPercentage = function (): number {
+  const total = [...this.answers.values()].length;
   const answered = [...this.answers.values()].filter(answer => answer !== null).length;
   return (answered / total) * 100;
 };

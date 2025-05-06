@@ -20,10 +20,10 @@ const ExamSchema = new mongoose.Schema(
   }
 );
 
-// Validate exactly 100 questions
-ExamSchema.pre('save', function(next) {
-  if (this.isModified('questionIds') && this.questionIds.length !== 100) {
-    return next(new Error('Exam must contain exactly 100 questions'));
+// Validate that exam has at least one question
+ExamSchema.pre('save', function (next) {
+  if (this.isModified('questionIds') && this.questionIds.length < 1) {
+    return next(new Error('Exam must contain at least one question'));
   }
   next();
 });

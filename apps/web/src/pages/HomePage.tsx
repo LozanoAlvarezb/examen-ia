@@ -81,19 +81,19 @@ const HomePage = () => {
                 </Typography>
 
                 <Box sx={{ mt: 2 }}>
-                  <Chip 
-                    label="100 Questions" 
-                    size="small" 
-                    color="primary" 
+                  <Chip
+                    label="100 Questions"
+                    size="small"
+                    color="primary"
                     variant="outlined"
                   />
                 </Box>
               </CardContent>
 
               <CardActions>
-                <Button 
-                  fullWidth 
-                  variant="contained" 
+                <Button
+                  fullWidth
+                  variant="contained"
                   onClick={() => navigate(`/exam/${exam._id}`)}
                 >
                   Start Exam
@@ -119,15 +119,15 @@ const HomePage = () => {
 
       {/* Import buttons */}
       <Box sx={{ mt: 4, display: 'flex', justifyContent: 'center', gap: 2 }}>
-        <Button 
-          variant="outlined" 
+        <Button
+          variant="outlined"
           size="large"
           onClick={() => navigate('/admin/questions')}
         >
           Import Questions
         </Button>
-        <Button 
-          variant="contained" 
+        <Button
+          variant="contained"
           size="large"
           onClick={() => navigate('/admin/exams')}
         >

@@ -1,10 +1,15 @@
-import { useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { 
-  Container, Typography, Paper, Box, Button, 
-  Alert, CircularProgress, List, ListItem, ListItemText 
+import {
+  Alert,
+  Box, Button,
+  CircularProgress,
+  Container,
+  List, ListItem, ListItemText,
+  Paper,
+  Typography
 } from '@mui/material';
+import { useCallback, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
+import { useNavigate } from 'react-router-dom';
 import { bulkImportQuestions } from '../services/api';
 
 const QuestionUploadPage = () => {
@@ -34,9 +39,7 @@ const QuestionUploadPage = () => {
       return 'Invalid file format: content must be an array';
     }
 
-    if (questions.length !== 100) {
-      return `Invalid number of questions: found ${questions.length}, expected 100`;
-    }
+
 
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
@@ -61,11 +64,11 @@ const QuestionUploadPage = () => {
 
     setLoading(true);
     setError(null);
-    
+
     try {
       const content = await file.text();
       const questions = JSON.parse(content);
-      
+
       // Validate questions
       const validationError = validateQuestions(questions);
       if (validationError) {
@@ -76,7 +79,7 @@ const QuestionUploadPage = () => {
       // Upload questions
       await bulkImportQuestions(questions);
       setSuccess(true);
-      
+
       // Navigate back to home after 2 seconds
       setTimeout(() => {
         navigate('/');
@@ -101,13 +104,13 @@ const QuestionUploadPage = () => {
           </Typography>
           <List>
             <ListItem>
-              <ListItemText 
-                primary="JSON file containing exactly 100 questions"
+              <ListItemText
+                primary="JSON file containing questions"
                 secondary="The file must be in the correct format with all required fields"
               />
             </ListItem>
             <ListItem>
-              <ListItemText 
+              <ListItemText
                 primary="Each question must have:"
                 secondary={`
                   - text: Question text (supports Markdown)
@@ -121,9 +124,9 @@ const QuestionUploadPage = () => {
           </List>
 
           {/* Dropzone */}
-          <Box 
-            {...getRootProps()} 
-            sx={{ 
+          <Box
+            {...getRootProps()}
+            sx={{
               mt: 3,
               p: 3,
               border: '2px dashed',
@@ -164,16 +167,16 @@ const QuestionUploadPage = () => {
           )}
 
           <Box sx={{ mt: 3, display: 'flex', gap: 2 }}>
-            <Button 
-              variant="contained" 
-              onClick={handleUpload} 
+            <Button
+              variant="contained"
+              onClick={handleUpload}
               disabled={!file || loading}
             >
               {loading ? <CircularProgress size={24} /> : 'Upload Questions'}
             </Button>
-            
-            <Button 
-              variant="outlined" 
+
+            <Button
+              variant="outlined"
               onClick={() => navigate('/')}
               disabled={loading}
             >
