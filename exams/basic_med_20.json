@@ -1,0 +1,262 @@
+[
+    {
+        "id": 101,
+        "text": "¿Qué es una variable categórica?",
+        "options": {
+            "A": "Una variable que toma valores numéricos continuos",
+            "B": "Una variable que se puede dividir en categorías o grupos",
+            "C": "Una variable con valores infinitamente pequeños",
+            "D": "Una variable que sigue una distribución normal"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+        "explanation": "Las variables categóricas representan categorías como 'rojo', 'azul', 'verde'."
+    },
+    {
+        "id": 102,
+        "text": "¿Qué herramienta se usa comúnmente en Python para análisis de datos tabulares?",
+        "options": {
+            "A": "TensorFlow",
+            "B": "NumPy",
+            "C": "Pandas",
+            "D": "Scikit-learn"
+        },
+        "correct": "C",
+        "topic": "Programación con Python y R",
+        "explanation": "Pandas ofrece estructuras como DataFrame que facilitan el análisis de datos en tablas."
+    },
+    {
+        "id": 103,
+        "text": "¿Qué significa la sigla SQL?",
+        "options": {
+            "A": "Structured Question Language",
+            "B": "Simple Query Language",
+            "C": "Structured Query Language",
+            "D": "System Queue Logic"
+        },
+        "correct": "C",
+        "topic": "Gestión de bases de datos: modelado y consulta",
+        "explanation": "SQL es el lenguaje estándar para manejar bases de datos relacionales."
+    },
+    {
+        "id": 104,
+        "text": "¿Qué valor representa la media de los datos?",
+        "options": {
+            "A": "El valor más frecuente",
+            "B": "El valor intermedio",
+            "C": "La suma de los valores dividida entre el número de elementos",
+            "D": "El valor con menor frecuencia"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+        "explanation": "La media es el promedio aritmético de los datos."
+    },
+    {
+        "id": 105,
+        "text": "¿Qué librería se usa para crear gráficos en Python?",
+        "options": {
+            "A": "NumPy",
+            "B": "Pandas",
+            "C": "Matplotlib",
+            "D": "SciPy"
+        },
+        "correct": "C",
+        "topic": "Visualización de datos",
+        "explanation": "Matplotlib es una librería ampliamente usada para crear visualizaciones como gráficos de líneas y barras."
+    },
+    {
+        "id": 106,
+        "text": "¿Cuál es el objetivo principal del machine learning?",
+        "options": {
+            "A": "Escribir código para cada posible entrada",
+            "B": "Permitir que los programas aprendan de datos",
+            "C": "Calcular manualmente las respuestas",
+            "D": "Evitar el uso de datos históricos"
+        },
+        "correct": "B",
+        "topic": "Fundamentos de machine learning",
+        "explanation": "El aprendizaje automático permite que los sistemas aprendan patrones a partir de los datos."
+    },
+    {
+        "id": 107,
+        "text": "¿Qué estructura de datos en Python almacena pares clave-valor?",
+        "options": {
+            "A": "Lista",
+            "B": "Conjunto",
+            "C": "Tupla",
+            "D": "Diccionario"
+        },
+        "correct": "D",
+        "topic": "Programación con Python y R",
+        "explanation": "Los diccionarios en Python permiten mapear claves a valores."
+    },
+    {
+        "id": 108,
+        "text": "¿Qué es un 'dataset'?",
+        "options": {
+            "A": "Un conjunto de modelos",
+            "B": "Un archivo de configuración",
+            "C": "Un conjunto de datos estructurados para análisis",
+            "D": "Un software de aprendizaje"
+        },
+        "correct": "C",
+        "topic": "Fundamentos de ciencia de datos",
+        "explanation": "Un dataset es una colección de datos organizada para análisis."
+    },
+    {
+        "id": 109,
+        "text": "¿Qué indica un valor de correlación de 0?",
+        "options": {
+            "A": "Correlación perfecta positiva",
+            "B": "Correlación perfecta negativa",
+            "C": "Ninguna relación lineal",
+            "D": "Relación exponencial fuerte"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
+        "explanation": "Una correlación de 0 indica ausencia de relación lineal entre variables."
+    },
+    {
+        "id": 110,
+        "text": "¿Qué significa overfitting?",
+        "options": {
+            "A": "El modelo no aprende nada",
+            "B": "El modelo se ajusta demasiado a los datos de entrenamiento",
+            "C": "El modelo generaliza perfectamente",
+            "D": "El modelo ignora el error"
+        },
+        "correct": "B",
+        "topic": "Fundamentos de machine learning",
+        "explanation": "Overfitting ocurre cuando un modelo aprende incluso el ruido, reduciendo su capacidad de generalización."
+    },
+    {
+        "id": 111,
+        "text": "¿Qué comando de Git se usa para ver el historial de cambios?",
+        "options": {
+            "A": "git push",
+            "B": "git merge",
+            "C": "git log",
+            "D": "git init"
+        },
+        "correct": "C",
+        "topic": "Programación con Python y R",
+        "explanation": "git log muestra el historial de commits realizados en el repositorio."
+    },
+    {
+        "id": 112,
+        "text": "¿Qué es una predicción en un modelo supervisado?",
+        "options": {
+            "A": "Un valor calculado sin datos",
+            "B": "Un valor que se genera aleatoriamente",
+            "C": "Un valor estimado en función de los datos de entrada",
+            "D": "Un valor obtenido solo manualmente"
+        },
+        "correct": "C",
+        "topic": "Fundamentos de machine learning",
+        "explanation": "La predicción es el valor que estima el modelo según los datos que recibe como entrada."
+    },
+    {
+        "id": 113,
+        "text": "¿Qué tipo de gráfico es adecuado para representar proporciones?",
+        "options": {
+            "A": "Gráfico de líneas",
+            "B": "Gráfico de barras",
+            "C": "Gráfico circular",
+            "D": "Histograma"
+        },
+        "correct": "C",
+        "topic": "Visualización de datos",
+        "explanation": "Los gráficos circulares permiten visualizar proporciones relativas al total."
+    },
+    {
+        "id": 114,
+        "text": "¿Qué comando en SQL selecciona todas las columnas de una tabla?",
+        "options": {
+            "A": "SELECT * FROM tabla;",
+            "B": "GET ALL tabla;",
+            "C": "SHOW COLUMNS tabla;",
+            "D": "DISPLAY tabla;"
+        },
+        "correct": "A",
+        "topic": "Gestión de bases de datos: modelado y consulta",
+        "explanation": "SELECT * es la instrucción estándar para seleccionar todas las columnas de una tabla."
+    },
+    {
+        "id": 115,
+        "text": "¿Qué tipo de problema es predecir si un email es spam o no?",
+        "options": {
+            "A": "Clasificación",
+            "B": "Regresión",
+            "C": "Clustering",
+            "D": "Reducción de dimensionalidad"
+        },
+        "correct": "A",
+        "topic": "Fundamentos de machine learning",
+        "explanation": "Es un problema de clasificación binaria: dos clases posibles (spam o no spam)."
+    },
+    {
+        "id": 116,
+        "text": "¿Qué estructura almacena datos en filas y columnas en Pandas?",
+        "options": {
+            "A": "Serie",
+            "B": "Array",
+            "C": "DataFrame",
+            "D": "Tuple"
+        },
+        "correct": "C",
+        "topic": "Programación con Python y R",
+        "explanation": "El DataFrame es la estructura central de Pandas para manipular datos tabulados."
+    },
+    {
+        "id": 117,
+        "text": "¿Qué significa normalizar los datos?",
+        "options": {
+            "A": "Eliminar columnas",
+            "B": "Convertir los datos a texto",
+            "C": "Ajustar los valores para que estén en un mismo rango",
+            "D": "Traducir los datos a otro idioma"
+        },
+        "correct": "C",
+        "topic": "Preparación y limpieza de datos",
+        "explanation": "Normalizar datos ayuda a que los modelos no se vean influenciados por diferentes escalas."
+    },
+    {
+        "id": 118,
+        "text": "¿Qué es una API?",
+        "options": {
+            "A": "Una base de datos relacional",
+            "B": "Un lenguaje de programación",
+            "C": "Una interfaz para comunicarse entre programas",
+            "D": "Un sistema operativo"
+        },
+        "correct": "C",
+        "topic": "Programación / DevOps",
+        "explanation": "Una API define cómo interactuar con una aplicación mediante solicitudes programadas."
+    },
+    {
+        "id": 119,
+        "text": "¿Qué es el preprocesamiento de datos?",
+        "options": {
+            "A": "Usar los datos tal cual vienen",
+            "B": "Preparar los datos para que sean aptos para análisis o modelado",
+            "C": "Ignorar valores faltantes",
+            "D": "Eliminar todos los registros"
+        },
+        "correct": "B",
+        "topic": "Preparación y limpieza de datos",
+        "explanation": "El preprocesamiento incluye limpieza, transformación y selección de variables."
+    },
+    {
+        "id": 120,
+        "text": "¿Cuál es la ventaja principal del aprendizaje supervisado frente al no supervisado?",
+        "options": {
+            "A": "No requiere datos",
+            "B": "Utiliza etiquetas para aprender patrones precisos",
+            "C": "Solo se entrena una vez",
+            "D": "Siempre es más rápido"
+        },
+        "correct": "B",
+        "topic": "Fundamentos de machine learning",
+        "explanation": "El aprendizaje supervisado usa etiquetas reales para entrenar modelos más dirigidos y precisos."
+    }
+]
