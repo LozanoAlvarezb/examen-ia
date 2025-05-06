@@ -97,7 +97,7 @@ export const createExam = async (req: Request, res: Response) => {
 
 export const getExams = async (_req: Request, res: Response) => {
   try {
-    const exams = await Exam.find().select('-questionIds');
+    const exams = await Exam.find().select('');
     res.json(exams);
   } catch (error: any) {
     console.error('Error fetching exams:', error);

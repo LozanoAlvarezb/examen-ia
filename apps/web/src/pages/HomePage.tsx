@@ -12,13 +12,8 @@ import {
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Exam } from 'shared/src/models';
 import { fetchExams } from '../services/api';
-
-interface Exam {
-  _id: string;
-  name: string;
-  createdAt: Date;
-}
 
 const HomePage = () => {
   const [exams, setExams] = useState<Exam[]>([]);
@@ -30,6 +25,7 @@ const HomePage = () => {
     const loadExams = async () => {
       try {
         const data = await fetchExams();
+        console.log('Exams data:', data); // Log to verify data structure
         setExams(data);
       } catch (err: any) {
         setError(err.message || 'Failed to load exams');
@@ -82,7 +78,7 @@ const HomePage = () => {
 
                 <Box sx={{ mt: 2 }}>
                   <Chip
-                    label="100 Questions"
+                    label={`${Array.isArray(exam.questionIds) ? exam.questionIds.length : '?'} Questions`}
                     size="small"
                     color="primary"
                     variant="outlined"
