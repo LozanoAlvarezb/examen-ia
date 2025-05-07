@@ -1,13 +1,20 @@
-import { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import { 
-  Container, Typography, Paper, Box, Grid, Button, Divider,
-  Card, CardContent, useTheme, CircularProgress
+import {
+  Box,
+  Button,
+  CircularProgress,
+  Container,
+  Divider,
+  Grid,
+  Paper,
+  Typography,
+  useTheme
 } from '@mui/material';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
-import { fetchAttemptResults } from '../services/api';
-import QuestionCard from '../components/exam/QuestionCard';
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import NavigatorGrid from '../components/exam/NavigatorGrid';
+import QuestionCard from '../components/exam/QuestionCard';
+import { fetchAttemptResults } from '../services/api';
 
 interface TopicScore {
   name: string;
@@ -69,13 +76,13 @@ const ExamResult = () => {
     fetchResults();
   }, [attemptId]);
 
-  // Format the topic scores for the pie chart
+  // Format the topic scores for the bar chart with sorting
   const formatTopicScores = (scoreByTopic: Record<string, number> | undefined): TopicScore[] => {
     if (!scoreByTopic) return [];
-    return Object.entries(scoreByTopic).map(([name, score]) => ({
-      name,
-      score,
-    }));
+    // Sort topics by score in descending order
+    return Object.entries(scoreByTopic)
+      .map(([name, score]) => ({ name, score }))
+      .sort((a, b) => b.score - a.score);
   };
 
   // Calculate time taken in minutes
@@ -120,7 +127,7 @@ const ExamResult = () => {
         <Typography variant="h4" gutterBottom>
           {result.exam.name} - Results
         </Typography>
-        
+
         <Grid container spacing={2} sx={{ mt: 2 }}>
           <Grid item xs={12} md={6}>
             <Box>
@@ -141,51 +148,58 @@ const ExamResult = () => {
               </Typography>
             </Box>
           </Grid>
-          
+
           <Grid item xs={12} md={6}>
             <Typography variant="h6" gutterBottom>
               Performance by Topic
             </Typography>
-            
-            <Box sx={{ height: 250, width: '100%' }}>
+
+            <Box sx={{ height: 300, width: '100%' }}>
               <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={topicScores}
-                    cx="50%"
-                    cy="50%"
-                    innerRadius={60}
-                    outerRadius={80}
-                    paddingAngle={2}
-                    dataKey="score"
-                    nameKey="name"
-                    label={(entry) => `${entry.name}: ${entry.score.toFixed(1)}%`}
-                  >
-                    {topicScores.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
+                <BarChart
+                  data={topicScores}
+                  layout="vertical"
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 100, // Extra space for topic names
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis type="number" domain={[0, 100]} unit="%" />
+                  <YAxis
+                    type="category"
+                    dataKey="name"
+                    width={90}
+                    tick={{ fontSize: 11 }}
+                  />
                   <Tooltip formatter={(value) => `${Number(value).toFixed(1)}%`} />
-                  <Legend layout="vertical" align="right" verticalAlign="middle" />
-                </PieChart>
+                  <Bar
+                    dataKey="score"
+                    fill="#8884d8"
+                    barSize={20}
+                    label={{ position: 'right', formatter: (value: number) => `${value.toFixed(1)}%` }}
+                  />
+                </BarChart>
               </ResponsiveContainer>
             </Box>
           </Grid>
         </Grid>
-        
+
         <Box sx={{ mt: 3 }}>
           <Button variant="contained" component={Link} to="/">
             Back to Home
           </Button>
         </Box>
       </Paper>
-      
+
       <Divider sx={{ my: 3 }} />
-      
+
       <Typography variant="h5" gutterBottom>
         Review Questions
       </Typography>
-      
+
       <Grid container spacing={2}>
         {/* Question display */}
         <Grid item xs={12} md={8}>
@@ -197,22 +211,22 @@ const ExamResult = () => {
               correctAnswer={currentQuestion.correct}
               explanation={currentQuestion.explanation}
               showCorrectAnswer={true}
-              onAnswerSelect={() => {}} // No-op in review mode
+              onAnswerSelect={() => { }} // No-op in review mode
             />
           )}
-          
+
           {/* Navigation buttons */}
           <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 2 }}>
-            <Button 
-              variant="outlined" 
+            <Button
+              variant="outlined"
               disabled={currentQuestionIndex === 0}
               onClick={() => setCurrentQuestionIndex(prev => prev - 1)}
             >
               Previous
             </Button>
-            
-            <Button 
-              variant="outlined" 
+
+            <Button
+              variant="outlined"
               disabled={currentQuestionIndex === result.questions.length - 1}
               onClick={() => setCurrentQuestionIndex(prev => prev + 1)}
             >
@@ -220,14 +234,14 @@ const ExamResult = () => {
             </Button>
           </Box>
         </Grid>
-        
+
         {/* Question navigator */}
         <Grid item xs={12} md={4}>
           <Paper sx={{ p: 2, height: '100%' }}>
             <Typography variant="h6" gutterBottom>
               Questions Review
             </Typography>
-            <NavigatorGrid 
+            <NavigatorGrid
               totalQuestions={result.questions.length}
               currentQuestion={currentQuestionIndex}
               answers={result.answers}
