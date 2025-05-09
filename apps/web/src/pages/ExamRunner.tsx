@@ -219,6 +219,19 @@ const ExamRunner = () => {
   // Get current question
   const currentQuestion = exam.questions[currentQuestionIndex];
 
+  // Function to handle answer selection
+  const handleAnswerSelect = (answer: 'A' | 'B' | 'C' | 'D' | null) => {
+    // Save the answer
+    useExamSessionStore.getState().setAnswer(currentQuestion._id, answer);
+
+    // Automatically navigate to next question if not the last question
+    if (currentQuestionIndex < totalQuestions - 1) {
+      setTimeout(() => {
+        handleNavigate(currentQuestionIndex + 1);
+      }, 500); // Small delay for better UX
+    }
+  };
+
   return (
     <Container maxWidth="xl" sx={{ py: 3 }}>
       <TimerBar
@@ -236,9 +249,7 @@ const ExamRunner = () => {
               question={currentQuestion}
               questionNumber={currentQuestionIndex + 1}
               selectedAnswer={answers[currentQuestion._id] || null}
-              onAnswerSelect={(answer) => {
-                useExamSessionStore.getState().setAnswer(currentQuestion._id, answer);
-              }}
+              onAnswerSelect={handleAnswerSelect}
             />
           )}
 
