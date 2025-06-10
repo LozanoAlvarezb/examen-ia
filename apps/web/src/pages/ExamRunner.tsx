@@ -84,7 +84,9 @@ const ExamRunner = () => {
         const autoSaveInterval = setInterval(() => {
           if (connection) {
             try {
-              connection.sendPartialSubmission(answers);
+              // Get the latest answers from the store
+              const currentAnswers = useExamSessionStore.getState().answers;
+              connection.sendPartialSubmission(currentAnswers);
             } catch (error) {
               console.error('Failed to send partial submission:', error);
             }
@@ -130,7 +132,7 @@ const ExamRunner = () => {
         window.removeEventListener('websocketerror', handleWSError);
       };
     }
-  }, [isStarted, attemptId, timeLimit, isFinished, updateTimer, answers, finishExam]);
+  }, [isStarted, attemptId, timeLimit, isFinished, updateTimer, finishExam]);
 
   // Auto-navigate to results when finished
   useEffect(() => {
