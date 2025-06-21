@@ -1,0 +1,1303 @@
+[
+    {
+        "id": 1,
+        "text": "¿Qué mide la media aritmética de un conjunto de datos?",
+        "options": {
+            "A": "El valor más frecuente",
+            "B": "La suma de los valores dividida por el número de observaciones",
+            "C": "La mediana",
+            "D": "La desviación estándar"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La media aritmética es la suma de todos los valores entre la cantidad de datos."
+    },
+    {
+        "id": 2,
+        "text": "¿Cuál es la mediana del conjunto [4, 8, 15, 16, 23]?",
+        "options": {
+            "A": "8",
+            "B": "15",
+            "C": "16",
+            "D": "11"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La mediana es el valor central en la lista ordenada, aquí el tercero de cinco valores."
+    },
+    {
+        "id": 3,
+        "text": "¿Qué representa la moda en un conjunto de datos?",
+        "options": {
+            "A": "El valor que más se repite",
+            "B": "El promedio",
+            "C": "El valor central",
+            "D": "La dispersión"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La moda es el dato con mayor frecuencia de aparición."
+    },
+    {
+        "id": 4,
+        "text": "¿Cómo se define la varianza muestral?",
+        "options": {
+            "A": "Promedio de las diferencias al cuadrado respecto a la media, dividido por n",
+            "B": "Promedio de las diferencias absolutas respecto a la media",
+            "C": "Sumatoria de (x−μ)² dividida por n−1",
+            "D": "Raíz cuadrada de la desviación estándar"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La varianza muestral usa n−1 en el denominador para un estimador insesgado."
+    },
+    {
+        "id": 5,
+        "text": "¿Qué es la desviación estándar?",
+        "options": {
+            "A": "La raíz cuadrada de la media",
+            "B": "La raíz cuadrada de la varianza",
+            "C": "El cuadrado de la varianza",
+            "D": "La varianza elevada a 1.5"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La desviación estándar es la raíz cuadrada de la varianza muestral o poblacional."
+    },
+    {
+        "id": 6,
+        "text": "¿Cuál es el rango intercuartílico (IQR)?",
+        "options": {
+            "A": "Diferencia entre valor máximo y mínimo",
+            "B": "Diferencia entre tercer y primer cuartil",
+            "C": "Media de cuartiles",
+            "D": "Sumatoria de cuartiles"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El IQR es Q3−Q1, mide la dispersión del 50 % central."
+    },
+    {
+        "id": 7,
+        "text": "¿Qué porcentaje de datos cae dentro de ±1 desviación estándar en una distribución normal?",
+        "options": {
+            "A": "50 %",
+            "B": "68 %",
+            "C": "95 %",
+            "D": "99,7 %"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "En una normal, aproximadamente el 68 % de los datos está a ±1σ de la media."
+    },
+    {
+        "id": 8,
+        "text": "¿Cuál es la función de densidad de probabilidad de la normal estándar?",
+        "options": {
+            "A": "φ(x)=e^(−x)",
+            "B": "φ(x)=1/(√2π)·e^(−x²/2)",
+            "C": "φ(x)=x·e^(−x²)",
+            "D": "φ(x)=1/(2π)·e^(−|x|)"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La pdf de la normal estándar es 1/√(2π)·exp(−x²/2)."
+    },
+    {
+        "id": 9,
+        "text": "¿Qué caracteriza a la distribución t de Student frente a la normal?",
+        "options": {
+            "A": "Colas más delgadas",
+            "B": "Colas más pesadas",
+            "C": "Media distinta de cero",
+            "D": "Dominio discreto"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La t de Student tiene colas más pesadas útil con muestras pequeñas."
+    },
+    {
+        "id": 10,
+        "text": "¿Para qué se usa el test χ² de independencia?",
+        "options": {
+            "A": "Contrastar media de dos muestras",
+            "B": "Comparar varianzas",
+            "C": "Verificar independencia en tablas de contingencia",
+            "D": "Estimación de proporciones"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El test chi-cuadrado evalúa si dos variables categóricas son independientes."
+    },
+    {
+        "id": 11,
+        "text": "¿Qué prueba t se utiliza para muestras apareadas?",
+        "options": {
+            "A": "t de Student para muestras independientes",
+            "B": "t de Student para muestras parejas",
+            "C": "t de Welch",
+            "D": "ANOVA"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La t para muestras parejas compara medias de datos antes-después."
+    },
+    {
+        "id": 12,
+        "text": "¿Cuál es el valor p en un test de hipótesis?",
+        "options": {
+            "A": "Probabilidad de H₁",
+            "B": "Probabilidad de observar datos tan extremos si H₀ es cierta",
+            "C": "Tasa de error tipo II",
+            "D": "Nivel de confianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El p-valor mide evidencia contra H₀: probabilidad de los datos bajo H₀."
+    },
+    {
+        "id": 13,
+        "text": "¿Qué es un intervalo de confianza al 95 %?",
+        "options": {
+            "A": "Rango donde el 95 % de datos se encuentran",
+            "B": "Intervalo que contendrá la media verdadera en 95 % de muestras repetidas",
+            "C": "95 % de probabilidad de contener la media",
+            "D": "Intervalo con 95 % de varianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Interpretación frecuentista: repetimos muestreo, el IC incluiría la media real el 95 % de veces."
+    },
+    {
+        "id": 14,
+        "text": "¿Qué mide el coeficiente de correlación de Pearson?",
+        "options": {
+            "A": "Relación lineal entre dos variables",
+            "B": "Dependencia no lineal",
+            "C": "Diferencia de medias",
+            "D": "Varianza conjunta"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Pearson mide fuerza y dirección de la relación lineal entre dos variables."
+    },
+    {
+        "id": 15,
+        "text": "¿Qué rango tiene el coeficiente de Pearson?",
+        "options": {
+            "A": "0 a 1",
+            "B": "−∞ a +∞",
+            "C": "−1 a +1",
+            "D": "1 a 100"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El coeficiente de Pearson está acotado entre −1 (negativa perfecta) y +1 (positiva perfecta)."
+    },
+    {
+        "id": 16,
+        "text": "¿Qué es una regresión lineal simple?",
+        "options": {
+            "A": "Modelo que ajusta una recta a datos bidimensionales",
+            "B": "Modelo de clasificación binaria",
+            "C": "Algoritmo de clustering",
+            "D": "Transformación de datos"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La regresión lineal simple modela ŷ = β₀+β₁x minimizando el error cuadrático."
+    },
+    {
+        "id": 17,
+        "text": "¿Qué suposición NO es necesaria en la regresión lineal clásica?",
+        "options": {
+            "A": "Linealidad",
+            "B": "Independencia de errores",
+            "C": "Homoscedasticidad",
+            "D": "Errores normalmente distribuidos con misma media",
+            "E": "No multicolinealidad perfecta"
+        },
+        "correct": "D",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "No es necesaria normalidad exacta de errores para estimación de coeficientes OLS, sólo para inferencia."
+    },
+    {
+        "id": 18,
+        "text": "¿Cómo se interpreta el coeficiente R²?",
+        "options": {
+            "A": "Porcentaje de varianza de y explicado por x",
+            "B": "Pendiente de la recta",
+            "C": "Error estándar del modelo",
+            "D": "Correlación raíz"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "R² indica proporción de varianza de variable dependiente explicada por el modelo."
+    },
+    {
+        "id": 19,
+        "text": "¿Qué método se usa para regularizar regresión y prevenir overfitting?",
+        "options": {
+            "A": "Cross validation",
+            "B": "Ridge (L2) y Lasso (L1)",
+            "C": "K-means",
+            "D": "PCA"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Ridge y Lasso añaden penalizaciones L2 y L1 al error para reducir magnitud de coeficientes."
+    },
+    {
+        "id": 20,
+        "text": "¿Qué es PCA (Análisis de Componentes Principales)?",
+        "options": {
+            "A": "Algoritmo de clustering",
+            "B": "Técnica de reducción de dimensionalidad lineal",
+            "C": "Método de imputación",
+            "D": "Prueba de hipótesis"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "PCA proyecta datos en nuevas variables no correlacionadas que maximizan varianza."
+    },
+    {
+        "id": 21,
+        "text": "¿Qué transforma PCA para hallar componentes?",
+        "options": {
+            "A": "Matriz de covarianza",
+            "B": "Distancias Euclídeas",
+            "C": "Matriz de confusión",
+            "D": "Curva ROC"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "PCA diagonaliza la matriz de covarianza de los datos para obtener autovectores/autovalores."
+    },
+    {
+        "id": 22,
+        "text": "¿Qué representa un autovalor en PCA?",
+        "options": {
+            "A": "Varianza explicada por ese componente",
+            "B": "Dirección del vector",
+            "C": "Error del modelo",
+            "D": "Distancia media"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Los autovalores miden la varianza de los datos a lo largo de cada componente principal."
+    },
+    {
+        "id": 23,
+        "text": "¿Qué es un test de Shapiro-Wilk?",
+        "options": {
+            "A": "Prueba de bondad de ajuste a normalidad",
+            "B": "Comparación de medias",
+            "C": "Análisis de varianza",
+            "D": "Regresión múltiple"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El test de Shapiro-Wilk evalúa si una muestra proviene de una distribución normal."
+    },
+    {
+        "id": 24,
+        "text": "¿Qué suposición requiere el ANOVA de un factor?",
+        "options": {
+            "A": "Normalidad y homocedasticidad en grupos",
+            "B": "Clustering jerárquico",
+            "C": "Distribución chi-cuadrado",
+            "D": "Distribución exponencial"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "ANOVA asume normalidad de errores y varianzas iguales entre grupos."
+    },
+    {
+        "id": 25,
+        "text": "¿Qué testa post-hoc tras ANOVA usa corrección de Bonferroni?",
+        "options": {
+            "A": "Tukey HSD",
+            "B": "Dunnett",
+            "C": "Scheffé",
+            "D": "Comparaciones con Bonferroni"
+        },
+        "correct": "D",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La corrección de Bonferroni ajusta el nivel de significación multiplicando p por el número de comparaciones."
+    },
+    {
+        "id": 26,
+        "text": "¿Qué es un estimador insesgado?",
+        "options": {
+            "A": "Su esperanza es igual al parámetro verdadero",
+            "B": "Siempre menor que el verdadero",
+            "C": "Siempre mayor que el verdadero",
+            "D": "Varianza cero"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Un estimador es insesgado si su valor esperado coincide con el parámetro que estima."
+    },
+    {
+        "id": 27,
+        "text": "¿Para qué sirve la regla empírica 68-95-99,7?",
+        "options": {
+            "A": "Estimación de p-valores",
+            "B": "Describir proporción de datos en intervalos de σ en normal",
+            "C": "Ajustar modelos de regresión",
+            "D": "Construir histogramas"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La regla describe qué porcentaje de datos cae dentro de ±1, ±2 y ±3 desviaciones estándar."
+    },
+    {
+        "id": 28,
+        "text": "¿Qué distribuciones se usan en un intervalo de confianza de proporciones?",
+        "options": {
+            "A": "Normal o t",
+            "B": "Chi-cuadrado",
+            "C": "Binomial aproximada a normal",
+            "D": "Exponencial"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Para n grande, la distribución binomial se aproxima a la normal mediante CLT."
+    },
+    {
+        "id": 29,
+        "text": "¿Qué significa heterocedasticidad en regresión?",
+        "options": {
+            "A": "Varianza constante de errores",
+            "B": "Varianza de errores no constante",
+            "C": "Errores no correlacionados",
+            "D": "Presencia de outliers"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La heterocedasticidad viola la suposición de varianza constante de los errores."
+    },
+    {
+        "id": 30,
+        "text": "¿Qué prueba detecta autocorrelación en residuos?",
+        "options": {
+            "A": "Durbin-Watson",
+            "B": "Jarque-Bera",
+            "C": "Shapiro-Wilk",
+            "D": "Granger"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El test Durbin-Watson evalúa correlación serial en los residuos de regresión."
+    },
+    {
+        "id": 31,
+        "text": "¿Qué es un proceso AR(1)?",
+        "options": {
+            "A": "Yₜ = ϕYₜ₋₁ + εₜ",
+            "B": "Yₜ = εₜ",
+            "C": "Yₜ depende solo de Yₜ₋₂",
+            "D": "Yₜ = Yₜ₋₁ + Yₜ₋₂"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Un AR(1) relaciona el valor actual con el valor previo y ruido blanco."
+    },
+    {
+        "id": 32,
+        "text": "¿Qué indica la estacionariedad en series temporales?",
+        "options": {
+            "A": "Media y varianza constantes en el tiempo",
+            "B": "Tendencia creciente",
+            "C": "Patrones estacionales",
+            "D": "Valores discretos"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Una serie estacionaria tiene propiedades estadísticas invariantes en el tiempo."
+    },
+    {
+        "id": 33,
+        "text": "¿Qué método de remuestreo se usa para estimar la varianza de un estadístico?",
+        "options": {
+            "A": "Bootstrap",
+            "B": "Cross-validation",
+            "C": "Grid search",
+            "D": "Monte Carlo"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El bootstrap genera muestras con reemplazo para estimar la distribución de un estadístico."
+    },
+    {
+        "id": 34,
+        "text": "¿Qué son los cuantiles de un conjunto de datos?",
+        "options": {
+            "A": "Puntos que dividen la distribución en partes iguales",
+            "B": "Valores fuera del rango",
+            "C": "Solo la mediana",
+            "D": "Solo los cuartiles"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Los cuantiles, como cuartiles y percentiles, dividen la distribución en intervalos iguales."
+    },
+    {
+        "id": 35,
+        "text": "¿Qué gráfica es adecuada para comparar distribuciones de múltiples grupos?",
+        "options": {
+            "A": "Scatter plot",
+            "B": "Box plot",
+            "C": "Heat map",
+            "D": "Pie chart"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El box plot muestra mediana, cuartiles y posibles outliers por grupo."
+    },
+    {
+        "id": 36,
+        "text": "¿Qué mide el coeficiente de Spearman?",
+        "options": {
+            "A": "Correlación lineal",
+            "B": "Correlación de rangos",
+            "C": "Dependencia condicional",
+            "D": "Covarianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Spearman mide la relación monotónica usando rangos en lugar de valores directos."
+    },
+    {
+        "id": 37,
+        "text": "¿Qué técnica reduce dimensionalidad proyectando en subespacio con máxima varianza?",
+        "options": {
+            "A": "LDA",
+            "B": "PCA",
+            "C": "t-SNE",
+            "D": "DBSCAN"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "PCA halla componentes que maximizan la varianza del conjunto de datos."
+    },
+    {
+        "id": 38,
+        "text": "¿Qué método de clustering no requiere definir k a priori?",
+        "options": {
+            "A": "K-means",
+            "B": "DBSCAN",
+            "C": "Agglomerative",
+            "D": "Spectral"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "DBSCAN identifica clusters de alta densidad sin necesidad de especificar el número."
+    },
+    {
+        "id": 39,
+        "text": "¿Qué es una matriz de correlación?",
+        "options": {
+            "A": "Matriz de varianzas",
+            "B": "Matriz de covarianzas normalizadas",
+            "C": "Matriz de distancias",
+            "D": "Matriz de conteos"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Contiene correlaciones de Pearson entre pares de variables."
+    },
+    {
+        "id": 40,
+        "text": "¿Qué prueba compara medias de más de dos grupos simultáneamente?",
+        "options": {
+            "A": "t-test",
+            "B": "ANOVA",
+            "C": "Chi-cuadrado",
+            "D": "Regresión"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "ANOVA analiza si hay diferencias significativas entre medias de múltiples grupos."
+    },
+    {
+        "id": 41,
+        "text": "¿Qué evalúa el estadístico F en ANOVA?",
+        "options": {
+            "A": "Variance between groups / variance within groups",
+            "B": "Media de grupos",
+            "C": "Correlación",
+            "D": "Desviación estándar"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El estadístico F es la razón de varianzas que permite contrastar diferencias de medias."
+    },
+    {
+        "id": 42,
+        "text": "¿Qué transforma la función log en datos?",
+        "options": {
+            "A": "Ajusta una distribución uniforme",
+            "B": "Reduce la asimetría positiva",
+            "C": "Aumenta rangos",
+            "D": "Crea outliers"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La transformación log reduce la cola larga de distribuciones asimétricas."
+    },
+    {
+        "id": 43,
+        "text": "¿Qué indica el valor VIF en regresión múltiple?",
+        "options": {
+            "A": "Fuerza de correlación de cada predictor",
+            "B": "Multicolinealidad entre regresores",
+            "C": "Importancia de variable",
+            "D": "Error estándar"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "VIF detecta colinealidad alta: valores >10 sugieren problemas."
+    },
+    {
+        "id": 44,
+        "text": "¿Qué método estima parámetros en regresión lineal?",
+        "options": {
+            "A": "Maximum likelihood",
+            "B": "Ordinary Least Squares",
+            "C": "Gradient boosting",
+            "D": "K-means"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "OLS minimiza la suma de cuadrados de los residuales para estimar los coeficientes."
+    },
+    {
+        "id": 45,
+        "text": "¿Qué es la inferencia bayesiana?",
+        "options": {
+            "A": "Contraste de hipótesis frecuente",
+            "B": "Actualiza creencias usando la regla de Bayes",
+            "C": "Mínimos cuadrados",
+            "D": "Clustering jerárquico"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La inferencia bayesiana combina una probabilidad previa con la verosimilitud para obtener una posterior."
+    },
+    {
+        "id": 46,
+        "text": "¿Qué distribución describe conteos de eventos en un intervalo fijo?",
+        "options": {
+            "A": "Normal",
+            "B": "Binomial",
+            "C": "Poisson",
+            "D": "Uniforme"
+        },
+        "correct": "C",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La Poisson modela la frecuencia de eventos raros en intervalos de tiempo o espacio."
+    },
+    {
+        "id": 47,
+        "text": "¿Qué suceso modela mejor una distribución geométrica?",
+        "options": {
+            "A": "Número de fracasos antes del primer éxito",
+            "B": "Conteo de éxitos en n pruebas",
+            "C": "Tiempo hasta el primer evento",
+            "D": "Suma de variables uniformes"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La geométrica da la probabilidad de k−1 fracasos antes del primer éxito."
+    },
+    {
+        "id": 48,
+        "text": "¿Qué es una cadena de Markov?",
+        "options": {
+            "A": "Proceso sin memoria",
+            "B": "Proceso con memoria infinita",
+            "C": "Clustering secuencial",
+            "D": "Test de hipótesis"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "En Markov la probabilidad del siguiente estado depende solo del estado actual."
+    },
+    {
+        "id": 49,
+        "text": "¿Qué distribuye uniformemente la probabilidad en un intervalo [a,b]?",
+        "options": {
+            "A": "Exponencial",
+            "B": "Uniforme continua",
+            "C": "Normal",
+            "D": "Beta"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La uniforme continua asigna la misma densidad a cada punto en [a,b]."
+    },
+    {
+        "id": 50,
+        "text": "¿Qué test compara dos proporcionalesh?",
+        "options": {
+            "A": "t-test",
+            "B": "z-test para proporciones",
+            "C": "ANOVA",
+            "D": "Chi-cuadrado"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El z-test para proporciones evalúa diferencia entre p1 y p2 cuando n grande."
+    },
+    {
+        "id": 51,
+        "text": "¿Qué es la ley de los grandes números?",
+        "options": {
+            "A": "La media muestral converge a la verdadera al aumentar n",
+            "B": "La varianza aumenta con n",
+            "C": "Los datos se vuelven uniformes",
+            "D": "El p-valor disminuye con n"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El promedio de muchas observaciones tiende a la esperanza poblacional."
+    },
+    {
+        "id": 52,
+        "text": "¿Qué afirma el teorema central del límite?",
+        "options": {
+            "A": "Sumas de variables van a Poisson",
+            "B": "Promedios de muestras grandes tienden a normal",
+            "C": "Cualquier distribución es normal",
+            "D": "Varianza se anula"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La suma o media de variables i.i.d. con varianza finita tiende a una normal."
+    },
+    {
+        "id": 53,
+        "text": "¿Qué es una distribución exponencial?",
+        "options": {
+            "A": "Tiempo entre eventos Poisson",
+            "B": "Conteo de eventos",
+            "C": "Distribución discreta",
+            "D": "Variable categórica"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Modela el tiempo de espera entre eventos en un proceso Poisson."
+    },
+    {
+        "id": 54,
+        "text": "¿Qué prueba evalúa homogeneidad de varianzas?",
+        "options": {
+            "A": "Levene",
+            "B": "Shapiro-Wilk",
+            "C": "t-test",
+            "D": "Durbin-Watson"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El test de Levene comprueba igualdad de varianzas en varios grupos."
+    },
+    {
+        "id": 55,
+        "text": "¿Qué es la autocorrelación en series temporales?",
+        "options": {
+            "A": "Correlación de la serie con rezagos de sí misma",
+            "B": "Correlación entre variables diferentes",
+            "C": "Cambio de media",
+            "D": "Nivel de ruido"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Mide similitud entre valores de la serie en diferentes puntos temporales."
+    },
+    {
+        "id": 56,
+        "text": "¿Qué es la función de autocorrelación parcial (PACF)?",
+        "options": {
+            "A": "Correlación directa a un rezago ignorando intermedios",
+            "B": "Correlación acumulada",
+            "C": "Media móvil",
+            "D": "Potencia de señal"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "PACF muestra correlación entre Yₜ y Yₜ₋ₖ eliminando efectos de rezagos intermedios."
+    },
+    {
+        "id": 57,
+        "text": "¿Qué es un proceso MA(q)?",
+        "options": {
+            "A": "Media móvil de orden q",
+            "B": "Autoregresivo de orden q",
+            "C": "Integración de orden q",
+            "D": "Clustering"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Un MA(q) es combinación lineal de q términos de ruido blanco."
+    },
+    {
+        "id": 58,
+        "text": "¿Qué es un modelo ARIMA(p,d,q)?",
+        "options": {
+            "A": "Combinación de AR, I y MA",
+            "B": "Sólo autoregresivo",
+            "C": "Sólo integrativo",
+            "D": "Sólo media móvil"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "ARIMA une componentes autoregresivas, diferencias e integración y media móvil."
+    },
+    {
+        "id": 59,
+        "text": "¿Qué significa d en ARIMA(p,d,q)?",
+        "options": {
+            "A": "Número de diferencias aplicadas",
+            "B": "Orden de MA",
+            "C": "Orden de AR",
+            "D": "Desviación estándar"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "d es el grado de diferenciación necesario para lograr estacionariedad."
+    },
+    {
+        "id": 60,
+        "text": "¿Qué test usa AIC para comparar modelos?",
+        "options": {
+            "A": "Criterio de información de Akaike",
+            "B": "Criterio bayesiano",
+            "C": "Chi-cuadrado",
+            "D": "ANOVA"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "AIC evalúa ajuste y complejidad penalizando el número de parámetros."
+    },
+    {
+        "id": 61,
+        "text": "¿Qué penaliza BIC respecto a AIC?",
+        "options": {
+            "A": "Menos los parámetros",
+            "B": "Más fuertemente el número de parámetros",
+            "C": "Errores al cuadrado",
+            "D": "Varianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "BIC incluye un término log(n) que penaliza más modelos complejos en muestras grandes."
+    },
+    {
+        "id": 62,
+        "text": "¿Qué método estima la densidad de probabilidad sin suponer forma paramétrica?",
+        "options": {
+            "A": "Histogramas",
+            "B": "KDE (estimación por kernel)",
+            "C": "Regresión lineal",
+            "D": "ANOVA"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "KDE aproxima densidad usando kernels suavizados alrededor de cada punto."
+    },
+    {
+        "id": 63,
+        "text": "¿Qué es un análisis de supervivencia?",
+        "options": {
+            "A": "Estudio de tiempos hasta evento",
+            "B": "Regresión múltiple",
+            "C": "Clustering temporal",
+            "D": "Test de independencia"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Modela el tiempo hasta que ocurre un evento como falla o muerte."
+    },
+    {
+        "id": 64,
+        "text": "¿Qué gráfico muestra la función de supervivencia?",
+        "options": {
+            "A": "Histograma",
+            "B": "Kaplan-Meier",
+            "C": "Box plot",
+            "D": "Scatter plot"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La curva de Kaplan-Meier estima supervivencia acumulada vs tiempo."
+    },
+    {
+        "id": 65,
+        "text": "¿Qué es regresión logística?",
+        "options": {
+            "A": "Regresión para variables continuas",
+            "B": "Modelo para variable dicotómica",
+            "C": "Clustering",
+            "D": "Transformación de datos"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La regresión logística modela la probabilidad de clase usando la función logística."
+    },
+    {
+        "id": 66,
+        "text": "¿Qué función de enlace usa el modelo logístico?",
+        "options": {
+            "A": "Logit",
+            "B": "Probit",
+            "C": "Identity",
+            "D": "Inverse"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El enlace logit transforma p en log(p/(1−p))."
+    },
+    {
+        "id": 67,
+        "text": "¿Cómo se mide ajuste en regresión logística?",
+        "options": {
+            "A": "R²",
+            "B": "Deviance",
+            "C": "MAE",
+            "D": "MSE"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La deviance compara la verosimilitud del modelo con la verosimilitud saturada."
+    },
+    {
+        "id": 68,
+        "text": "¿Qué es una matriz de confusión?",
+        "options": {
+            "A": "Tabla de errores de clasificación",
+            "B": "Matriz de covarianza",
+            "C": "Matriz de varianza",
+            "D": "Tabla de contingencia continua"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Resume TP, FP, TN y FN para evaluar clasificadores."
+    },
+    {
+        "id": 69,
+        "text": "¿Qué mide la sensibilidad (recall)?",
+        "options": {
+            "A": "TP/(TP+FP)",
+            "B": "TP/(TP+FN)",
+            "C": "TN/(TN+FP)",
+            "D": "TN/(TN+FN)"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La sensibilidad es la proporción de verdaderos positivos entre todos los positivos reales."
+    },
+    {
+        "id": 70,
+        "text": "¿Qué mide la especificidad?",
+        "options": {
+            "A": "TN/(TN+FP)",
+            "B": "TN/(TP+TN)",
+            "C": "TP/(TP+FN)",
+            "D": "FP/(FP+TN)"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La especificidad es la proporción de verdaderos negativos correctamente identificados."
+    },
+    {
+        "id": 71,
+        "text": "¿Qué grafica la curva ROC?",
+        "options": {
+            "A": "Recall vs Precision",
+            "B": "TPR vs FPR",
+            "C": "ROC vs AUC",
+            "D": "Precision vs FPR"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La curva ROC traza tasa de verdaderos positivos frente a tasa de falsos positivos."
+    },
+    {
+        "id": 72,
+        "text": "¿Qué indica un AUC cercano a 1?",
+        "options": {
+            "A": "Clasificador malo",
+            "B": "Clasificador excelente",
+            "C": "Random guessing",
+            "D": "Overfitting"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Un AUC alto significa buena discriminación entre clases."
+    },
+    {
+        "id": 73,
+        "text": "¿Qué es un outlier?",
+        "options": {
+            "A": "Dato repetido",
+            "B": "Valor anómalo lejano al resto",
+            "C": "Media móvil",
+            "D": "Mediana ajustada"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Outliers son observaciones que se desvían significativamente del patrón general."
+    },
+    {
+        "id": 74,
+        "text": "¿Cómo se detecta un outlier con IQR?",
+        "options": {
+            "A": "Valores fuera de Q1−1.5·IQR y Q3+1.5·IQR",
+            "B": "Valores dentro de IQR",
+            "C": "Valores en cuartiles",
+            "D": "Valores en la media"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Los outliers suelen definirse fuera de 1.5 veces el IQR desde los cuartiles."
+    },
+    {
+        "id": 75,
+        "text": "¿Qué es el sesgo (bias) de un estimador?",
+        "options": {
+            "A": "Diferencia entre su valor esperado y el parámetro verdadero",
+            "B": "Varianza del estimador",
+            "C": "Desviación estándar",
+            "D": "Error cuadrático medio"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El bias mide error sistemático del estimador respecto al verdadero valor poblacional."
+    },
+    {
+        "id": 76,
+        "text": "¿Qué es el MSE (Error cuadrático medio)?",
+        "options": {
+            "A": "Promedio de errores absolutos",
+            "B": "Promedio de errores al cuadrado",
+            "C": "Desviación absoluta",
+            "D": "Varianza de errores"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "MSE es la media de los cuadrados de las diferencias entre predicciones y valores reales."
+    },
+    {
+        "id": 77,
+        "text": "¿Qué distingue heterocedasticidad de homocedasticidad?",
+        "options": {
+            "A": "Errores constantes vs no constantes",
+            "B": "Errores correlacionados vs no correlacionados",
+            "C": "Errores sesgados vs insesgados",
+            "D": "Errores normales vs no normales"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Homoscedasticidad implica varianza de errores constante, heterocedasticidad varianza variable."
+    },
+    {
+        "id": 78,
+        "text": "¿Qué es un gráfico de QQ?",
+        "options": {
+            "A": "QQ plot, compara cuantiles de dos distribuciones",
+            "B": "Histograma",
+            "C": "Box plot",
+            "D": "Scatter plot"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "QQ plot compara cuantiles muestrales con cuantiles teóricos para verificar normalidad."
+    },
+    {
+        "id": 79,
+        "text": "¿Qué es la integración en series temporales?",
+        "options": {
+            "A": "Sumar valores",
+            "B": "Aplicar diferencias para eliminar tendencia",
+            "C": "Multiplicar datos",
+            "D": "Clustering"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La diferenciación es un tipo de integración que hace estacionaria la serie."
+    },
+    {
+        "id": 80,
+        "text": "¿Qué técnica se usa para suavizar series temporales?",
+        "options": {
+            "A": "Moving average",
+            "B": "Clustering",
+            "C": "Regresión logística",
+            "D": "PCA"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El promedio móvil suaviza fluctuaciones de corto plazo en una serie."
+    },
+    {
+        "id": 81,
+        "text": "¿Qué es un vector aleatorio?",
+        "options": {
+            "A": "Conjunto de variables aleatorias",
+            "B": "Variable determinista",
+            "C": "Vector de medias",
+            "D": "Matriz de correlación"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Un vector aleatorio agrupa varias variables aleatorias en una sola entidad."
+    },
+    {
+        "id": 82,
+        "text": "¿Qué es una matriz de covarianza?",
+        "options": {
+            "A": "Matrix de medias",
+            "B": "Matrix con covarianzas entre pares de variables",
+            "C": "Histograma multidimensional",
+            "D": "Box plot multivariante"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Describe cómo varían conjuntamente pares de variables aleatorias."
+    },
+    {
+        "id": 83,
+        "text": "¿Qué propiedad debe tener una matriz de covarianza?",
+        "options": {
+            "A": "Ortogonalidad",
+            "B": "Ser simétrica y definida positiva",
+            "C": "Ser triangular",
+            "D": "Ser diagonal"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La matriz de covarianza es simétrica y no negativa definida."
+    },
+    {
+        "id": 84,
+        "text": "¿Qué es la descomposición en valores singulares (SVD)?",
+        "options": {
+            "A": "Factorización A=UΣVᵀ",
+            "B": "Descomposición de frecuencia",
+            "C": "Descomposición de varianza",
+            "D": "Transformación logarítmica"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "SVD factoriza una matriz en producto de ortogonales y una diagonal de valores singulares."
+    },
+    {
+        "id": 85,
+        "text": "¿Qué aplicación tiene SVD en PCA?",
+        "options": {
+            "A": "Calcular correlaciones",
+            "B": "Obtener componentes principales",
+            "C": "Imputar datos",
+            "D": "Regularizar modelos"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "SVD de la matriz de datos centrados da los autovectores y autovalores para PCA."
+    },
+    {
+        "id": 86,
+        "text": "¿Qué es la inversa de una matriz?",
+        "options": {
+            "A": "Matriz transpuesta",
+            "B": "Matriz que multiplicada da identidad",
+            "C": "Matriz de covarianzas",
+            "D": "Matriz de distancias"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "A·A⁻¹=I si A es invertible."
+    },
+    {
+        "id": 87,
+        "text": "¿Cuál es el determinante de una matriz?",
+        "options": {
+            "A": "Suma de entradas",
+            "B": "Producto de valores singulares",
+            "C": "Suma de autovalores",
+            "D": "Producto de autovalores"
+        },
+        "correct": "D",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El determinante es el producto de los autovalores de la matriz."
+    },
+    {
+        "id": 88,
+        "text": "¿Qué es el método de mínimos cuadrados ordinarios (OLS)?",
+        "options": {
+            "A": "Minimizar suma de errores absolutos",
+            "B": "Minimizar suma de errores cuadrados",
+            "C": "Maximizar verosimilitud",
+            "D": "Clustering jerárquico"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "OLS ajusta coeficientes minimizando la suma de los residuos al cuadrado."
+    },
+    {
+        "id": 89,
+        "text": "¿Qué es el pseudo-inverso de Moore-Penrose?",
+        "options": {
+            "A": "Inversa clásica",
+            "B": "Generalización de inversa para matrices no cuadradas",
+            "C": "Determinante",
+            "D": "Transpuesta"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El pseudo-inverso permite resolver sistemas sobredeterminados mediante mínimos cuadrados."
+    },
+    {
+        "id": 90,
+        "text": "¿Qué es la ortonormalidad de vectores?",
+        "options": {
+            "A": "Ser paralelos",
+            "B": "Ser perpendiculares y de longitud 1",
+            "C": "Tener misma dirección",
+            "D": "Ser linealmente dependientes"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Vectores ortonormales son mutuamente ortogonales y cada uno tiene norma 1."
+    },
+    {
+        "id": 91,
+        "text": "¿Qué es el gradiente de una función multivariable?",
+        "options": {
+            "A": "Vector de derivadas parciales",
+            "B": "Segunda derivada",
+            "C": "Valor máximo",
+            "D": "Valor mínimo"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El gradiente indica dirección de máxima pendiente de la función."
+    },
+    {
+        "id": 92,
+        "text": "¿Qué método de optimización usa descenso de gradiente?",
+        "options": {
+            "A": "Newton-Raphson",
+            "B": "Gradient descent",
+            "C": "Simulated annealing",
+            "D": "Clustering"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El método ajusta parámetros iterativamente en dirección opuesta al gradiente."
+    },
+    {
+        "id": 93,
+        "text": "¿Qué es una función convexa?",
+        "options": {
+            "A": "Tiene un único mínimo global",
+            "B": "Tiene múltiples máximos",
+            "C": "Es siempre lineal",
+            "D": "Nunca es diferenciable"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "Las funciones convexas garantizan que cualquier mínimo local es global."
+    },
+    {
+        "id": 94,
+        "text": "¿Qué es el análisis de varianza (ANOVA)?",
+        "options": {
+            "A": "Comparar medias de dos muestras",
+            "B": "Comparar medias de múltiples muestras",
+            "C": "Calcular correlaciones",
+            "D": "Estimación de densidades"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "ANOVA evalúa si al menos dos medias de grupos difieren significativamente."
+    },
+    {
+        "id": 95,
+        "text": "¿Qué mide la curtosis de una distribución?",
+        "options": {
+            "A": "Sesgo",
+            "B": "Anchura de colas",
+            "C": "Media",
+            "D": "Varianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La curtosis cuantifica peso de colas en comparación con normal."
+    },
+    {
+        "id": 96,
+        "text": "¿Qué mide el sesgo (skewness) en una distribución?",
+        "options": {
+            "A": "Simetría de la distribución",
+            "B": "Altura de la moda",
+            "C": "Ancho de la distribución",
+            "D": "Número de picos"
+        },
+        "correct": "A",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El sesgo mide asimetría: positivo si cola derecha más larga."
+    },
+    {
+        "id": 97,
+        "text": "¿Qué es el coeficiente de determinación ajustado?",
+        "options": {
+            "A": "R² sin penalización",
+            "B": "R² penalizado por número de predictores",
+            "C": "Media de errores",
+            "D": "MAE ajustado"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El R² ajustado considera complejidad del modelo, penalizando variables irrelevantes."
+    },
+    {
+        "id": 98,
+        "text": "¿Qué es un análisis de componentes independientes (ICA)?",
+        "options": {
+            "A": "Proyecta datos en componentes ortogonales",
+            "B": "Separa señales en fuentes estadísticamente independientes",
+            "C": "Clustering jerárquico",
+            "D": "Regresión no lineal"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "ICA busca transformaciones que generen componentes lo más independientes posible."
+    },
+    {
+        "id": 99,
+        "text": "¿Qué mide la entropía de Shannon en un conjunto de datos?",
+        "options": {
+            "A": "Impureza de Gini",
+            "B": "Incertidumbre promedio",
+            "C": "Distancia Euclídea",
+            "D": "Covarianza"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "La entropía cuantifica incertidumbre en la distribución de probabilidad."
+    },
+    {
+        "id": 100,
+        "text": "¿Qué test no paramétrico compara dos muestras independientes?",
+        "options": {
+            "A": "Wilcoxon signed-rank",
+            "B": "Mann-Whitney U",
+            "C": "t-test pareado",
+            "D": "ANOVA"
+        },
+        "correct": "B",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "explanation": "El test de Mann-Whitney compara medianas de dos muestras sin asumir normalidad."
+    }
+]

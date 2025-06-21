@@ -23,6 +23,7 @@ import connectDB from './utils/database';
 import attemptRoutes from './routes/attempt.routes';
 import examRoutes from './routes/exam.routes';
 import questionRoutes from './routes/question.routes';
+import weakQuestionsRoutes from './routes/weak-questions.routes';
 
 // Initialize Express app
 const app = express();
@@ -41,6 +42,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 app.use('/api/questions', questionRoutes);
 app.use('/api/exams', examRoutes);
 app.use('/api/attempts', attemptRoutes);
+app.use('/api/weak-questions', weakQuestionsRoutes);
 
 // Create HTTP server
 const server = http.createServer(app);

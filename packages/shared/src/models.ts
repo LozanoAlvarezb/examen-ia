@@ -48,7 +48,8 @@ export interface PublicExam extends Omit<Exam, 'questionIds'> {
 // Attempt interfaces
 export interface Attempt {
   _id: string;
-  examId: string;
+  examId?: string;
+  customQuestionIds?: string[];
   userId?: string | null;
   answers: AnswerMap;
   negativeMark: number;

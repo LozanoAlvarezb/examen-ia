@@ -118,6 +118,169 @@ router.put('/:id/finish', attemptController.submitAnswers);
 
 /**
  * @swagger
+ * /api/attempts/user/me:
+ *   get:
+ *     summary: Get all attempts for the current user
+ *     tags:
+ *       - Attempts
+ *     responses:
+ *       200:
+ *         description: List of user's attempts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Attempt'
+ */
+router.get('/user/me', attemptController.getUserAttempts);
+
+/**
+ * @swagger
+ * /api/attempts/{id}/full:
+ *   get:
+ *     summary: Get an attempt with questions (no correct answers)
+ *     tags:
+ *       - Attempts
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The attempt ID
+ *     responses:
+ *       200:
+ *         description: Attempt data with questions
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 attempt:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     examId:
+ *                       type: string
+ *                     customQuestionIds:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                     negativeMark:
+ *                       type: number
+ *                     timeLimit:
+ *                       type: number
+ *                     startedAt:
+ *                       type: string
+ *                       format: date-time
+ *                 questions:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     description: Question without correct answer and explanation
+ */
+router.get('/:id/full', attemptController.getAttemptWithQuestions);
+
+/**
+ * @swagger
+ * /api/attempts/weak:
+ *   post:
+ *     summary: Start a practice attempt with weak questions
+ *     tags:
+ *       - Attempts
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - questionIds
+ *             properties:
+ *               questionIds:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                 description: Array of question IDs to practice
+ *               negativeMark:
+ *                 type: number
+ *                 default: 0.25
+ *                 minimum: 0
+ *                 maximum: 1
+ *                 description: Penalty for wrong answers
+ *               timeLimit:
+ *                 type: number
+ *                 default: 120
+ *                 minimum: 10
+ *                 maximum: 240
+ *                 description: Time limit in minutes
+ *     responses:
+ *       201:
+ *         description: New weak questions attempt created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 attemptId:
+ *                   type: string
+ *                 wsToken:
+ *                   type: string
+ */
+router.post('/weak', attemptController.startWeakAttempt);
+
+/**
+ * @swagger
+ * /api/attempts/{id}/full:
+ *   get:
+ *     summary: Get an attempt with questions (for exam runner)
+ *     tags:
+ *       - Attempts
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The attempt ID
+ *     responses:
+ *       200:
+ *         description: Attempt data with questions (without correct answers)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 attempt:
+ *                   type: object
+ *                   properties:
+ *                     _id:
+ *                       type: string
+ *                     examId:
+ *                       type: string
+ *                     customQuestionIds:
+ *                       type: array
+ *                       items:
+ *                         type: string
+ *                     negativeMark:
+ *                       type: number
+ *                     timeLimit:
+ *                       type: number
+ *                     startedAt:
+ *                       type: string
+ *                       format: date-time
+ *                 questions:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     description: Question without correct answer and explanation
+ */
+router.get('/:id/full', attemptController.getAttemptWithQuestions);
+
+/**
+ * @swagger
  * /api/attempts/{id}:
  *   get:
  *     summary: Get an attempt by ID
@@ -139,24 +302,5 @@ router.put('/:id/finish', attemptController.submitAnswers);
  *               $ref: '#/components/schemas/Attempt'
  */
 router.get('/:id', attemptController.getAttemptById);
-
-/**
- * @swagger
- * /api/attempts/user/me:
- *   get:
- *     summary: Get all attempts for the current user
- *     tags:
- *       - Attempts
- *     responses:
- *       200:
- *         description: List of user's attempts
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Attempt'
- */
-router.get('/user/me', attemptController.getUserAttempts);
 
 export default router;

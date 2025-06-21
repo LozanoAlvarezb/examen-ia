@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Button,
   Card,
@@ -13,20 +14,27 @@ import {
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Exam } from 'shared/src/models';
-import { fetchExams } from '../services/api';
+import { fetchExams, fetchWeakQuestions } from '../services/api';
 
 const HomePage = () => {
   const [exams, setExams] = useState<Exam[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [weakQuestionsCount, setWeakQuestionsCount] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const loadExams = async () => {
+    const loadData = async () => {
       try {
-        const data = await fetchExams();
-        console.log('Exams data:', data); // Log to verify data structure
-        setExams(data);
+        // Load exams and weak questions count in parallel
+        const [examsData, weakQuestionsData] = await Promise.all([
+          fetchExams(),
+          fetchWeakQuestions(1).catch(() => []) // Fetch only 1 to check if any exist
+        ]);
+        
+        console.log('Exams data:', examsData); // Log to verify data structure
+        setExams(examsData);
+        setWeakQuestionsCount(weakQuestionsData.length);
       } catch (err: any) {
         setError(err.message || 'Failed to load exams');
       } finally {
@@ -34,7 +42,7 @@ const HomePage = () => {
       }
     };
 
-    loadExams();
+    loadData();
   }, []);
 
   if (loading) {
@@ -68,6 +76,43 @@ const HomePage = () => {
       </Box>
 
       <Grid container spacing={3}>
+        {/* Focus Mode Card */}
+        {weakQuestionsCount > 0 && (
+          <Grid item xs={12} sm={6} md={4}>
+            <Card elevation={3} sx={{ bgcolor: 'warning.light' }}>
+              <CardContent>
+                <Badge badgeContent={weakQuestionsCount} color="error">
+                  <Typography variant="h6" gutterBottom>
+                    Focus Mode
+                  </Typography>
+                </Badge>
+                <Typography variant="body2" color="text.secondary" sx={{ mt: 1 }}>
+                  Practice questions you got wrong or left blank in recent attempts
+                </Typography>
+                <Box sx={{ mt: 2 }}>
+                  <Chip
+                    label={`${weakQuestionsCount} Weak Question${weakQuestionsCount > 1 ? 's' : ''}`}
+                    size="small"
+                    color="warning"
+                    variant="outlined"
+                  />
+                </Box>
+              </CardContent>
+              <CardActions>
+                <Button
+                  fullWidth
+                  variant="contained"
+                  color="warning"
+                  onClick={() => navigate('/focus')}
+                >
+                  Start Practice
+                </Button>
+              </CardActions>
+            </Card>
+          </Grid>
+        )}
+
+        {/* Regular Exam Cards */}
         {exams.map((exam) => (
           <Grid item xs={12} sm={6} md={4} key={exam._id}>
             <Card elevation={3}>

@@ -1,0 +1,262 @@
+[
+    {
+        "id": 1,
+        "text": "¿Cuál es el objetivo principal del Reglamento (UE) 2024/1689 de inteligencia artificial?",
+        "options": {
+            "A": "Limitar la investigación en IA dentro de la Unión Europea",
+            "B": "Establecer normas armonizadas para el mercado interior y asegurar una IA fiable y centrada en el ser humano",
+            "C": "Prohibir por completo el uso de algoritmos de IA en sectores críticos",
+            "D": "Fomentar únicamente la competitividad económica sin condiciones éticas"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "El Reglamento busca mejorar el mercado interior con un marco armonizado que promueva una IA fiable y centrada en el ser humano, garantizando salud, seguridad y derechos fundamentales."
+    },
+    {
+        "id": 2,
+        "text": "¿Cómo define el Reglamento un “sistema de IA”?",
+        "options": {
+            "A": "Cualquier software que procese datos exclusivamente numéricos",
+            "B": "Un conjunto de tecnologías con capacidad de inferencia, aprendizaje, razonamiento o modelización basado en máquinas",
+            "C": "Solo aquellos sistemas que usan redes neuronales profundas",
+            "D": "Sistemas diseñados únicamente para automatizar tareas repetitivas"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Se define por su capacidad de inferencia —obtener predicciones, contenidos, recomendaciones o decisiones— y de aprendizaje o razonamiento automático."
+    },
+    {
+        "id": 3,
+        "text": "¿Qué prácticas de IA están expresamente prohibidas según el Reglamento?",
+        "options": {
+            "A": "Uso de IA para análisis financiero",
+            "B": "Sistemas que empleen técnicas subliminales o manipuladoras para alterar el comportamiento humano",
+            "C": "Implementaciones de IA en productos sanitarios debidamente regulados",
+            "D": "IA usada en espacios educativos con supervisión humana"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Queda prohibido introducir o usar sistemas de IA que manipulen subliminalmente o exploten vulnerabilidades para influir decisivamente en el comportamiento humano."
+    },
+    {
+        "id": 4,
+        "text": "¿Cuál de estos es un criterio para clasificar un sistema de IA como “alto riesgo”?",
+        "options": {
+            "A": "Su despliegue en plataformas de redes sociales",
+            "B": "Su uso en la gestión o funcionamiento de infraestructuras críticas que pueden afectar la salud y la seguridad",
+            "C": "Su publicación en un repositorio de código abierto",
+            "D": "Su aplicación en proyectos de investigación académica"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Se consideran de alto riesgo si contribuyen a la seguridad de infraestructuras críticas cuyo fallo puede poner en peligro vidas o actividades sociales y económicas."
+    },
+    {
+        "id": 5,
+        "text": "¿Qué obligación de transparencia tienen los sistemas de IA que generan contenido sintético?",
+        "options": {
+            "A": "Ninguna, quedan exentos de toda obligación",
+            "B": "Marcar los resultados de salida con un formato legible por máquina que indique generación o manipulación artificial",
+            "C": "Publicar todo el código fuente del modelo",
+            "D": "Registrar cada interacción del usuario en un registro público"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los proveedores deben asegurar que el contenido sintético (texto, imagen, audio, vídeo) esté marcado para permitir su detección automática."
+    },
+    {
+        "id": 6,
+        "text": "¿Qué documentación debe acompañar a un sistema de IA de alto riesgo para su conformidad?",
+        "options": {
+            "A": "Solo el manual de usuario",
+            "B": "Documentación técnica detallada, incluyendo análisis de riesgos, datos de entrenamiento, registros y pruebas",
+            "C": "Declaración de intenciones del proveedor",
+            "D": "Lista de nombres de los desarrolladores"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Requiere documentación técnica que cubra gestión de riesgos, calidad de datos, registros de operaciones y pruebas de funcionamiento seguro."
+    },
+    {
+        "id": 7,
+        "text": "Según el Reglamento, ¿qué sistema **NO** se considera de alto riesgo?",
+        "options": {
+            "A": "Sistemas biométricos para ciberseguridad",
+            "B": "IA en control de alarmas contra incendios en nubes de datos",
+            "C": "IA para supervisión de exámenes que determina resultados académicos",
+            "D": "Sistemas de categorización biométrica para asignación de aulas"
+        },
+        "correct": "A",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los sistemas biométricos exclusivamente usados para ciberseguridad y protección de datos personales no se clasifican como alto riesgo."
+    },
+    {
+        "id": 8,
+        "text": "¿Qué debe incluir el proveedor en las instrucciones de uso de un sistema de IA de alto riesgo?",
+        "options": {
+            "A": "Solo la funcionalidad principal",
+            "B": "Riesgos asociados a usos indebidos razonablemente previsibles y medidas de mitigación",
+            "C": "Información de marketing y precios",
+            "D": "Datos de contacto de soporte técnico"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Debe alertar sobre los riesgos de uso indebido previsibles y cómo reducirlos, sin necesidad de reentrenar el modelo."
+    },
+    {
+        "id": 9,
+        "text": "¿Cuál es el plazo para que los proveedores de modelos de IA de uso general cumplan sus obligaciones?",
+        "options": {
+            "A": "Inmediatamente tras la publicación del Reglamento",
+            "B": "2 de agosto de 2025",
+            "C": "1 de enero de 2026",
+            "D": "No se establece fecha"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Las obligaciones para proveedores de modelos de IA de uso general entran en vigor el 2 de agosto de 2025."
+    },
+    {
+        "id": 10,
+        "text": "¿Qué principio no vincula jurídicamente pero orienta la elaboración de códigos de conducta?",
+        "options": {
+            "A": "Principio de supervisión humana",
+            "B": "Principio de solidez técnica y seguridad",
+            "C": "Principio de gestión de la documentación financiera",
+            "D": "Principio de bienestar social y ambiental"
+        },
+        "correct": "C",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los siete principios éticos de 2019 incluyen supervisión humana, transparencia y bienestar social, no gestión financiera."
+    },
+    {
+        "id": 11,
+        "text": "¿Qué etiqueta debe llevar el contenido de vídeo generado por IA (“ultrasuplantación”)?",
+        "options": {
+            "A": "Etiqueta de fuente científica",
+            "B": "Declaración visible de manipulación o generación artificial",
+            "C": "Código CAPTCHA",
+            "D": "No es obligatorio etiquetar"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los responsables deben declarar que el vídeo ha sido generado o manipulado artificialmente para evitar confusión."
+    },
+    {
+        "id": 12,
+        "text": "¿Quién actúa como organismo notificado para sistemas de IA de alto riesgo desplegados por autoridades de garantía del cumplimiento del Derecho?",
+        "options": {
+            "A": "Cualquier universidad europea",
+            "B": "La autoridad de vigilancia del mercado correspondiente",
+            "C": "La Comisión Europea directamente",
+            "D": "Organizaciones no gubernamentales"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Cuando la IA de alto riesgo la utilicen autoridades judiciales, la autoridad de vigilancia del mercado actúa como organismo notificado."
+    },
+    {
+        "id": 13,
+        "text": "¿Qué proceso puede optar un proveedor de IA de alto riesgo según el anexo VI?",
+        "options": {
+            "A": "Evaluación interna de conformidad sin organismo notificado",
+            "B": "Prueba de concepto en laboratorio sin documentación",
+            "C": "Solo evaluación voluntaria",
+            "D": "Ninguno; todos requieren notificado"
+        },
+        "correct": "A",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los sistemas de alto riesgo listados en anexo III, puntos 2-8, pueden usar un control interno sin organismo notificado."
+    },
+    {
+        "id": 14,
+        "text": "¿Qué presunción de conformidad establece el artículo 42?",
+        "options": {
+            "A": "Entrenamiento con datos geográficos y contextuales pertinentes garantiza cumplimiento del artículo 10.4",
+            "B": "Cualquier IA entrenada en la UE cumple automáticamente todos los requisitos",
+            "C": "Modelos de IA de uso general no necesitan pruebas",
+            "D": "Declaraciones de proveedor eximen de evaluación"
+        },
+        "correct": "A",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Se presume que sistemas entrenados con datos representativos del entorno previsto cumplen los requisitos de gobernanza de datos."
+    },
+    {
+        "id": 15,
+        "text": "¿Qué medida en materia de ciberseguridad deben tomar los proveedores según el Reglamento?",
+        "options": {
+            "A": "Ignorar riesgos de ataques adversarios",
+            "B": "Evaluar amenazas de ciberresiliencia y ataques específicos de IA como envenenamiento de datos",
+            "C": "Permitir acceso libre a todos los registros",
+            "D": "Delegar ciberseguridad a terceros sin supervisión"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "La evaluación de conformidad debe considerar riesgos de ciberresiliencia y vulnerabilidades específicas de IA, como ataques adversarios."
+    },
+    {
+        "id": 16,
+        "text": "¿Qué debe garantizar la alfabetización en IA según el artículo 4?",
+        "options": {
+            "A": "Solo formación básica en programación",
+            "B": "Que el personal involucrado tenga conocimientos adecuados al contexto y uso del sistema",
+            "C": "Que todos sean expertos en redes neuronales",
+            "D": "Que solo el proveedor reciba información"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "El personal y terceros debe contar con un nivel de alfabetización en IA adecuado a su rol, formación y contexto de uso."
+    },
+    {
+        "id": 17,
+        "text": "¿Qué alcance temporal tienen los certificados de conformidad para sistemas de IA del anexo I?",
+        "options": {
+            "A": "Validez indefinida",
+            "B": "Máximo cinco años, prorrogables",
+            "C": "Un año sin opción de prórroga",
+            "D": "Solo seis meses"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Los certificados para sistemas del anexo I son válidos hasta cinco años y pueden prorrogarse mediante nueva evaluación."
+    },
+    {
+        "id": 18,
+        "text": "¿Cuál es una condición para eximir de la prueba de conformidad a un sistema de IA derivado de otro reglamento de armonización?",
+        "options": {
+            "A": "Que use exclusivamente IA generativa",
+            "B": "Que se hayan aplicado todas las normas armonizadas y especificaciones comunes relevantes",
+            "C": "Que el proveedor declare buena fe",
+            "D": "Que sea un prototipo de investigación"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Si un reglamento sectorial permite autoevaluación con normas armonizadas, el proveedor solo puede optar a ella si aplica todas las normas y especificaciones que cubren los requisitos."
+    },
+    {
+        "id": 19,
+        "text": "¿Qué mecanismo prevé el Reglamento para actualizar anexos técnicos a la luz del progreso técnico?",
+        "options": {
+            "A": "Resolución anual del Parlamento Europeo",
+            "B": "Actos delegados de la Comisión conforme al artículo 97",
+            "C": "Consultas públicas cada diez años",
+            "D": "Directiva internamente en la Comisión sin consulta"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "La Comisión puede adoptar actos delegados para modificar y actualizar los anexos técnicos según avances tecnológicos."
+    },
+    {
+        "id": 20,
+        "text": "¿Qué requisito deben cumplir los datos de entrenamiento de un sistema de IA de alto riesgo?",
+        "options": {
+            "A": "Ser exclusivos y secretos",
+            "B": "Ser de alta calidad, pertinentes, representativos y libres de errores en la medida de lo posible",
+            "C": "Provenir de cualquier fuente sin control",
+            "D": "Estar siempre anonimizado completamente"
+        },
+        "correct": "B",
+        "topic": "Reglamento europeo de la IA.",
+        "explanation": "Se exige gobernanza de datos adecuada para que los conjuntos de entrenamiento, validación y prueba sean relevantes, representativos y con pocos errores posibles."
+    }
+]

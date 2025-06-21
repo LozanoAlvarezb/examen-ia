@@ -4,12 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import NavigatorGrid from '../components/exam/NavigatorGrid';
 import QuestionCard from '../components/exam/QuestionCard';
 import TimerBar from '../components/exam/TimerBar';
-import { connectToExamTimer, fetchExamWithQuestions, startExamAttempt, submitAttempt } from '../services/api';
+import { connectToExamTimer, fetchAttemptWithQuestions, fetchExamWithQuestions, startExamAttempt, submitAttempt } from '../services/api';
 import { formatRemainingTime, getAnsweredCount, useExamSessionStore } from '../store/examSessionStore';
 
 const ExamRunner = () => {
   console.log('ExamRunner component rendered');
-  const { id: examId } = useParams<{ id: string }>();
+  const { id: examId, attemptId: urlAttemptId } = useParams<{ id?: string; attemptId?: string }>();
   const navigate = useNavigate();
 
   // State from Zustand store
@@ -35,15 +35,40 @@ const ExamRunner = () => {
     const initExam = async () => {
       setLoading(true);
       try {
-        // Fetch exam data if not loaded
-        if (!exam && examId) {
+        // Handle weak question attempt (from Focus Mode)
+        if (urlAttemptId && !examId) {
+          console.log('Loading weak question attempt...');
+          const { attempt, questions } = await fetchAttemptWithQuestions(urlAttemptId);
+          
+          // Create a PublicExam-like structure
+          const examData = {
+            _id: attempt.examId || 'focus-mode',
+            name: 'Focus Mode Practice',
+            questions: questions,
+            createdAt: new Date(attempt.startedAt)
+          };
+          
+          setExam(examData);
+          
+          // Set the attempt as already started
+          useExamSessionStore.setState({
+            attemptId: urlAttemptId,
+            isStarted: true,
+            negativeMark: attempt.negativeMark,
+            timeLimit: attempt.timeLimit,
+            startTime: new Date(attempt.startedAt).getTime(),
+            remaining: attempt.timeLimit * 60 // Will be updated by WebSocket
+          });
+        }
+        // Handle regular exam
+        else if (!exam && examId) {
           console.log('Fetching exam data...');
           const examData = await fetchExamWithQuestions(examId);
           setExam(examData);
         }
 
-        // Start a new attempt if not started
-        if (!isStarted && examId && !attemptId) {
+        // Start a new attempt if not started (only for regular exams)
+        if (!isStarted && examId && !attemptId && !urlAttemptId) {
           console.log('Starting new attempt...');
           const { attemptId: newAttemptId, wsToken } = await startExamAttempt(examId, negativeMark, timeLimit);
           startExam(newAttemptId, wsToken);
@@ -57,7 +82,7 @@ const ExamRunner = () => {
     };
 
     initExam();
-  }, [examId, exam, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
+  }, [examId, urlAttemptId, exam, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
 
   // WebSocket connection for timer
   useEffect(() => {
@@ -136,8 +161,10 @@ const ExamRunner = () => {
 
   // Auto-navigate to results when finished
   useEffect(() => {
-    if (isFinished && attemptId && examId) {
-      navigate(`/exam/${examId}/result/${attemptId}`);
+    if (isFinished && attemptId) {
+      // For weak question attempts, use a different route or the same with examId as 'focus'
+      const examIdForRoute = examId || 'focus';
+      navigate(`/exam/${examIdForRoute}/result/${attemptId}`);
     }
   }, [isFinished, attemptId, examId, navigate]);
 
@@ -150,13 +177,15 @@ const ExamRunner = () => {
 
   // Handle exam submission
   const handleSubmitExam = async () => {
-    if (!attemptId || !examId) return;
+    if (!attemptId) return;
 
     try {
       setIsSubmitting(true);
       await submitAttempt(attemptId, answers);
       finishExam();
-      navigate(`/exam/${examId}/result/${attemptId}`);
+      // For weak question attempts, use 'focus' as examId in route
+      const examIdForRoute = examId || 'focus';
+      navigate(`/exam/${examIdForRoute}/result/${attemptId}`);
     } catch (error: any) {
       setError(error.message || 'Failed to submit exam');
     } finally {

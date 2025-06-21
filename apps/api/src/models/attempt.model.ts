@@ -6,8 +6,12 @@ const AttemptSchema = new mongoose.Schema(
     examId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Exam',
-      required: true,
+      required: false,
       index: true,
+    },
+    customQuestionIds: {
+      type: [String],
+      required: false,
     },
     negativeMark: {
       type: Number,

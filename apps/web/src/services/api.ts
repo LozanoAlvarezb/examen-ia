@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AnswerMap, AttemptResultResponse, Exam, ExamResponse, PublicExam } from 'shared/src/models';
+import { AnswerMap, AttemptResultResponse, Exam, ExamResponse, PublicExam, Question } from 'shared/src/models';
 
 const API_URL = '/api';
 
@@ -60,6 +60,48 @@ export const fetchAttemptResults = async (attemptId: string) => {
 
 export const fetchUserAttempts = async () => {
   const response = await axios.get(`${API_URL}/attempts/user/me`);
+  return response.data;
+};
+
+// Weak Questions APIs
+export const fetchWeakQuestions = async (limit: number = 50, since?: string) => {
+  const params = new URLSearchParams();
+  params.append('limit', limit.toString());
+  if (since) params.append('since', since);
+  
+  const response = await axios.get<Array<{
+    questionId: string;
+    timesSeen: number;
+    timesCorrect: number;
+    successRate: number;
+  }>>(`${API_URL}/weak-questions?${params}`);
+  return response.data;
+};
+
+export const startWeakAttempt = async (questionIds: string[], negativeMark?: number, timeLimit?: number) => {
+  const response = await axios.post<{ attemptId: string; wsToken: string }>(
+    `${API_URL}/attempts/weak`,
+    {
+      questionIds,
+      negativeMark,
+      timeLimit
+    }
+  );
+  return response.data;
+};
+
+export const fetchAttemptWithQuestions = async (attemptId: string) => {
+  const response = await axios.get<{
+    attempt: {
+      _id: string;
+      examId?: string;
+      customQuestionIds?: string[];
+      negativeMark: number;
+      timeLimit: number;
+      startedAt: string;
+    };
+    questions: Array<Omit<Question, 'correct' | 'explanation'>>;
+  }>(`${API_URL}/attempts/${attemptId}/full`);
   return response.data;
 };
 

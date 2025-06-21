@@ -6,11 +6,17 @@ import Question from '../models/question.model';
 
 // Helper function to calculate scores
 const calculateScores = async (attempt: any, answers: Record<string, string | null>) => {
-  // Fetch exam and questions
-  const exam = await Exam.findById(attempt.examId);
-  if (!exam) throw new Error('Exam not found');
-
-  const questions = await Question.find({ _id: { $in: exam.questionIds } });
+  // Fetch questions based on exam or custom question IDs
+  let questions;
+  if (attempt.examId) {
+    const exam = await Exam.findById(attempt.examId);
+    if (!exam) throw new Error('Exam not found');
+    questions = await Question.find({ _id: { $in: exam.questionIds } });
+  } else if (attempt.customQuestionIds && attempt.customQuestionIds.length > 0) {
+    questions = await Question.find({ _id: { $in: attempt.customQuestionIds } });
+  } else {
+    throw new Error('No exam or custom questions found');
+  }
 
   // Initialize counters and topic scores
   let correctCount = 0;
@@ -143,6 +149,58 @@ export const submitAnswers = async (req: Request, res: Response) => {
   }
 };
 
+// Get attempt with questions (for exam runner - no correct answers)
+export const getAttemptWithQuestions = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    
+    const attempt = await Attempt.findById(id);
+    if (!attempt) {
+      return res.status(404).json({
+        message: 'Attempt not found'
+      });
+    }
+
+    // Fetch questions based on exam or custom question IDs
+    let questions;
+    if (attempt.examId) {
+      const exam = await Exam.findById(attempt.examId);
+      if (!exam) {
+        return res.status(404).json({
+          message: 'Exam not found'
+        });
+      }
+      questions = await Question.find({ _id: { $in: exam.questionIds } })
+        .select('-correct -explanation'); // Exclude correct answers
+    } else if (attempt.customQuestionIds && attempt.customQuestionIds.length > 0) {
+      questions = await Question.find({ _id: { $in: attempt.customQuestionIds } })
+        .select('-correct -explanation'); // Exclude correct answers
+    } else {
+      return res.status(404).json({
+        message: 'No exam or custom questions found'
+      });
+    }
+
+    res.json({
+      attempt: {
+        _id: attempt._id,
+        examId: attempt.examId,
+        customQuestionIds: attempt.customQuestionIds,
+        negativeMark: attempt.negativeMark,
+        timeLimit: attempt.timeLimit,
+        startedAt: attempt.startedAt,
+      },
+      questions
+    });
+  } catch (error: any) {
+    console.error('Error fetching attempt with questions:', error);
+    res.status(500).json({
+      message: 'Failed to fetch attempt',
+      error: error.message
+    });
+  }
+};
+
 export const getAttemptById = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
@@ -162,14 +220,24 @@ export const getAttemptById = async (req: Request, res: Response) => {
     }
 
     // Fetch exam and questions for the response
-    const exam = await Exam.findById(attempt.examId);
-    if (!exam) {
+    let exam = null;
+    let questions;
+    
+    if (attempt.examId) {
+      exam = await Exam.findById(attempt.examId);
+      if (!exam) {
+        return res.status(404).json({
+          message: 'Exam not found'
+        });
+      }
+      questions = await Question.find({ _id: { $in: exam.questionIds } });
+    } else if (attempt.customQuestionIds && attempt.customQuestionIds.length > 0) {
+      questions = await Question.find({ _id: { $in: attempt.customQuestionIds } });
+    } else {
       return res.status(404).json({
-        message: 'Exam not found'
+        message: 'No exam or custom questions found'
       });
     }
-
-    const questions = await Question.find({ _id: { $in: exam.questionIds } });
 
     res.json({
       exam,
@@ -205,6 +273,127 @@ export const getUserAttempts = async (_req: Request, res: Response) => {
     console.error('Error fetching attempts:', error);
     res.status(500).json({
       message: 'Failed to fetch attempts',
+      error: error.message
+    });
+  }
+};
+
+// Get weak questions for the current user
+export const getWeakQuestions = async (req: Request, res: Response) => {
+  try {
+    const { since, limit = 50 } = req.query;
+    
+    // Calculate date filter (default to 30 days)
+    const sinceDate = since 
+      ? new Date(since as string) 
+      : new Date(Date.now() - 30 * 24 * 60 * 60 * 1000);
+
+    // Find all attempts for the user within the time period
+    const attempts = await Attempt.find({
+      finishedAt: { $gte: sinceDate },
+      examId: { $exists: true }
+    }).populate('examId');
+
+    // Collect all wrong/blank answers
+    const questionStats = new Map<string, { timesSeen: number, timesCorrect: number }>();
+
+    for (const attempt of attempts) {
+      if (!attempt.examId) continue;
+      
+      const exam = await Exam.findById(attempt.examId);
+      if (!exam) continue;
+
+      const questions = await Question.find({ _id: { $in: exam.questionIds } });
+      
+      questions.forEach(question => {
+        const questionId = question._id.toString();
+        let answer: string | null | undefined = null;
+        
+        // Handle both Map and Record types
+        if (attempt.answers) {
+          if (attempt.answers instanceof Map) {
+            answer = attempt.answers.get(questionId);
+          } else {
+            answer = (attempt.answers as any)[questionId];
+          }
+        }
+        
+        if (!questionStats.has(questionId)) {
+          questionStats.set(questionId, { timesSeen: 0, timesCorrect: 0 });
+        }
+        
+        const stats = questionStats.get(questionId)!;
+        stats.timesSeen++;
+        
+        if (answer === question.correct) {
+          stats.timesCorrect++;
+        }
+      });
+    }
+
+    // Filter and sort by success rate
+    const weakQuestions = Array.from(questionStats.entries())
+      .map(([questionId, stats]) => ({
+        questionId,
+        timesSeen: stats.timesSeen,
+        timesCorrect: stats.timesCorrect,
+        successRate: stats.timesCorrect / stats.timesSeen
+      }))
+      .filter(q => q.successRate < 1) // Only include questions that were wrong at least once
+      .sort((a, b) => a.successRate - b.successRate) // Sort by lowest success rate
+      .slice(0, Number(limit));
+
+    res.json(weakQuestions);
+  } catch (error: any) {
+    console.error('Error fetching weak questions:', error);
+    res.status(500).json({
+      message: 'Failed to fetch weak questions',
+      error: error.message
+    });
+  }
+};
+
+
+// Start a weak questions practice attempt
+export const startWeakAttempt = async (req: Request, res: Response) => {
+  try {
+    const { questionIds, negativeMark = 0.25, timeLimit = 120 } = req.body;
+
+    if (!questionIds || !Array.isArray(questionIds) || questionIds.length === 0) {
+      return res.status(400).json({
+        message: 'Question IDs array is required'
+      });
+    }
+
+    // Verify questions exist
+    const questions = await Question.find({ _id: { $in: questionIds } });
+    if (questions.length !== questionIds.length) {
+      return res.status(400).json({
+        message: 'Some questions were not found'
+      });
+    }
+
+    // Create new attempt with custom question IDs
+    const attempt = new Attempt({
+      customQuestionIds: questionIds,
+      negativeMark,
+      timeLimit,
+      startedAt: new Date(),
+    });
+
+    await attempt.save();
+
+    // Generate WebSocket token
+    const wsToken = crypto.randomBytes(32).toString('hex');
+
+    res.status(201).json({
+      attemptId: attempt._id,
+      wsToken,
+    });
+  } catch (error: any) {
+    console.error('Error starting weak attempt:', error);
+    res.status(500).json({
+      message: 'Failed to start weak questions attempt',
       error: error.message
     });
   }
