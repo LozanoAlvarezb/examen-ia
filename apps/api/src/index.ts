@@ -1,10 +1,20 @@
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 import helmet from 'helmet';
 import http from 'http';
 import morgan from 'morgan';
 import swaggerUi from 'swagger-ui-express';
 import WebSocket from 'ws';
+
+// Load environment variables from .env file
+dotenv.config();
+
+// Debug: log loaded environment variables
+console.log('Environment variables loaded:');
+console.log('MONGO_URI:', process.env.MONGO_URI ? 'Set (hidden)' : 'Not set');
+console.log('PORT:', process.env.PORT || 'Not set (using default)');
+
 import { CORS_ORIGIN, PORT } from './config';
 import { specs } from './config/swagger';
 import connectDB from './utils/database';
