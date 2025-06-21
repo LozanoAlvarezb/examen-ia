@@ -36,7 +36,7 @@ const ExamRunner = () => {
       setLoading(true);
       try {
         // Handle weak question attempt (from Focus Mode)
-        if (urlAttemptId && !examId) {
+        if (urlAttemptId && !examId && !exam) {
           console.log('Loading weak question attempt...');
           const { attempt, questions } = await fetchAttemptWithQuestions(urlAttemptId);
           
@@ -82,7 +82,7 @@ const ExamRunner = () => {
     };
 
     initExam();
-  }, [examId, urlAttemptId, exam, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
+  }, [examId, urlAttemptId, isStarted, attemptId, negativeMark, timeLimit, setExam, startExam]);
 
   // WebSocket connection for timer
   useEffect(() => {

@@ -233,54 +233,6 @@ router.post('/weak', attemptController.startWeakAttempt);
 
 /**
  * @swagger
- * /api/attempts/{id}/full:
- *   get:
- *     summary: Get an attempt with questions (for exam runner)
- *     tags:
- *       - Attempts
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: string
- *         description: The attempt ID
- *     responses:
- *       200:
- *         description: Attempt data with questions (without correct answers)
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 attempt:
- *                   type: object
- *                   properties:
- *                     _id:
- *                       type: string
- *                     examId:
- *                       type: string
- *                     customQuestionIds:
- *                       type: array
- *                       items:
- *                         type: string
- *                     negativeMark:
- *                       type: number
- *                     timeLimit:
- *                       type: number
- *                     startedAt:
- *                       type: string
- *                       format: date-time
- *                 questions:
- *                   type: array
- *                   items:
- *                     type: object
- *                     description: Question without correct answer and explanation
- */
-router.get('/:id/full', attemptController.getAttemptWithQuestions);
-
-/**
- * @swagger
  * /api/attempts/{id}:
  *   get:
  *     summary: Get an attempt by ID
