@@ -67,3 +67,6 @@ package-lock.json
 .env
 *.js
 *.js.map
+
+*.d.ts
+*.tsbuildinfo
