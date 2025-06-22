@@ -39,7 +39,7 @@ const initialState = {
 // Create the store with persistence
 export const useExamSessionStore = create<ExamSessionStore>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       ...initialState,
       
       setExam: (exam) => set({ 

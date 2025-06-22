@@ -1,11 +1,15 @@
-import React, { createContext, useState, useEffect, useContext, ReactNode } from 'react';
+import { createContext, useState, useEffect, useContext, ReactNode } from 'react';
 import axios from 'axios';
-import { AuthResponse } from 'shared/src/models';
-
 interface User {
   _id: string;
   email: string;
   role: 'admin' | 'user';
+}
+
+interface AuthResponse {
+  accessToken: string;
+  refreshToken: string;
+  user: User;
 }
 
 interface AuthContextType {

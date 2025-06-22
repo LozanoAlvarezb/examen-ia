@@ -42,8 +42,8 @@ const ExamRunner = () => {
           
           // Create a PublicExam-like structure
           const examData = {
-            _id: attempt.examId || 'focus-mode',
-            name: 'Focus Mode Practice',
+            _id: 'focus-mode',
+            name: attempt.examName || 'Focus Mode Practice',
             questions: questions,
             createdAt: new Date(attempt.startedAt)
           };
@@ -93,6 +93,8 @@ const ExamRunner = () => {
       let retryTimeout: NodeJS.Timeout;
 
       function connectWebSocket() {
+        if (!attemptId) return () => {};
+        
         const connection = connectToExamTimer(
           attemptId,
           timeLimit,
@@ -153,7 +155,7 @@ const ExamRunner = () => {
       let cleanup = connectWebSocket();
 
       return () => {
-        cleanup();
+        if (cleanup) cleanup();
         window.removeEventListener('websocketerror', handleWSError);
       };
     }

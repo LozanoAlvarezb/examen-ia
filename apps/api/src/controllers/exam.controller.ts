@@ -139,3 +139,31 @@ export const getExamWithQuestions = async (req: Request, res: Response) => {
     });
   }
 };
+
+export const deleteExam = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+
+    // Check if exam exists
+    const exam = await Exam.findById(id);
+    if (!exam) {
+      return res.status(404).json({
+        message: 'Exam not found'
+      });
+    }
+
+    // Delete the exam - no need to check for attempts anymore
+    await Exam.findByIdAndDelete(id);
+
+    res.status(200).json({
+      message: 'Exam deleted successfully',
+      examId: id
+    });
+  } catch (error: any) {
+    console.error('Error deleting exam:', error);
+    res.status(500).json({
+      message: 'Failed to delete exam',
+      error: error.message
+    });
+  }
+};

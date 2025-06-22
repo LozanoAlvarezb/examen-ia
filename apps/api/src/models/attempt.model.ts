@@ -3,16 +3,19 @@ import { Attempt } from 'shared/src/models';
 
 const AttemptSchema = new mongoose.Schema(
   {
-    examId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Exam',
+    examName: {
+      type: String,
       required: false,
-      index: true,
     },
     customQuestionIds: {
       type: [String],
       required: false,
     },
+    questionIds: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Question',
+      required: true,
+    }],
     negativeMark: {
       type: Number,
       required: true,
@@ -77,8 +80,8 @@ const AttemptSchema = new mongoose.Schema(
   }
 );
 
-// Create index on examId for faster queries
-AttemptSchema.index({ examId: 1 });
+// Create indexes for faster queries
+AttemptSchema.index({ finishedAt: -1 });
 
 // Method to check if attempt is finished
 AttemptSchema.methods.isFinished = function (): boolean {

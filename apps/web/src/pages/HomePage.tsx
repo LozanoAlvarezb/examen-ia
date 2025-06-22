@@ -8,19 +8,22 @@ import {
   Chip, CircularProgress,
   Container,
   Grid,
+  IconButton,
   Paper,
   Typography
 } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Exam } from 'shared/src/models';
-import { fetchExams, fetchWeakQuestions } from '../services/api';
+import { fetchExams, fetchWeakQuestions, deleteExam } from '../services/api';
 
 const HomePage = () => {
   const [exams, setExams] = useState<Exam[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [weakQuestionsCount, setWeakQuestionsCount] = useState(0);
+  const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -44,6 +47,22 @@ const HomePage = () => {
 
     loadData();
   }, []);
+
+  const handleDeleteExam = async (examId: string, examName: string) => {
+    if (!window.confirm(`Are you sure you want to delete the exam "${examName}"?`)) {
+      return;
+    }
+
+    setDeleteLoading(examId);
+    try {
+      await deleteExam(examId);
+      setExams(exams.filter(exam => exam._id !== examId));
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Failed to delete exam');
+    } finally {
+      setDeleteLoading(null);
+    }
+  };
 
   if (loading) {
     return (
@@ -117,9 +136,20 @@ const HomePage = () => {
           <Grid item xs={12} sm={6} md={4} key={exam._id}>
             <Card elevation={3}>
               <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {exam.name}
-                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <Typography variant="h6" gutterBottom>
+                    {exam.name}
+                  </Typography>
+                  <IconButton
+                    size="small"
+                    color="error"
+                    onClick={() => handleDeleteExam(exam._id, exam.name)}
+                    disabled={deleteLoading === exam._id}
+                    sx={{ ml: 1 }}
+                  >
+                    {deleteLoading === exam._id ? <CircularProgress size={20} /> : <DeleteIcon />}
+                  </IconButton>
+                </Box>
 
                 <Box sx={{ mt: 2 }}>
                   <Chip
@@ -136,6 +166,7 @@ const HomePage = () => {
                   fullWidth
                   variant="contained"
                   onClick={() => navigate(`/exam/${exam._id}`)}
+                  disabled={deleteLoading === exam._id}
                 >
                   Start Exam
                 </Button>

@@ -6,8 +6,7 @@ import {
   Divider,
   Grid,
   Paper,
-  Typography,
-  useTheme
+  Typography
 } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
@@ -22,12 +21,7 @@ interface TopicScore {
 }
 
 interface ResultData {
-  exam: {
-    _id: string;
-    name: string;
-    timeLimit: number;
-    negativeMark: number;
-  };
+  examName?: string;
   questions: Array<{
     _id: string;
     text: string;
@@ -52,12 +46,11 @@ interface ResultData {
 }
 
 const ExamResult = () => {
-  const { id: examId, attemptId } = useParams<{ id: string; attemptId: string }>();
+  const { attemptId } = useParams<{ id: string; attemptId: string }>();
   const [result, setResult] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const theme = useTheme();
 
   useEffect(() => {
     const fetchResults = async () => {
@@ -118,14 +111,13 @@ const ExamResult = () => {
   const topicScores = formatTopicScores(result.scoreByTopic);
   const timeTaken = calculateTimeTaken(result.startedAt, result.finishedAt);
   const currentQuestion = result.questions[currentQuestionIndex];
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
       {/* Results header */}
       <Paper sx={{ p: 3, mb: 3 }}>
         <Typography variant="h4" gutterBottom>
-          {result.exam.name} - Results
+          {result.examName || 'Weak Questions'} - Results
         </Typography>
 
         <Grid container spacing={2} sx={{ mt: 2 }}>
@@ -144,7 +136,7 @@ const ExamResult = () => {
                 <strong>Unanswered:</strong> {result.blankCount}
               </Typography>
               <Typography>
-                <strong>Time Taken:</strong> {timeTaken} minutes (out of {result.exam.timeLimit})
+                <strong>Time Taken:</strong> {timeTaken} minutes
               </Typography>
             </Box>
           </Grid>

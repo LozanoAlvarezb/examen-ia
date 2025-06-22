@@ -35,6 +35,11 @@ export const createExam = async (data: {
   return response.data;
 };
 
+export const deleteExam = async (examId: string) => {
+  const response = await axios.delete(`${API_URL}/exams/${examId}`);
+  return response.data;
+};
+
 // Attempt APIs
 export const startExamAttempt = async (examId: string, negativeMark?: number, timeLimit?: number) => {
   const response = await axios.post<ExamResponse>(`${API_URL}/attempts`, {
@@ -64,17 +69,16 @@ export const fetchUserAttempts = async () => {
 };
 
 // Weak Questions APIs
-export const fetchWeakQuestions = async (limit: number = 50, since?: string) => {
-  const params = new URLSearchParams();
-  params.append('limit', limit.toString());
-  if (since) params.append('since', since);
-  
+export const fetchWeakQuestions = async (
+  limit = 100,
+  mode: 'all' | 'recent' = 'all'
+) => {
   const response = await axios.get<Array<{
     questionId: string;
     timesSeen: number;
     timesCorrect: number;
     successRate: number;
-  }>>(`${API_URL}/weak-questions?${params}`);
+  }>>(`${API_URL}/weak-questions?limit=${limit}&mode=${mode}`);
   return response.data;
 };
 
@@ -94,8 +98,9 @@ export const fetchAttemptWithQuestions = async (attemptId: string) => {
   const response = await axios.get<{
     attempt: {
       _id: string;
-      examId?: string;
+      examName?: string;
       customQuestionIds?: string[];
+      questionIds?: string[];
       negativeMark: number;
       timeLimit: number;
       startedAt: string;

@@ -117,4 +117,28 @@ router.post('/bulk', examController.bulkImportExam);
  */
 router.get('/:id/full', examController.getExamWithQuestions);
 
+/**
+ * @swagger
+ * /api/exams/{id}:
+ *   delete:
+ *     summary: Delete an exam
+ *     tags:
+ *       - Exams
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The exam ID
+ *     responses:
+ *       200:
+ *         description: Exam deleted successfully
+ *       404:
+ *         description: Exam not found
+ *       409:
+ *         description: Cannot delete exam with associated attempts
+ */
+router.delete('/:id', examController.deleteExam);
+
 export default router;

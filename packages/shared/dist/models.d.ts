@@ -43,7 +43,8 @@ export interface PublicExam extends Omit<Exam, 'questionIds'> {
 }
 export interface Attempt {
     _id: string;
-    examId?: string;
+    examName?: string;
+    questionIds?: string[];
     customQuestionIds?: string[];
     userId?: string | null;
     answers: AnswerMap;
@@ -68,7 +69,7 @@ export interface ExamResponse {
     wsToken: string;
 }
 export interface AttemptResultResponse {
-    exam: Exam;
+    examName?: string;
     questions: Question[];
     answers: AnswerMap;
     scoreTotal: number;
