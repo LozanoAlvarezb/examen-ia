@@ -9,7 +9,7 @@
             "D": "La desviación estándar"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La media aritmética es la suma de todos los valores entre la cantidad de datos."
     },
     {
@@ -22,7 +22,7 @@
             "D": "11"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La mediana es el valor central en la lista ordenada, aquí el tercero de cinco valores."
     },
     {
@@ -35,7 +35,7 @@
             "D": "La dispersión"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La moda es el dato con mayor frecuencia de aparición."
     },
     {
@@ -48,7 +48,7 @@
             "D": "Raíz cuadrada de la desviación estándar"
         },
         "correct": "C",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La varianza muestral usa n−1 en el denominador para un estimador insesgado."
     },
     {
@@ -61,7 +61,7 @@
             "D": "La varianza elevada a 1.5"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La desviación estándar es la raíz cuadrada de la varianza muestral o poblacional."
     },
     {
@@ -74,7 +74,7 @@
             "D": "Sumatoria de cuartiles"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El IQR es Q3−Q1, mide la dispersión del 50 % central."
     },
     {
@@ -87,7 +87,7 @@
             "D": "99,7 %"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "En una normal, aproximadamente el 68 % de los datos está a ±1σ de la media."
     },
     {
@@ -100,7 +100,7 @@
             "D": "φ(x)=1/(2π)·e^(−|x|)"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La pdf de la normal estándar es 1/√(2π)·exp(−x²/2)."
     },
     {
@@ -113,7 +113,7 @@
             "D": "Dominio discreto"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La t de Student tiene colas más pesadas útil con muestras pequeñas."
     },
     {
@@ -126,7 +126,7 @@
             "D": "Estimación de proporciones"
         },
         "correct": "C",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El test chi-cuadrado evalúa si dos variables categóricas son independientes."
     },
     {
@@ -139,7 +139,7 @@
             "D": "ANOVA"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La t para muestras parejas compara medias de datos antes-después."
     },
     {
@@ -152,7 +152,7 @@
             "D": "Nivel de confianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El p-valor mide evidencia contra H₀: probabilidad de los datos bajo H₀."
     },
     {
@@ -165,7 +165,7 @@
             "D": "Intervalo con 95 % de varianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Interpretación frecuentista: repetimos muestreo, el IC incluiría la media real el 95 % de veces."
     },
     {
@@ -178,7 +178,7 @@
             "D": "Varianza conjunta"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Pearson mide fuerza y dirección de la relación lineal entre dos variables."
     },
     {
@@ -191,7 +191,7 @@
             "D": "1 a 100"
         },
         "correct": "C",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El coeficiente de Pearson está acotado entre −1 (negativa perfecta) y +1 (positiva perfecta)."
     },
     {
@@ -204,7 +204,7 @@
             "D": "Transformación de datos"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La regresión lineal simple modela ŷ = β₀+β₁x minimizando el error cuadrático."
     },
     {
@@ -218,7 +218,7 @@
             "E": "No multicolinealidad perfecta"
         },
         "correct": "D",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "No es necesaria normalidad exacta de errores para estimación de coeficientes OLS, sólo para inferencia."
     },
     {
@@ -231,7 +231,7 @@
             "D": "Correlación raíz"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "R² indica proporción de varianza de variable dependiente explicada por el modelo."
     },
     {
@@ -244,7 +244,7 @@
             "D": "PCA"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Ridge y Lasso añaden penalizaciones L2 y L1 al error para reducir magnitud de coeficientes."
     },
     {
@@ -257,7 +257,7 @@
             "D": "Prueba de hipótesis"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "PCA proyecta datos en nuevas variables no correlacionadas que maximizan varianza."
     },
     {
@@ -270,7 +270,7 @@
             "D": "Curva ROC"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "PCA diagonaliza la matriz de covarianza de los datos para obtener autovectores/autovalores."
     },
     {
@@ -283,7 +283,7 @@
             "D": "Distancia media"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Los autovalores miden la varianza de los datos a lo largo de cada componente principal."
     },
     {
@@ -296,7 +296,7 @@
             "D": "Regresión múltiple"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El test de Shapiro-Wilk evalúa si una muestra proviene de una distribución normal."
     },
     {
@@ -309,7 +309,7 @@
             "D": "Distribución exponencial"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "ANOVA asume normalidad de errores y varianzas iguales entre grupos."
     },
     {
@@ -322,7 +322,7 @@
             "D": "Comparaciones con Bonferroni"
         },
         "correct": "D",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La corrección de Bonferroni ajusta el nivel de significación multiplicando p por el número de comparaciones."
     },
     {
@@ -335,7 +335,7 @@
             "D": "Varianza cero"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Un estimador es insesgado si su valor esperado coincide con el parámetro que estima."
     },
     {
@@ -348,7 +348,7 @@
             "D": "Construir histogramas"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La regla describe qué porcentaje de datos cae dentro de ±1, ±2 y ±3 desviaciones estándar."
     },
     {
@@ -361,7 +361,7 @@
             "D": "Exponencial"
         },
         "correct": "C",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Para n grande, la distribución binomial se aproxima a la normal mediante CLT."
     },
     {
@@ -374,7 +374,7 @@
             "D": "Presencia de outliers"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La heterocedasticidad viola la suposición de varianza constante de los errores."
     },
     {
@@ -387,7 +387,7 @@
             "D": "Granger"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El test Durbin-Watson evalúa correlación serial en los residuos de regresión."
     },
     {
@@ -400,7 +400,7 @@
             "D": "Yₜ = Yₜ₋₁ + Yₜ₋₂"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Un AR(1) relaciona el valor actual con el valor previo y ruido blanco."
     },
     {
@@ -413,7 +413,7 @@
             "D": "Valores discretos"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Una serie estacionaria tiene propiedades estadísticas invariantes en el tiempo."
     },
     {
@@ -426,7 +426,7 @@
             "D": "Monte Carlo"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El bootstrap genera muestras con reemplazo para estimar la distribución de un estadístico."
     },
     {
@@ -439,7 +439,7 @@
             "D": "Solo los cuartiles"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Los cuantiles, como cuartiles y percentiles, dividen la distribución en intervalos iguales."
     },
     {
@@ -452,7 +452,7 @@
             "D": "Pie chart"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El box plot muestra mediana, cuartiles y posibles outliers por grupo."
     },
     {
@@ -465,7 +465,7 @@
             "D": "Covarianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Spearman mide la relación monotónica usando rangos en lugar de valores directos."
     },
     {
@@ -478,7 +478,7 @@
             "D": "DBSCAN"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "PCA halla componentes que maximizan la varianza del conjunto de datos."
     },
     {
@@ -491,7 +491,7 @@
             "D": "Spectral"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "DBSCAN identifica clusters de alta densidad sin necesidad de especificar el número."
     },
     {
@@ -504,7 +504,7 @@
             "D": "Matriz de conteos"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Contiene correlaciones de Pearson entre pares de variables."
     },
     {
@@ -517,7 +517,7 @@
             "D": "Regresión"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "ANOVA analiza si hay diferencias significativas entre medias de múltiples grupos."
     },
     {
@@ -530,7 +530,7 @@
             "D": "Desviación estándar"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El estadístico F es la razón de varianzas que permite contrastar diferencias de medias."
     },
     {
@@ -543,7 +543,7 @@
             "D": "Crea outliers"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La transformación log reduce la cola larga de distribuciones asimétricas."
     },
     {
@@ -556,7 +556,7 @@
             "D": "Error estándar"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "VIF detecta colinealidad alta: valores >10 sugieren problemas."
     },
     {
@@ -569,7 +569,7 @@
             "D": "K-means"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "OLS minimiza la suma de cuadrados de los residuales para estimar los coeficientes."
     },
     {
@@ -582,7 +582,7 @@
             "D": "Clustering jerárquico"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La inferencia bayesiana combina una probabilidad previa con la verosimilitud para obtener una posterior."
     },
     {
@@ -595,7 +595,7 @@
             "D": "Uniforme"
         },
         "correct": "C",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La Poisson modela la frecuencia de eventos raros en intervalos de tiempo o espacio."
     },
     {
@@ -608,7 +608,7 @@
             "D": "Suma de variables uniformes"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La geométrica da la probabilidad de k−1 fracasos antes del primer éxito."
     },
     {
@@ -621,7 +621,7 @@
             "D": "Test de hipótesis"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "En Markov la probabilidad del siguiente estado depende solo del estado actual."
     },
     {
@@ -634,7 +634,7 @@
             "D": "Beta"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La uniforme continua asigna la misma densidad a cada punto en [a,b]."
     },
     {
@@ -647,7 +647,7 @@
             "D": "Chi-cuadrado"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El z-test para proporciones evalúa diferencia entre p1 y p2 cuando n grande."
     },
     {
@@ -660,7 +660,7 @@
             "D": "El p-valor disminuye con n"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El promedio de muchas observaciones tiende a la esperanza poblacional."
     },
     {
@@ -673,7 +673,7 @@
             "D": "Varianza se anula"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La suma o media de variables i.i.d. con varianza finita tiende a una normal."
     },
     {
@@ -686,7 +686,7 @@
             "D": "Variable categórica"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Modela el tiempo de espera entre eventos en un proceso Poisson."
     },
     {
@@ -699,7 +699,7 @@
             "D": "Durbin-Watson"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El test de Levene comprueba igualdad de varianzas en varios grupos."
     },
     {
@@ -712,7 +712,7 @@
             "D": "Nivel de ruido"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Mide similitud entre valores de la serie en diferentes puntos temporales."
     },
     {
@@ -725,7 +725,7 @@
             "D": "Potencia de señal"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "PACF muestra correlación entre Yₜ y Yₜ₋ₖ eliminando efectos de rezagos intermedios."
     },
     {
@@ -738,7 +738,7 @@
             "D": "Clustering"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Un MA(q) es combinación lineal de q términos de ruido blanco."
     },
     {
@@ -751,7 +751,7 @@
             "D": "Sólo media móvil"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "ARIMA une componentes autoregresivas, diferencias e integración y media móvil."
     },
     {
@@ -764,7 +764,7 @@
             "D": "Desviación estándar"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "d es el grado de diferenciación necesario para lograr estacionariedad."
     },
     {
@@ -777,7 +777,7 @@
             "D": "ANOVA"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "AIC evalúa ajuste y complejidad penalizando el número de parámetros."
     },
     {
@@ -790,7 +790,7 @@
             "D": "Varianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "BIC incluye un término log(n) que penaliza más modelos complejos en muestras grandes."
     },
     {
@@ -803,7 +803,7 @@
             "D": "ANOVA"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "KDE aproxima densidad usando kernels suavizados alrededor de cada punto."
     },
     {
@@ -816,7 +816,7 @@
             "D": "Test de independencia"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Modela el tiempo hasta que ocurre un evento como falla o muerte."
     },
     {
@@ -829,7 +829,7 @@
             "D": "Scatter plot"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La curva de Kaplan-Meier estima supervivencia acumulada vs tiempo."
     },
     {
@@ -842,7 +842,7 @@
             "D": "Transformación de datos"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La regresión logística modela la probabilidad de clase usando la función logística."
     },
     {
@@ -855,7 +855,7 @@
             "D": "Inverse"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El enlace logit transforma p en log(p/(1−p))."
     },
     {
@@ -868,7 +868,7 @@
             "D": "MSE"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La deviance compara la verosimilitud del modelo con la verosimilitud saturada."
     },
     {
@@ -881,7 +881,7 @@
             "D": "Tabla de contingencia continua"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Resume TP, FP, TN y FN para evaluar clasificadores."
     },
     {
@@ -894,7 +894,7 @@
             "D": "TN/(TN+FN)"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La sensibilidad es la proporción de verdaderos positivos entre todos los positivos reales."
     },
     {
@@ -907,7 +907,7 @@
             "D": "FP/(FP+TN)"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La especificidad es la proporción de verdaderos negativos correctamente identificados."
     },
     {
@@ -920,7 +920,7 @@
             "D": "Precision vs FPR"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La curva ROC traza tasa de verdaderos positivos frente a tasa de falsos positivos."
     },
     {
@@ -933,7 +933,7 @@
             "D": "Overfitting"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Un AUC alto significa buena discriminación entre clases."
     },
     {
@@ -946,7 +946,7 @@
             "D": "Mediana ajustada"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Outliers son observaciones que se desvían significativamente del patrón general."
     },
     {
@@ -959,7 +959,7 @@
             "D": "Valores en la media"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Los outliers suelen definirse fuera de 1.5 veces el IQR desde los cuartiles."
     },
     {
@@ -972,7 +972,7 @@
             "D": "Error cuadrático medio"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El bias mide error sistemático del estimador respecto al verdadero valor poblacional."
     },
     {
@@ -985,7 +985,7 @@
             "D": "Varianza de errores"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "MSE es la media de los cuadrados de las diferencias entre predicciones y valores reales."
     },
     {
@@ -998,7 +998,7 @@
             "D": "Errores normales vs no normales"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Homoscedasticidad implica varianza de errores constante, heterocedasticidad varianza variable."
     },
     {
@@ -1011,7 +1011,7 @@
             "D": "Scatter plot"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "QQ plot compara cuantiles muestrales con cuantiles teóricos para verificar normalidad."
     },
     {
@@ -1024,7 +1024,7 @@
             "D": "Clustering"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La diferenciación es un tipo de integración que hace estacionaria la serie."
     },
     {
@@ -1037,7 +1037,7 @@
             "D": "PCA"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El promedio móvil suaviza fluctuaciones de corto plazo en una serie."
     },
     {
@@ -1050,7 +1050,7 @@
             "D": "Matriz de correlación"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Un vector aleatorio agrupa varias variables aleatorias en una sola entidad."
     },
     {
@@ -1063,7 +1063,7 @@
             "D": "Box plot multivariante"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Describe cómo varían conjuntamente pares de variables aleatorias."
     },
     {
@@ -1076,7 +1076,7 @@
             "D": "Ser diagonal"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La matriz de covarianza es simétrica y no negativa definida."
     },
     {
@@ -1089,7 +1089,7 @@
             "D": "Transformación logarítmica"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "SVD factoriza una matriz en producto de ortogonales y una diagonal de valores singulares."
     },
     {
@@ -1102,7 +1102,7 @@
             "D": "Regularizar modelos"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "SVD de la matriz de datos centrados da los autovectores y autovalores para PCA."
     },
     {
@@ -1115,7 +1115,7 @@
             "D": "Matriz de distancias"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "A·A⁻¹=I si A es invertible."
     },
     {
@@ -1128,7 +1128,7 @@
             "D": "Producto de autovalores"
         },
         "correct": "D",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El determinante es el producto de los autovalores de la matriz."
     },
     {
@@ -1141,7 +1141,7 @@
             "D": "Clustering jerárquico"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "OLS ajusta coeficientes minimizando la suma de los residuos al cuadrado."
     },
     {
@@ -1154,7 +1154,7 @@
             "D": "Transpuesta"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El pseudo-inverso permite resolver sistemas sobredeterminados mediante mínimos cuadrados."
     },
     {
@@ -1167,7 +1167,7 @@
             "D": "Ser linealmente dependientes"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Vectores ortonormales son mutuamente ortogonales y cada uno tiene norma 1."
     },
     {
@@ -1180,7 +1180,7 @@
             "D": "Valor mínimo"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El gradiente indica dirección de máxima pendiente de la función."
     },
     {
@@ -1193,7 +1193,7 @@
             "D": "Clustering"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El método ajusta parámetros iterativamente en dirección opuesta al gradiente."
     },
     {
@@ -1206,7 +1206,7 @@
             "D": "Nunca es diferenciable"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "Las funciones convexas garantizan que cualquier mínimo local es global."
     },
     {
@@ -1219,7 +1219,7 @@
             "D": "Estimación de densidades"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "ANOVA evalúa si al menos dos medias de grupos difieren significativamente."
     },
     {
@@ -1232,7 +1232,7 @@
             "D": "Varianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La curtosis cuantifica peso de colas en comparación con normal."
     },
     {
@@ -1245,7 +1245,7 @@
             "D": "Número de picos"
         },
         "correct": "A",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El sesgo mide asimetría: positivo si cola derecha más larga."
     },
     {
@@ -1258,7 +1258,7 @@
             "D": "MAE ajustado"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El R² ajustado considera complejidad del modelo, penalizando variables irrelevantes."
     },
     {
@@ -1271,7 +1271,7 @@
             "D": "Regresión no lineal"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "ICA busca transformaciones que generen componentes lo más independientes posible."
     },
     {
@@ -1284,7 +1284,7 @@
             "D": "Covarianza"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "La entropía cuantifica incertidumbre en la distribución de probabilidad."
     },
     {
@@ -1297,7 +1297,7 @@
             "D": "ANOVA"
         },
         "correct": "B",
-        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos.",
+        "topic": "Estadística y matemáticas aplicadas a la ciencia de datos",
         "explanation": "El test de Mann-Whitney compara medianas de dos muestras sin asumir normalidad."
     }
 ]

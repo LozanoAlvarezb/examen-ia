@@ -51,11 +51,11 @@ const AttemptSchema = new mongoose.Schema(
       min: 0,
       max: 100,
     },
-    scoreByTopic: {
-      type: Map,
-      of: Number,
-      required: false,
-    },
+    scoreByTopic: [{
+      _id: false,
+      topic: { type: String, required: true },
+      score: { type: Number, required: true, min: 0, max: 100 }
+    }],
     correctCount: {
       type: Number,
       required: false,

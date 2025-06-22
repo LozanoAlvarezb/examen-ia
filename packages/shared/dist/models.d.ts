@@ -1,5 +1,9 @@
 export type Answer = 'A' | 'B' | 'C' | 'D' | null;
 export type AnswerMap = Record<string, Answer>;
+export interface TopicScore {
+    topic: string;
+    score: number;
+}
 export interface Question {
     _id: string;
     text: string;
@@ -48,7 +52,7 @@ export interface Attempt {
     startedAt: Date;
     finishedAt?: Date;
     scoreTotal?: number;
-    scoreByTopic: Record<string, number>;
+    scoreByTopic: TopicScore[];
     correctCount?: number;
     wrongCount?: number;
     blankCount?: number;
@@ -68,7 +72,7 @@ export interface AttemptResultResponse {
     questions: Question[];
     answers: AnswerMap;
     scoreTotal: number;
-    scoreByTopic: Record<string, number>;
+    scoreByTopic: TopicScore[];
     correctCount: number;
     wrongCount: number;
     blankCount: number;

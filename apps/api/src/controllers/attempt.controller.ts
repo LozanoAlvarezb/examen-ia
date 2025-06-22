@@ -49,10 +49,10 @@ const calculateScores = async (attempt: any, answers: Record<string, string | nu
   const scoreTotal = ((correctCount - (wrongCount * attempt.negativeMark)) * 100) / totalQuestions;
 
   // Calculate percentage scores by topic
-  const scoreByTopic = Object.entries(topicScores).reduce((acc, [topic, scores]) => {
-    acc[topic] = (scores.correct * 100) / scores.total;
-    return acc;
-  }, {} as Record<string, number>);
+  const scoreByTopic = Object.entries(topicScores).map(([topic, scores]) => ({
+    topic,
+    score: (scores.correct * 100) / scores.total,
+  }));
 
   return {
     scoreTotal: Math.max(0, scoreTotal), // Ensure score doesn't go below 0

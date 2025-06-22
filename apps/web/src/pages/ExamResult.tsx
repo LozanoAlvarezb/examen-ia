@@ -42,7 +42,7 @@ interface ResultData {
     topic: string;
   }>;
   scoreTotal: number;
-  scoreByTopic: Record<string, number>;
+  scoreByTopic: Array<{ topic: string; score: number }>;
   correctCount: number;
   wrongCount: number;
   blankCount: number;
@@ -77,11 +77,11 @@ const ExamResult = () => {
   }, [attemptId]);
 
   // Format the topic scores for the bar chart with sorting
-  const formatTopicScores = (scoreByTopic: Record<string, number> | undefined): TopicScore[] => {
+  const formatTopicScores = (scoreByTopic: Array<{ topic: string; score: number }> | undefined): TopicScore[] => {
     if (!scoreByTopic) return [];
     // Sort topics by score in descending order
-    return Object.entries(scoreByTopic)
-      .map(([name, score]) => ({ name, score }))
+    return scoreByTopic
+      .map(({ topic, score }) => ({ name: topic, score }))
       .sort((a, b) => b.score - a.score);
   };
 
