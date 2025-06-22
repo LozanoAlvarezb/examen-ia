@@ -300,15 +300,15 @@ export const getWeakQuestions = async (req: Request, res: Response) => {
       match = { ...match, lastAttemptAt: { $gte: lastAttempt?.finishedAt || new Date(0) } };
     }
 
-    const weak = await QuestionStat.aggregate([
-      { $match: match },
-      { $addFields: { successRate: { $divide: ['$timesCorrect', '$timesSeen'] } } },
-      { $sort: { successRate: 1, timesSeen: -1 } },
-      { $limit: limit },
-      { $project: { questionId: 1, timesSeen: 1, timesCorrect: 1, successRate: 1 } }
-    ]);
+    const stats = await QuestionStat.find(match)
+      .populate('questionId')
+      .sort({ timesSeen: -1 })
+      .limit(limit);
 
-    res.json(weak);
+    // Extract the populated question documents
+    const questions = stats.map(s => s.questionId).filter(Boolean);
+
+    res.json(questions);
   } catch (error: any) {
     console.error('Error fetching weak questions:', error);
     res.status(500).json({

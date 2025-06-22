@@ -73,12 +73,7 @@ export const fetchWeakQuestions = async (
   limit = 100,
   mode: 'all' | 'recent' = 'all'
 ) => {
-  const response = await axios.get<Array<{
-    questionId: string;
-    timesSeen: number;
-    timesCorrect: number;
-    successRate: number;
-  }>>(`${API_URL}/weak-questions?limit=${limit}&mode=${mode}`);
+  const response = await axios.get<Question[]>(`${API_URL}/weak-questions?limit=${limit}&mode=${mode}`);
   return response.data;
 };
 

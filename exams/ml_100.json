@@ -1,0 +1,1302 @@
+[
+    {
+        "id": 1,
+        "text": "Durante un EDA descubres que la curtosis de una variable continua es 7,3. ¿Cuál de las siguientes afirmaciones es la mejor interpretación estadística?",
+        "options": {
+            "A": "La distribución es más achatada que una normal y los outliers serán escasos",
+            "B": "La distribución posee colas ligeras pero sesgo positivo pronunciado",
+            "C": "La distribución presenta colas pesadas; la probabilidad de observaciones extremas es notablemente mayor que en una normal",
+            "D": "La curtosis no aporta información sobre la cola, sólo sobre la asimetría"
+        },
+        "correct": "C",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Una curtosis muy superior a 3 indica leptocurtosis: colas pesadas y mayor frecuencia de valores extremos."
+    },
+    {
+        "id": 2,
+        "text": "Al inspeccionar la matriz de correlación de un conjunto de entrenamiento con 200 variables cuantitativas, detectas pares con |ρ|>0,97. El motivo técnico principal para abordar esta situación antes de entrenar un modelo lineal regular sin penalización es:",
+        "options": {
+            "A": "La redundancia disminuiría la varianza de los coeficientes y empeoraría la generalización",
+            "B": "La multicolinealidad provocaría errores de punto flotante y coeficientes inestables con varianzas elevadas",
+            "C": "El modelo no convergería porque QR-decomposition no admite columnas linealmente dependientes",
+            "D": "No existe ningún problema salvo que el número de muestras sea inferior al de variables"
+        },
+        "correct": "B",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Correlaciones tan altas generan multicolinealidad severa; los coeficientes OLS se vuelven numéricamente inestables y con varianzas muy grandes."
+    },
+    {
+        "id": 3,
+        "text": "Supón que aplicas Winsorizing al 1 % superior e inferior de todas las variables numéricas. ¿Qué consecuencia teórica NO deberías esperar?",
+        "options": {
+            "A": "Disminución de la varianza muestral",
+            "B": "Reducción del impacto de outliers en la media",
+            "C": "Alteración sustancial de la mediana si la distribución es altamente asimétrica",
+            "D": "Posible mejora de la convergencia de algoritmos basados en gradiente"
+        },
+        "correct": "C",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "La mediana es robusta; winsorizar un 1 % apenas la desplaza salvo que el sesgo sea extremo justamente cerca de la mediana, algo muy improbable."
+    },
+    {
+        "id": 4,
+        "text": "Para identificar interacciones no lineales en un dataset con 50 000 observaciones y 300 features, ¿qué aproximación exploratoria ofrece el mejor balance entre coste computacional y capacidad de descubrimiento?",
+        "options": {
+            "A": "Aplicar t-SNE a los datos sin normalizar y visualizar en 2D",
+            "B": "Calcular gráficos de dependencia parcial (PDP) usando un Random Forest entrenado con subsampling estratificado",
+            "C": "Construir un mapa de calor de la matriz de correlación de segundo orden (pares de productos de features)",
+            "D": "Generar todas las combinaciones cuadráticas y entrenar un modelo k-NN con distancia Mahalanobis"
+        },
+        "correct": "B",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Los PDP permiten explorar interacciones no lineales de forma local con un coste manejable usando muestreo; t-SNE y mapas completos de interacciones serían prohibitivos o poco interpretables."
+    },
+    {
+        "id": 5,
+        "text": "Se detecta un patrón de valores faltantes MAR (Missing At Random) dependiente de la edad del cliente. ¿Cuál de las siguientes imputaciones introduce el menor sesgo sistemático bajo este supuesto?",
+        "options": {
+            "A": "Imputación por la media global",
+            "B": "Imputación stochástica basada en regresión con edad como predictor",
+            "C": "K-NN imputer con k=1",
+            "D": "Eliminar todas las filas con valores faltantes"
+        },
+        "correct": "B",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Si la ausencia depende de un predictor observado (edad), la imputación múltiple/regresión condicional minimiza sesgo al respetar la relación con la variable observada."
+    },
+    {
+        "id": 6,
+        "text": "Al generar variables polinómicas de segundo grado en un problema con 40 variables originales, el número máximo de nuevos términos (sin incluír intercepto) será:",
+        "options": {
+            "A": "40",
+            "B": "820",
+            "C": "861",
+            "D": "780"
+        },
+        "correct": "C",
+        "topic": "Ingeniería de características",
+        "explanation": "Para polinomios de grado 2 en p variables se crean p(p+1)/2 términos: 40·41/2 = 820 de interacciones + 40 lineales = 860; como ya existen las 40 lineales, los nuevos son 820; con el término cuadrático cada variable cuenta uno adicional: total 861 si contáramos intercepto aparte."
+    },
+    {
+        "id": 7,
+        "text": "En un modelo de regresión Lasso, al aumentar λ (alpha) de forma sustancial, ¿cuál de las siguientes evoluciones es técnicamente correcta?",
+        "options": {
+            "A": "Los coeficientes no cambian pues L1 no penaliza valores pequeños",
+            "B": "Todos los coeficientes se reducen de forma proporcional pero ninguno se anula",
+            "C": "Algunos coeficientes se contraen a cero, produciendo selección automática de variables",
+            "D": "El error de entrenamiento disminuye y el de validación siempre mejora"
+        },
+        "correct": "C",
+        "topic": "Ingeniería de características",
+        "explanation": "La penalización L1 induce esparsidad: ciertos coeficientes se vuelven exactamente cero, realizando feature selection implícita."
+    },
+    {
+        "id": 8,
+        "text": "Para codificar una variable categórica con 500 posibles símbolos y fuerte desbalance, el método que mejor evita explosión dimensional sin introducir ordinalidad artificial es:",
+        "options": {
+            "A": "Hashing trick con proyección en 2^16 dimensiones y signo aleatorio",
+            "B": "One-hot encoding estándar",
+            "C": "Label encoding secuencial",
+            "D": "Binarización de frecuencia en ‘raro’ vs ‘común’"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "El hashing trick permite representar high-cardinality categorías en un espacio reducido con colisiones controladas sin imponer orden ni 500 columnas."
+    },
+    {
+        "id": 9,
+        "text": "Seleccionar variables mediante importancia de permutación sobre un modelo Random Forest es preferible a hacerlo con coeficientes absolutos en regresión lineal porque:",
+        "options": {
+            "A": "La permutación capta efectos no lineales y de interacción independientemente de la escala",
+            "B": "Los bosques no requieren validación cruzada",
+            "C": "La medida de permutación no se ve afectada por multicolinealidad",
+            "D": "Los coeficientes lineales siempre están sesgados por regularización ridge implícita"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "La importancia de permutación evalúa la pérdida de rendimiento al perturbar una variable, reflejando efectos incluso no lineales."
+    },
+    {
+        "id": 10,
+        "text": "¿Qué afirmación refleja mejor el truco de escalado 'robust scaler' frente a 'standard scaler' en presencia de outliers extremos?",
+        "options": {
+            "A": "Se centra en la mediana y escala con el rango intercuartílico, disminuyendo sensibilidad a valores extremos",
+            "B": "Normaliza entre 0 y 1 usando mínimo y máximo actuales",
+            "C": "Ajusta la media a cero y la varianza a la unidad",
+            "D": "El robust scaler descarta outliers antes de escalar"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "RobustScaler utiliza mediana y IQR, resistentes a outliers, mientras StandardScaler usa media y desviación estándar."
+    },
+    {
+        "id": 11,
+        "text": "En un problema de clasificación con clases muy desbalanceadas (99 % vs 1 %), el algoritmo más sensible a este desequilibrio sin ajustes adicionales es:",
+        "options": {
+            "A": "Logistic Regression con regularización",
+            "B": "Support Vector Machine con kernel RBF y C por defecto",
+            "C": "Random Forest con sample_weight equilibrado",
+            "D": "Gradient Boosting con parámetro scale_pos_weight ajustado"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Un SVM RBF sin balance de pesos tenderá a crear un margen que minimiza errores globales, ignorando la clase minoritaria."
+    },
+    {
+        "id": 12,
+        "text": "Para acelerar el entrenamiento de un SVM lineal en un dataset con 10 millones de muestras y 1 000 features escasos, elegirías:",
+        "options": {
+            "A": "El resolvedor primal basado en ‘liblinear’ con penalización L1",
+            "B": "El resolvedor dual basado en ‘libsvm’ con kernel polinómico",
+            "C": "SGDClassifier con hinge loss y regularización elastic net",
+            "D": "Naïve Bayes multinomial"
+        },
+        "correct": "C",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Para datos muy grandes se prefiere un optimizador online tipo SGD; la formulación dual será prohibitiva."
+    },
+    {
+        "id": 13,
+        "text": "En XGBoost, una alta tasa de aprendizaje (eta) acompañada de un número reducido de árboles suele conducir a:",
+        "options": {
+            "A": "Un sesgo alto y varianza baja",
+            "B": "Un modelo propenso a sobreajustar por saltos agresivos en el espacio de predicciones",
+            "C": "Reducción de la varianza a costa de un sesgo inaceptable",
+            "D": "Una menor importancia de los valores faltantes"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Aprendizajes grandes generan pasos agresivos que pueden sobreajustar ruidos individuales; se mitiga con más árboles y η pequeño."
+    },
+    {
+        "id": 14,
+        "text": "¿Cuál de las siguientes afirmaciones sobre Elastic Net es correcta?",
+        "options": {
+            "A": "Combina penalización L1 y L2, pero preserva automáticamente todas las variables correlacionadas",
+            "B": "Un α (l1_ratio) cercano a 1 hace que el modelo se comporte como Lasso, promoviendo esparsidad",
+            "C": "Cuando el l1_ratio es 0 → el modelo es un Ridge estricto que anula coeficientes",
+            "D": "Elastic Net no requiere estandarizar las variables"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "l1_ratio→1 privilegia la parte L1 (Lasso) que induce esparsidad, mientras valores bajos se acercan a Ridge."
+    },
+    {
+        "id": 15,
+        "text": "En Bagging, la reducción de varianza se logra principalmente porque:",
+        "options": {
+            "A": "Cada modelo aprende un subconjunto de features aleatorio y por ello el sesgo se minimiza",
+            "B": "Promedia estimadores no correlacionados obtenidos de muestras bootstrap, atenuando fluctuaciones específicas",
+            "C": "Genera un número infinito de árboles hasta que la varianza tiende a cero",
+            "D": "Penaliza los coeficientes grandes con regularización L2 compartida"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "El núcleo del Bagging es crear modelos sobre subconjuntos bootstrap; la media reduce varianza si los errores no están correlados."
+    },
+    {
+        "id": 16,
+        "text": "Cuando aplicas k-fold estratificado sobre un conjunto con clase minoritaria <1 %, aún observas varianza elevada en la métrica F1 entre folds. La estrategia más efectiva para estabilizar la estimación es:",
+        "options": {
+            "A": "Aumentar k para usar más datos de entrenamiento y reducir varianza",
+            "B": "Realizar Repeated Stratified k-fold promediando sobre varias reparticiones",
+            "C": "Cambiar a validación leave-one-out (LOO)",
+            "D": "Medir accuracy, que es más estable que F1"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "Repetir la partición estratificada varias veces reduce la varianza de la métrica sin sacrificar estratificación."
+    },
+    {
+        "id": 17,
+        "text": "En un problema de NLP con vocabulario de 30 000 tokens, aplicas subword tokenization (BPE) y reduces a 8 000. El efecto más notable es:",
+        "options": {
+            "A": "El modelo aprende embeddings sintácticos pero pierde semánticos",
+            "B": "Se disminuye la longitud máxima de secuencia necesaria y se mitiga el desconocido-token (OOV)",
+            "C": "Cada token codifica menos información y aumenta el tamaño de embedding",
+            "D": "Se impide el fine-tuning de modelos pre-entrenados"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Los subwords reducen OOV y longitud, mejorando eficiencia; conservan semántica combinada."
+    },
+    {
+        "id": 18,
+        "text": "Para una tarea de clasificación de texto con BERT, congelar las 10 primeras capas durante el fine-tuning suele:",
+        "options": {
+            "A": "Reducir el tiempo de entrenamiento y riesgo de sobreajuste, manteniendo la representación genérica",
+            "B": "Impedir el aprendizaje de cualquier característica relevante",
+            "C": "Aumentar significativamente la capacidad de adaptación a dominio",
+            "D": "Requerir un batch size mayor para converger"
+        },
+        "correct": "A",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Congelar capas inferiores conserva features generales y reduce sobreajuste/tiempo; las superiores se ajustan a la tarea."
+    },
+    {
+        "id": 19,
+        "text": "La métrica BLEU en traducción automática penaliza más severamente:",
+        "options": {
+            "A": "Frases con demasiados n-gramas coincidentes",
+            "B": "Oraciones cortas con longitud inferior al de referencia mediante la Brevity Penalty",
+            "C": "Uso de sinónimos en lugar de coincidencias exactas",
+            "D": "Errores de puntuación al final de la frase"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "BLEU incluye Brevity Penalty que castiga hipótesis notablemente más cortas que la referencia."
+    },
+    {
+        "id": 20,
+        "text": "El algoritmo Word2Vec Skip-gram con negative sampling optimiza:",
+        "options": {
+            "A": "La probabilidad de un contexto dado un word (softmax completa)",
+            "B": "Una función logística para discriminar pares observados vs aleatorios",
+            "C": "La reconstrucción de la frecuencia absoluta de co-ocurrencia",
+            "D": "La distancia coseno entre vectores"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Negative sampling reformula softmax como clasificación binaria entre pares reales y aleatorios."
+    },
+    {
+        "id": 21,
+        "text": "Supón que entrenas un modelo con validación cruzada anidada (nested CV). ¿Qué error conceptual sería más grave?",
+        "options": {
+            "A": "Usar k=3 en la capa externa",
+            "B": "Realizar grid search de hiperparámetros dentro del fold externo",
+            "C": "Calcular la métrica de test mediante promediar los resultados de la capa interna",
+            "D": "Conservar el mejor modelo de cada fold externo para ensamble posterior"
+        },
+        "correct": "C",
+        "topic": "Evaluación y validación",
+        "explanation": "La métrica final debe calcularse solo sobre los folds externos, no promediando métrica interna, que resultaría optimista."
+    },
+    {
+        "id": 22,
+        "text": "Cuando se evalúa un modelo con AUC = 0,5 y un intervalo de confianza 95 % de (0,49, 0,51), la interpretación correcta es:",
+        "options": {
+            "A": "El modelo discrimina ligeramente mejor que el azar",
+            "B": "No se puede rechazar la hipótesis nula de discriminación aleatoria",
+            "C": "El modelo está severamente sobreajustado",
+            "D": "El muestreo es insuficiente; siempre se debe ampliar la muestra"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "El IC incluye 0,5; estadísticamente no se diferencia del azar, por lo que no discrimina."
+    },
+    {
+        "id": 23,
+        "text": "Al implementar un servicio REST de inferencia con FastAPI, la técnica que minimiza la latencia P99 en CPU sin alterar el modelo es:",
+        "options": {
+            "A": "Habilitar Uvicorn con workers basados en Gunicorn y concurrency asíncrona",
+            "B": "Aumentar el tiempo de GC de Python",
+            "C": "Subir batch size durante el inference loop",
+            "D": "Convertir el modelo a formato ONNX y ejecutarlo en GPU"
+        },
+        "correct": "A",
+        "topic": "Implementación de modelos",
+        "explanation": "Multiproceso y E/S asíncrona en Uvicorn/Gunicorn reducen colas y latencia alta sin cambiar el modelo."
+    },
+    {
+        "id": 24,
+        "text": "En un entorno MLOps, ¿qué combinación cubre las tres capas de responsabilidad 'Data', 'Training' y 'Serving'?",
+        "options": {
+            "A": "Airflow + MLflow Tracking + Docker",
+            "B": "Great Expectations + Kubeflow Pipelines + KServe",
+            "C": "Pandas + Matplotlib + Flask",
+            "D": "Terraform + Jenkins + Postman"
+        },
+        "correct": "B",
+        "topic": "Implementación de modelos",
+        "explanation": "Great Expectations valida datos; Kubeflow Pipelines entrena y versiona; KServe sirve modelos."
+    },
+    {
+        "id": 25,
+        "text": "En la práctica SMOTE puede inducir overfitting porque:",
+        "options": {
+            "A": "Aumenta la varianza del modelo al duplicar observaciones minoritarias idénticas",
+            "B": "Genera puntos sintéticos interpolados que pueden invadir la clase mayoritaria, reduciendo margen",
+            "C": "Reduce el desequilibrio hasta 0",
+            "D": "Sólo es aplicable a variables categóricas"
+        },
+        "correct": "B",
+        "topic": "Ingeniería de características",
+        "explanation": "SMOTE crea ejemplos interpolados cercanos a la frontera, pudiendo confundir al clasificador."
+    },
+    {
+        "id": 26,
+        "text": "Para estimar la importancia de features en un modelo binario con deep learning, SHAP es preferible a grad-CAM porque:",
+        "options": {
+            "A": "SHAP es específico de imágenes",
+            "B": "SHAP ofrece explicaciones globales y locales basadas en teoría de juegos para cualquier tipo de input tabular",
+            "C": "Grad-CAM produce valores exactos de contribución para datos tabulares",
+            "D": "SHAP no necesita datos de referencia"
+        },
+        "correct": "B",
+        "topic": "Ingeniería de características",
+        "explanation": "SHAP se fundamenta en valores de Shapley y es agnóstico al tipo de modelo; grad-CAM se emplea para CNNs en visión."
+    },
+    {
+        "id": 27,
+        "text": "El método PCA antes de k-means puede mejorar resultados porque:",
+        "options": {
+            "A": "Convierte distancias Euclídeas en distancias de Mahalanobis",
+            "B": "Elimina ruido y colinealidad reduciendo dimensiones irrelevantes",
+            "C": "Garantiza solución global óptima en k-means",
+            "D": "Aumenta la varianza total de los datos"
+        },
+        "correct": "B",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "Reducir dimensiones ruidosas mejora la forma de los clusters y acelera convergencia."
+    },
+    {
+        "id": 28,
+        "text": "En un Hidden Markov Model (HMM) con observaciones continuas gaussianas, la actualización M-step del algoritmo EM ajusta:",
+        "options": {
+            "A": "Únicamente las matrices de transición",
+            "B": "Los parámetros de la emisión (μ, Σ) y transición (A) maximizando la Q-función",
+            "C": "Solo los vectores de estado inicial",
+            "D": "La probabilidad a priori de observaciones"
+        },
+        "correct": "B",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "En la M-step se re-estimán los parámetros que maximizan la esperanza log-likelihood dada la distribución posterior."
+    },
+    {
+        "id": 29,
+        "text": "Al emplear t-SNE para visualización, un valor de 'perplexity' demasiado bajo puede provocar:",
+        "options": {
+            "A": "Agrupamiento excesivo (over-clustering) y pérdida de estructura global",
+            "B": "Amplificación de distancias entre clusters verdaderos",
+            "C": "Baja varianza en las proyecciones",
+            "D": "Visualización idéntica independientemente del random_state"
+        },
+        "correct": "A",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "Perplexity gobierna el balance local/global; valores bajos se centran en vecinos muy cercanos generando micro-clusters."
+    },
+    {
+        "id": 30,
+        "text": "En LDA (Latent Dirichlet Allocation), aumentar α (alpha) produce tópicos que tienden a:",
+        "options": {
+            "A": "Ser más específicos y con menos palabras frecuentes",
+            "B": "Contener menos palabras exclusivas y ser más parecidos entre documentos",
+            "C": "Reducir la probabilidad de palabras raras",
+            "D": "Aumentar la esparsidad en distribuciones de palabras"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Alpha controla la distribución de tópicos por documento; un α alto crea documentos con mezcla más uniforme de tópicos."
+    },
+    {
+        "id": 31,
+        "text": "¿Cuál de los siguientes datos infringiría la suposición MAR en imputación?",
+        "options": {
+            "A": "Los valores perdidos dependen de una variable observada",
+            "B": "Los valores perdidos dependen del valor faltante en sí (MNAR)",
+            "C": "Los valores perdidos están completamente al azar",
+            "D": "Faltan debido a un error de transcripción independiente"
+        },
+        "correct": "B",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "MNAR viola MAR; la ausencia depende del verdadero contenido no observado."
+    },
+    {
+        "id": 32,
+        "text": "La heurística de Elbow para k-means se basa en:",
+        "options": {
+            "A": "Detectar el punto donde la disminución de la inercia se estabiliza al añadir más clusters",
+            "B": "Encontrar el pico máximo de la silueta media",
+            "C": "Minimizar la varianza inter-cluster",
+            "D": "Maximizar el determinante de la matriz de covarianza"
+        },
+        "correct": "A",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "Elbow identifica la 'rodilla' donde añadir clusters ya no mejora significativamente la SSE."
+    },
+    {
+        "id": 33,
+        "text": "Para un modelo de regresión con heterocedasticidad detectada, la mejor estrategia entre las siguientes es:",
+        "options": {
+            "A": "Utilizar estimadores de varianza robusta (White) o Weighted Least Squares",
+            "B": "Eliminar la mitad inferior de los datos",
+            "C": "Aplicar one-hot encoding a variables numéricas",
+            "D": "Usar el mismo modelo sin cambios porque OLS es insesgado"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "WLS o errores robustos corrigen el sesgo en las varianzas de los coeficientes debido a heterocedasticidad."
+    },
+    {
+        "id": 34,
+        "text": "En una SVM lineal, la distancia margen depende inversamente de:",
+        "options": {
+            "A": "La norma L2 de w",
+            "B": "El término de sesgo b",
+            "C": "El número de muestras soporte",
+            "D": "Cualquier kernel polinómico"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Margen = 2/||w||; un w con gran norma implica un margen más estrecho."
+    },
+    {
+        "id": 35,
+        "text": "¿Cuál es la afirmación correcta sobre el test de McNemar para modelos de clasificación?",
+        "options": {
+            "A": "Comparar dos clasificadores independientes en muestras distintas",
+            "B": "Comparar dos clasificadores sobre la misma muestra emparejada, focalizando discordancias",
+            "C": "Comparar el F1 de dos modelos multiclase",
+            "D": "Evaluar significancia del AUC"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "McNemar usa una tabla 2×2 de aciertos/errores emparejados para ver si dos clasificadores difieren significativamente."
+    },
+    {
+        "id": 36,
+        "text": "Si en un Grad-Boosting se duplica el número de árboles pero se reduce la learning_rate a la mitad, en términos teóricos se espera:",
+        "options": {
+            "A": "Mayor sesgo y menor varianza",
+            "B": "Sesgo similar y varianza similar, pero entrenamiento más lento con posible mejora de generalización",
+            "C": "Reducción garantizada del sobreajuste",
+            "D": "Pérdida de interpretabilidad sin impacto en rendimiento"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Reducir η y aumentar árboles preserva capacidad de ajuste pero suaviza pasos, mejorando a veces generalización."
+    },
+    {
+        "id": 37,
+        "text": "¿Cuál de las siguientes evaluaciones post-deploy es la más adecuada para un modelo que asigna límites de crédito en vivo?",
+        "options": {
+            "A": "Precision@k en el conjunto de test offline",
+            "B": "Tracking de Population Stability Index (PSI) y tasa de default real vs esperada",
+            "C": "AUC en validación cruzada 10-fold",
+            "D": "Gráfico t-SNE de embeddings de clientes"
+        },
+        "correct": "B",
+        "topic": "Implementación de modelos",
+        "explanation": "PSI mide stability drift; default real mide performance bajo riesgo, ambas críticas en crédito."
+    },
+    {
+        "id": 38,
+        "text": "Cuando se usa AdaBoost con árboles stumps (profundidad 1), ¿qué propiedad teórica asegura la convergencia del error exponencial bajo ciertas condiciones?",
+        "options": {
+            "A": "Mínima varianza de los clasificadores base",
+            "B": "El margen aumento adaptativo (margin theory) garantiza que el margen mínimo crece con iteraciones",
+            "C": "La regularización L2 implícita de AdaBoost",
+            "D": "La función de pérdida MAE convexa"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "La teoría del margen de Schapire & Freund muestra cómo AdaBoost incrementa el margen, reduciendo bound de error."
+    },
+    {
+        "id": 39,
+        "text": "UMAP se prefiere a t-SNE para embebidos de gran tamaño porque:",
+        "options": {
+            "A": "UMAP preserva distancia angular exacta de alta dimensión",
+            "B": "Tiene complejidad O(N log N) y retiene mejor estructura global",
+            "C": "Produce siempre los mismos resultados sin aleatoriedad",
+            "D": "No requiere hiperparámetros"
+        },
+        "correct": "B",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "UMAP es más rápido y mantiene tanto estructura local como cierta global; t-SNE es O(N²) y pierde global."
+    },
+    {
+        "id": 40,
+        "text": "En un embedding de palabras, la relación vec(“King”) − vec(“Man”) + vec(“Woman”) ≈ vec(“Queen”) se explica mejor por:",
+        "options": {
+            "A": "Propiedad distributiva de la suma vectorial",
+            "B": "Modelo de espacio semántico y analogías capturadas por sub-espacios lineales",
+            "C": "Normalización L1 de vectores",
+            "D": "Mayor dimensión del embedding"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Word embeddings lineales modelan analogías semánticas donde diferencias de género se reflejan en sub-espacios lineales."
+    },
+    {
+        "id": 41,
+        "text": "En la práctica, la métrica Gini en árboles de decisión tiene ventaja sobre la entropía porque:",
+        "options": {
+            "A": "Es convexa y evita overfitting",
+            "B": "Requiere menos operaciones logarítmicas, acelerando el entrenamiento con resultados similares",
+            "C": "No es sensible a desbalance de clases",
+            "D": "Genera árboles más profundos"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Gini es computacionalmente más barata y da particiones comparables a la entropía."
+    },
+    {
+        "id": 42,
+        "text": "La desventaja principal de K-Fold para series temporales frente a Walk-Forward Validation es:",
+        "options": {
+            "A": "Mayor sesgo",
+            "B": "Violación de independencia temporal e información futura filtrada en entrenamiento",
+            "C": "Complejidad temporal súper lineal",
+            "D": "No proporciona estimación de varianza"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "Barajar observaciones temporales rompe causalidad y filtra datos futuros al historial."
+    },
+    {
+        "id": 43,
+        "text": "El optimizador Adam combina:",
+        "options": {
+            "A": "SGD con momentum y adaptación de tasa por weight decay",
+            "B": "Momentos de primer orden (media) y segundo orden (varianza) con corrección de sesgo",
+            "C": "RMSprop y Nesterov momentum sin bias correction",
+            "D": "Decaimiento cosenoidal del learning rate"
+        },
+        "correct": "B",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Adam usa estimaciones exponenciales de media y varianza de gradientes, corrigiendo su sesgo inicial."
+    },
+    {
+        "id": 44,
+        "text": "Al aplicar Stacking con meta-modelo lineal, ¿por qué es esencial predecir los folds de validación en vez de todo el conjunto de entrenamiento?",
+        "options": {
+            "A": "Para evitar colinealidad del meta-modelo",
+            "B": "Para impedir fuga de información y sobreajuste del meta-modelo a salidas overfitted",
+            "C": "Para reducir la dimensionalidad",
+            "D": "No es esencial; ambos resultan iguales si se regulariza"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Usar outputs generados en folds preserva la independencia; entrenar sobre todo el set crearía leakage."
+    },
+    {
+        "id": 45,
+        "text": "En la práctica de LLMOps, la métrica 'context cache hit-rate' monitoriza:",
+        "options": {
+            "A": "La frecuencia con que se reutiliza el estado interno del modelo para secuencias similares",
+            "B": "La proporción de prompts que incluyen palabras prohibidas",
+            "C": "El número medio de tokens por segundo",
+            "D": "La latencia de inferencia en FPGA"
+        },
+        "correct": "A",
+        "topic": "Implementación de modelos",
+        "explanation": "Caching de key-values ahorra cómputo si se reutilizan prefijos; la tasa de acierto indica eficiencia."
+    },
+    {
+        "id": 46,
+        "text": "Un modelo Naïve Bayes Gaussiano fracasa gravemente cuando:",
+        "options": {
+            "A": "Las variables son discretas y altamente correlacionadas",
+            "B": "Las variables continuas violan la independencia condicional, pero son gaussianas",
+            "C": "Las varianzas por clase difieren mucho entre variables, generando underflow en la multiplicación de likelihoods",
+            "D": "Se aplica log-transformación a las likelihoods"
+        },
+        "correct": "C",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Grandes diferencias de escala y multiplicaciones pueden causar underflow; se usa suma de log-likelihoods."
+    },
+    {
+        "id": 47,
+        "text": "El parámetro min_samples_leaf en un árbol de decisión reduce overfitting porque:",
+        "options": {
+            "A": "Fuerza un número mínimo de muestras por hoja, evitando divisiones sobre ruido",
+            "B": "Podar el árbol tras entrenamiento sin restricción",
+            "C": "Aumentar la profundidad máxima",
+            "D": "Regularizar mediante penalización L1"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "No se crean hojas basadas en pocas observaciones con patrones espurios."
+    },
+    {
+        "id": 48,
+        "text": "Para comparar significación estadística de dos ROC AUC calculados sobre el mismo conjunto, utilizarías:",
+        "options": {
+            "A": "Bootstrap del AUC y test de DeLong",
+            "B": "Test t de medias",
+            "C": "Test chi-cuadrado",
+            "D": "Kolmogorov-Smirnov"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "El test de DeLong o bootstrap evalúa diferencia de AUCs emparejados."
+    },
+    {
+        "id": 49,
+        "text": "Las variables 'DateTime' transformadas a ‘seno/coseno’ de la fase anual (365 días) son preferibles a un One-hot del mes porque:",
+        "options": {
+            "A": "Reducen dimensionalidad, preservan ciclicidad y continuidad temporal",
+            "B": "Incrementan no linealidad y capturan festivos",
+            "C": "Producen embeddings lineales nec esarios para LSTM",
+            "D": "Facilitan la creación de ventanas deslizantes"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "La representación circular evita ruptura entre diciembre y enero y usa solo 2 columnas."
+    },
+    {
+        "id": 50,
+        "text": "Una red LSTM bidireccional NO es adecuada para predecir series financieras en tiempo real porque:",
+        "options": {
+            "A": "Tiene demasiados parámetros y sobreajusta",
+            "B": "Requiere información de futuro (dirección inversa) para cada predicción online",
+            "C": "Carece de atención",
+            "D": "No es diferenciable"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Bidirectional necesita el futuro de la secuencia, imposible en inferencia causal online."
+    },
+    {
+        "id": 51,
+        "text": "El método Isolation Forest para detección de anomalías se basa en:",
+        "options": {
+            "A": "Distancia media al centroide más cercano",
+            "B": "Longitud media de la ruta para aislar el punto en árboles aleatorios; los outliers se aíslan con menos splits",
+            "C": "Estimación de densidad Kernel",
+            "D": "PCA y reconstrucción"
+        },
+        "correct": "B",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "Los puntos aislables con pocos cortes son anomalías; la puntuación es inversa a la ruta media."
+    },
+    {
+        "id": 52,
+        "text": "En la práctica, un modelo GBT (Gradient Boosting Trees) suele requerir que los datos categóricos:",
+        "options": {
+            "A": "Se dejen como strings sin tocar",
+            "B": "Se codifiquen mediante target encoding o one-hot, según cardinalidad, porque el algoritmo espera inputs numéricos",
+            "C": "Se transformen a valores binarios con hashing",
+            "D": "Se escalen a [0,1]"
+        },
+        "correct": "B",
+        "topic": "Ingeniería de características",
+        "explanation": "GBM implementaciones estándar aceptan valores numéricos; se usa codificación adecuada."
+    },
+    {
+        "id": 53,
+        "text": "El preprocesamiento 'TF-IDF sublinear tf' con ‘smooth idf’ mitiga:",
+        "options": {
+            "A": "La influencia excesiva de documentos muy cortos",
+            "B": "La penalización logarítmica que aplasta diferencias entre términos raros y muy raros",
+            "C": "El efecto de política de recuento global en streaming",
+            "D": "Las stop-words desconocidas"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "El tf sublineal usa 1+log(tf) y smooth idf añade 1 al denominador para no dividir por cero; reduce extremos."
+    },
+    {
+        "id": 54,
+        "text": "Cuando empleas WordPiece para un corpus médico, una desventaja potencial respecto a BPE es:",
+        "options": {
+            "A": "Generar sub-palabras más largas y menos manejables",
+            "B": "Requerir una fase de unigram language model previa",
+            "C": "Aumentar significativamente la tasa de OOV para términos raros",
+            "D": "Dependencia más fuerte del orden de frecuencia, lo que puede fragmentar prefijos comunes"
+        },
+        "correct": "D",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "WordPiece prioriza pares con mayor aumento de probabilidad, pudiendo romper prefijos compartidos raros en corpora especializados."
+    },
+    {
+        "id": 55,
+        "text": "En series temporales con estacionalidad multiplicativa, la forma apropiada de 'detrend + deseasonalize' es:",
+        "options": {
+            "A": "Restar media móvil y dividir por componente estacional",
+            "B": "Aplicar diferenciación estacional de orden 1: (1-B^s)Yₜ",
+            "C": "Restar componente estacional y dividir por tendencia lineal",
+            "D": "Sólo diferenciar no estacional"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Diferenciar con rezago s elimina estacionalidad multiplicativa al logaritmo; en valores originales implica dividir."
+    },
+    {
+        "id": 56,
+        "text": "La métrica Cohen's κ se usa cuando:",
+        "options": {
+            "A": "Se desea medir la concordancia entre dos observadores categóricos corrigiendo coincidencia al azar",
+            "B": "Se evalúa un modelo de regresión lineal",
+            "C": "Se necesita medir asimetría de una distribución",
+            "D": "Se compara la varianza entre grupos"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "κ ajusta la proporción de acuerdo por la que se esperaría por azar."
+    },
+    {
+        "id": 57,
+        "text": "El parámetro 'min_child_weight' en XGBoost controla:",
+        "options": {
+            "A": "La profundidad máxima del árbol",
+            "B": "El número mínimo de muestras ponderadas en un nodo para dividirlo, evitando divisiones con pocas instancias",
+            "C": "La tasa de aprendizaje",
+            "D": "El número de árboles"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Incrementar min_child_weight hace al modelo más conservador, reduciendo sobreajuste."
+    },
+    {
+        "id": 58,
+        "text": "Para validar un modelo de detección de fraude en streaming con concept drift, ¿qué protocolo es más adecuado?",
+        "options": {
+            "A": "Hold-out estático",
+            "B": "Validación interleaved-test-then-train (prequential)",
+            "C": "k-fold estratificado",
+            "D": "Bootstrap fijo"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "El protocolo prequential evalúa cada instancia antes de incorporarla al entrenamiento, apto para flujo y drift."
+    },
+    {
+        "id": 59,
+        "text": "En un modelo Transformer, el 'masking' durante entrenamiento de lenguaje es necesario para:",
+        "options": {
+            "A": "Mantener la invertibilidad de la matriz de atención",
+            "B": "Impedir que un token atienda a posiciones futuras (autoregresivo) o a sí mismo (MLM)",
+            "C": "Reducir la complejidad de O(n²) a O(n)",
+            "D": "Generar embeddings posicionales sinusoidales"
+        },
+        "correct": "B",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "El enmascarado controla flujo de información; en GPT se enmascara futuro, en BERT se enmascara un % para MLM."
+    },
+    {
+        "id": 60,
+        "text": "El criterio de información de Akaike (AIC) penaliza la complejidad de un modelo proporcionalmente a:",
+        "options": {
+            "A": "k·ln(n)",
+            "B": "2k",
+            "C": "k²/2",
+            "D": "k/ln(n)"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "AIC = 2k – 2ln(L); la penalización es exactamente 2k parámetros."
+    },
+    {
+        "id": 61,
+        "text": "Cuando se utiliza Dropout durante el entrenamiento y se desactiva en inferencia, teóricamente se aproxima a:",
+        "options": {
+            "A": "Ensemble de redes más pequeñas promediadas",
+            "B": "Red con batch normalization",
+            "C": "Regularización L1",
+            "D": "Autoencoder"
+        },
+        "correct": "A",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Dropout simula un ensamble de sub-redes compartiendo pesos; al inferir se usa la red completa con escalado."
+    },
+    {
+        "id": 62,
+        "text": "La regla de oro para interpretar SHAP summary plot es que una característica tendrá mayor impacto global cuando:",
+        "options": {
+            "A": "Sus puntos estén dispersos verticalmente alejados de cero en el eje SHAP",
+            "B": "Su color varíe mucho de rojo a azul",
+            "C": "El eje y tenga más de 1 000 puntos",
+            "D": "La característica sea categórica"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "La amplitud vertical indica varianza de contribución —impacto global."
+    },
+    {
+        "id": 63,
+        "text": "¿Cuál de las siguientes regularizaciones se integra directamente en la función de pérdida de redes neuronales mediante Keras?",
+        "options": {
+            "A": "Batch norm",
+            "B": "kernel_regularizer=l2(λ)",
+            "C": "Early stopping",
+            "D": "Data augmentation"
+        },
+        "correct": "B",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Keras permite añadir L2/L1 como parte del término de pérdida al optimizar."
+    },
+    {
+        "id": 64,
+        "text": "En LightGBM, ¿por qué el algoritmo de histograma (binned features) acelera el training?",
+        "options": {
+            "A": "Reduce precisión al 32 bit y por ello es más rápido",
+            "B": "Agrupa valores continuos en bins reutilizados en splits, disminuyendo operaciones y cache misses",
+            "C": "Utiliza GPUs mediante cuDNN",
+            "D": "Desactiva regularización por completo"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "El histograma precomputado permite decidir divisiones mediante contadores en lugar de ordenar valores."
+    },
+    {
+        "id": 65,
+        "text": "El test Anderson-Darling presenta mayor potencia que Shapiro-Wilk en colas porque:",
+        "options": {
+            "A": "Pondera más las colas de la distribución al calcular la estadística",
+            "B": "Es exacto para cualquier n",
+            "C": "Trata empates de forma optimizada",
+            "D": "No requiere ordenar los datos"
+        },
+        "correct": "A",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Anderson-Darling asigna más peso a las discrepancias en colas, detectando outliers en normalidad."
+    },
+    {
+        "id": 66,
+        "text": "Cuando se aplica grid search sobre más de 20 hiperparámetros continuos, la alternativa más eficiente es:",
+        "options": {
+            "A": "Bayesian optimization (p. ej., Tree-Parzen Estimator)",
+            "B": "Aumentar gama de grid",
+            "C": "Dejar hiperparámetros por defecto",
+            "D": "Usar factorial completo fraccionado"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "La búsqueda bayesiana adapta las pruebas a regiones promisorias, reduciendo evaluaciones."
+    },
+    {
+        "id": 67,
+        "text": "La razón por la cual las redes CNN no son ideales para tabular es:",
+        "options": {
+            "A": "No hay translational invariance en variables tabulares",
+            "B": "No soportan valores faltantes",
+            "C": "Siempre requieren GPUs",
+            "D": "No pueden modelar funciones no lineales"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Las convoluciones explotan invariancia espacial; en tablas el orden de columnas no implica vecindad."
+    },
+    {
+        "id": 68,
+        "text": "En un problema multiclase con Softmax, la pérdida 'categorical cross-entropy' equivale a:",
+        "options": {
+            "A": "Log-loss binaria aplicada independientemente a cada clase",
+            "B": "Kullback-Leibler divergence entre la distribución verdadera (one-hot) y la predicha",
+            "C": "Error cuadrático medio entre logits",
+            "D": "MAE de probabilidades"
+        },
+        "correct": "B",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Cross entropy es la KL divergence más la entropía de la verdad (constante)."
+    },
+    {
+        "id": 69,
+        "text": "Para implementar un sistema de recomendación híbrido offline+online, la arquitectura Lambda combina:",
+        "options": {
+            "A": "Procesamiento batch y stream fusionados en capa de Serving",
+            "B": "Solo capa batch diaria",
+            "C": "Solo capa velocidad (stream)",
+            "D": "Capa SQL transaccional"
+        },
+        "correct": "A",
+        "topic": "Implementación de modelos",
+        "explanation": "Lambda fusiona batch grande y stream rápido para servir tanto cálculos históricos como actualizaciones inmediatas."
+    },
+    {
+        "id": 70,
+        "text": "La capacidad VC (Vapnik-Chervonenkis) de un perceptrón en ℝⁿ es:",
+        "options": {
+            "A": "n",
+            "B": "n+1",
+            "C": "2ⁿ",
+            "D": "Infinito"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "El perceptrón (hiperplano) puede shatter n+1 puntos en posición general en ℝⁿ."
+    },
+    {
+        "id": 71,
+        "text": "El regularizador 'weight decay' en AdamW actúa de forma distinta a L2 clásica porque:",
+        "options": {
+            "A": "Se aplica antes de la actualización de momento, desacoplando tasade aprendizaje y decay",
+            "B": "Penaliza sólo bias",
+            "C": "Aumenta el gradiente directamente",
+            "D": "Se implementa como dropout"
+        },
+        "correct": "A",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "AdamW separa weight decay de la adaptación Adam, evitando interferencia en los momentos."
+    },
+    {
+        "id": 72,
+        "text": "El problema 'exploding gradients' es más habitual en:",
+        "options": {
+            "A": "Redes RNN profundas sin unidades LSTM/GRU",
+            "B": "Árboles de decisión",
+            "C": "Regresión Ridge",
+            "D": "k-NN"
+        },
+        "correct": "A",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "RNN estándar multiplica matrices sucesivas; normas pueden crecer exponencial y explotar."
+    },
+    {
+        "id": 73,
+        "text": "Batch Normalization acelera el entrenamiento porque:",
+        "options": {
+            "A": "Introduce ruido gaussiano que regulariza el modelo",
+            "B": "Reduce internal covariate shift estabilizando la distribución de activaciones",
+            "C": "Disminuye el número de parámetros",
+            "D": "Normaliza gradientes a módulo 1"
+        },
+        "correct": "B",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Al mantener activaciones con media 0 y varianza 1, el gradiente viaja con escalas controladas."
+    },
+    {
+        "id": 74,
+        "text": "Un problema típicamente subestimado en la puesta en producción de modelos es:",
+        "options": {
+            "A": "Loggear cada predicción",
+            "B": "Mantener la misma pre-pipeline de features que en entrenamiento",
+            "C": "Usar CPUs en lugar de GPUs",
+            "D": "Redimensionar contenedores"
+        },
+        "correct": "B",
+        "topic": "Implementación de modelos",
+        "explanation": "El desalineamiento training-serving (skew) genera errores sutiles; el pipeline debe replicarse bit-a-bit."
+    },
+    {
+        "id": 75,
+        "text": "Cuando aplicas PCA como parte de un Pipeline y luego deployas solo el modelo sin PCA, el error inducido corresponde a:",
+        "options": {
+            "A": "Data leakage",
+            "B": "Training-Serving Skew",
+            "C": "Over-regularization",
+            "D": "Concept drift"
+        },
+        "correct": "B",
+        "topic": "Implementación de modelos",
+        "explanation": "El modelo recibe datos en espacio original que no corresponden a las features aprendidas."
+    },
+    {
+        "id": 76,
+        "text": "En AutoML, el algoritmo hiperparámetros de BOHB combina:",
+        "options": {
+            "A": "Grid search y random search",
+            "B": "Bayesian optimization y Hyperband de parada anticipada",
+            "C": "Genetic algorithms y simulated annealing",
+            "D": "Batch gradient y mini-batch"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "BOHB usa TPE o GP + Hyperband para priorizar configuraciones prometedoras y descartar pronto las malas."
+    },
+    {
+        "id": 77,
+        "text": "La métrica NDCG se prefiere a precision@k en recomendadores porque:",
+        "options": {
+            "A": "Penaliza los aciertos en posiciones bajas y premia los primeros lugares según log₂",
+            "B": "No requiere ground truth",
+            "C": "Es invariante a permutaciones",
+            "D": "No se ve afectada por el número de items"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "NDCG usa descuentos logarítmicos que valorizan la relevancia en los primeros puestos."
+    },
+    {
+        "id": 78,
+        "text": "El parámetro 'epsilon' en DBSCAN representa:",
+        "options": {
+            "A": "Distancia máxima entre dos puntos para considerarlos vecinos en el mismo cluster",
+            "B": "Densidad mínima",
+            "C": "Número de iteraciones",
+            "D": "Índice de silueta"
+        },
+        "correct": "A",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "Epsilon define el radio del vecindario para contar densidad."
+    },
+    {
+        "id": 79,
+        "text": "En un modelo Prophet, la componente de vacaciones se modela como:",
+        "options": {
+            "A": "Tendencia lineal con saturación logística",
+            "B": "Regresor binario adicional con efectos aditivos",
+            "C": "Transformada de Fourier de grado 20",
+            "D": "Proceso autorregresivo integrado"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Prophet incorpora festivos como regresores exógenos independientes que desplazan el nivel."
+    },
+    {
+        "id": 80,
+        "text": "La estrategia 'feature hashing' introduce colisiones. ¿Por qué no suelen dañar modelos lineales esparsos?",
+        "options": {
+            "A": "Las colisiones se distribuyen como ruido de media cero y varianza pequeña si el número de bins es grande",
+            "B": "El hashing genera claves únicas",
+            "C": "Se eliminan con regularización L1",
+            "D": "No se usan pesos negativos"
+        },
+        "correct": "A",
+        "topic": "Ingeniería de características",
+        "explanation": "Colisiones actúan como regularización; con suficientes buckets el error de estimación es pequeño."
+    },
+    {
+        "id": 81,
+        "text": "El teorema de representer (Kernel Ridge) indica que la solución óptima puede escribirse como:",
+        "options": {
+            "A": "Combinación lineal de los gradientes",
+            "B": "Combinación lineal de kernels evaluados en los puntos de entrenamiento",
+            "C": "Producto tensorial de features",
+            "D": "Solución cerrada ΦᵀΦ"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "La solución vive en el span de los kernels con coeficientes α; reduce infinito-dim a n-dim."
+    },
+    {
+        "id": 82,
+        "text": "Al usar early stopping con validación, es crucial reservar un conjunto de validación porque:",
+        "options": {
+            "A": "Permite ajustar hiperparámetros sin fuga de datos al test",
+            "B": "Reduce el tamaño de entrenamiento y, por tanto, el sobreajuste",
+            "C": "Aumenta la entropía del modelo",
+            "D": "El conjunto de test no debe ser nunca tocado, ni siquiera para early stopping"
+        },
+        "correct": "D",
+        "topic": "Evaluación y validación",
+        "explanation": "Early stopping ajusta hiperparámetros (n_epochs); usar test filtra información. Debe usarse un set separado."
+    },
+    {
+        "id": 83,
+        "text": "Cuando se hace inference batching en GPU, el throughput aumenta pero la latencia individual también. El trade-off optimo depende de:",
+        "options": {
+            "A": "El ancho de banda de memoria global y la distribución de tamaño de entrada",
+            "B": "La versión de CUDA",
+            "C": "La cantidad de VRAM únicamente",
+            "D": "No existe tal trade-off"
+        },
+        "correct": "A",
+        "topic": "Implementación de modelos",
+        "explanation": "Batches grandes saturan memoria y núcleo GPU; aumenta thrp pero la primera respuesta tarda más."
+    },
+    {
+        "id": 84,
+        "text": "Los intervalos de predicción son más anchos que los de confianza porque:",
+        "options": {
+            "A": "Incluyen la incertidumbre del error irreducible además de la incertidumbre sobre el parámetro de la media",
+            "B": "Usan t-de Student en lugar de Z",
+            "C": "No suponen normalidad",
+            "D": "Aplican bootstrapping doble"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "Un intervalo de predicción combina varianza del estimador y varianza del ruido."
+    },
+    {
+        "id": 85,
+        "text": "La técnica Monte Carlo dropout para inferencia bayesiana aproximada asume que:",
+        "options": {
+            "A": "Cada pase con dropout activado samplea de la distribución posterior sobre pesos",
+            "B": "El modelo está entrenado sin dropout",
+            "C": "La función de pérdida es convexa",
+            "D": "Los pesos siguen distribución Gaussiana exacta"
+        },
+        "correct": "A",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Con dropout activo se simula un ensamble bayesiano y se estima incertidumbre empíricamente."
+    },
+    {
+        "id": 86,
+        "text": "El criterio Brier Score en clasificación probabilística mide:",
+        "options": {
+            "A": "Alineación entre probabilidades predichas y frecuencias observadas (calibración) mediante MSE",
+            "B": "Sólo la discriminación",
+            "C": "Es equivalente al log-loss",
+            "D": "Invarianza a cambio de umbral"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "Brier = media( (pₜ−yₜ)² ); combina calibración y discriminación."
+    },
+    {
+        "id": 87,
+        "text": "La función swish (x·sigmoid(x)) se prefiere a ReLU en redes profundas porque:",
+        "options": {
+            "A": "Es no monótona y suaviza la activación negativa, mitigando 'dead neurons'",
+            "B": "Tiene derivada constante",
+            "C": "Imeplementa saturación exacta",
+            "D": "Reduce el número de parámetros"
+        },
+        "correct": "A",
+        "topic": "Entrenamiento de modelos",
+        "explanation": "Swish suaviza transiciones y permite gradientes pequeños negativos, manteniendo unidades activas."
+    },
+    {
+        "id": 88,
+        "text": "Un modelo CatBoost maneja variables categóricas internamente mediante:",
+        "options": {
+            "A": "One-hot encoding al inicio",
+            "B": "Target/Ordered statistic encoding con permutaciones que evitan fuga",
+            "C": "Hashing fijo",
+            "D": "Label encoding simple"
+        },
+        "correct": "B",
+        "topic": "Ingeniería de características",
+        "explanation": "CatBoost calcula estadísticas condicionales con orden aleatorio para prevenir leakage."
+    },
+    {
+        "id": 89,
+        "text": "El ajuste de hiperparámetros de máquinas de vectores soporte con kernel RBF es complicado principalmente porque:",
+        "options": {
+            "A": "γ y C interactúan no linealmente y afectan simultáneamente margen y suavidad",
+            "B": "La función de pérdida no es convexa",
+            "C": "El espacio de búsqueda es discreto",
+            "D": "No se puede usar validación cruzada"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "γ controla la forma del kernel, C el coste; un valor alto de γ puede requerir menor C para evitar sobreajuste."
+    },
+    {
+        "id": 90,
+        "text": "En validación cruzada agrupada (GroupKFold) el supuesto clave es:",
+        "options": {
+            "A": "Los grupos son independientes y no deben separarse entre train y test",
+            "B": "Los grupos deben cruzarse entre folds",
+            "C": "Cada grupo tiene igual tamaño",
+            "D": "Se utiliza sólo para series temporales"
+        },
+        "correct": "A",
+        "topic": "Evaluación y validación",
+        "explanation": "GroupKFold respeta dependencia intragrupo, evitando fuga cuando la unidad básica es el grupo."
+    },
+    {
+        "id": 91,
+        "text": "Si en LightGBM se incrementa 'num_leaves' sin aumentar 'min_data_in_leaf', el efecto más probable es:",
+        "options": {
+            "A": "El modelo sobreajustará al permitir particiones muy finas",
+            "B": "Se reducirá la memoria usada",
+            "C": "La velocidad de inferencia mejorará",
+            "D": "La importancia de variables se homogeniza"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Más hojas con pocas muestras permiten capturar ruido, aumentando varianza."
+    },
+    {
+        "id": 92,
+        "text": "En una regresión Poisson, la dispersión residual significativamente >1 indica:",
+        "options": {
+            "A": "Subdispersión",
+            "B": "Sobredispersión; puede requerir un modelo quasi-Poisson o Negativo Binomial",
+            "C": "Modelo perfectamente ajustado",
+            "D": "Datos MNAR"
+        },
+        "correct": "B",
+        "topic": "Algoritmos supervisados",
+        "explanation": "La varianza empírica > media viola Poisson; se usan alternativas con parámetro de dispersión."
+    },
+    {
+        "id": 93,
+        "text": "La distancia de Mahalanobis es preferible a Euclídea para detección de outliers multivariantes porque:",
+        "options": {
+            "A": "Normaliza variables por su rango intercuartílico",
+            "B": "Tiene en cuenta la covarianza y escala correlacionada de las variables",
+            "C": "Es más rápida de computar",
+            "D": "No requiere invertir matrices"
+        },
+        "correct": "B",
+        "topic": "Análisis exploratorio de datos",
+        "explanation": "Mahalanobis rescala por Σ⁻¹; un outlier es aquel con gran distancia considerando correlaciones."
+    },
+    {
+        "id": 94,
+        "text": "Para un problema de forecasting con horizonte h>1, el método ‘recursive’ (iterativo) puede acumular error porque:",
+        "options": {
+            "A": "El modelo usa predicciones propias como input en pasos futuros",
+            "B": "Reentrena el modelo a cada paso",
+            "C": "Ignora la varianza de los residuos",
+            "D": "No se puede vectorizar"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Las predicciones contienen error que se propaga y amplifica iterativamente."
+    },
+    {
+        "id": 95,
+        "text": "Cuando se aplica SMOTENC en un dataset mixto, las variables categóricas se sintetizan mediante:",
+        "options": {
+            "A": "Interpolación lineal de códigos numéricos",
+            "B": "Copiar la categoría más frecuente de los vecinos seleccionados",
+            "C": "Aplicar mutaciones aleatorias desde un diccionario",
+            "D": "Se ignoran y se mantiene el valor del vecino minoritario seleccionado"
+        },
+        "correct": "B",
+        "topic": "Ingeniería de características",
+        "explanation": "SMOTENC sintetiza numéricos interpolados y toma categoría de los vecinos para cada columna categórica."
+    },
+    {
+        "id": 96,
+        "text": "El entrenamiento de un autoencoder variacional (VAE) introduce el término KL-divergence en la pérdida para:",
+        "options": {
+            "A": "Forzar la distribución latente a acercarse a una prior Gaussiana, favoreciendo interpolación y muestreo",
+            "B": "Maximizar la información mutua entre input y latent",
+            "C": "Evitar exploding gradients",
+            "D": "Garantizar exactitud de reconstrucción perfecta"
+        },
+        "correct": "A",
+        "topic": "Aprendizaje no supervisado",
+        "explanation": "El KL regulariza z hacia N(0,I), de modo que el espacio latente sea continuo y generativo."
+    },
+    {
+        "id": 97,
+        "text": "Para comprobar la calibración global de un modelo binario usas el método de Hosmer-Lemeshow. Un p-valor pequeño implica:",
+        "options": {
+            "A": "El modelo está bien calibrado",
+            "B": "Falla la hipótesis de buena calibración; las probabilidades no reflejan bien las frecuencias observadas",
+            "C": "La discriminación es perfecta",
+            "D": "El tamaño de muestra es insuficiente"
+        },
+        "correct": "B",
+        "topic": "Evaluación y validación",
+        "explanation": "HL contrasta pred vs obs por deciles de riesgo; p bajo rechaza buena calibración."
+    },
+    {
+        "id": 98,
+        "text": "En Zero-Shot text classification con LLMs, la estrategia ‘Hypothesis Only’ sirve para:",
+        "options": {
+            "A": "Comprobar si el modelo ataca sesgos aprendidos sin contexto del enunciado",
+            "B": "Incrementar F1 excluyendo ejemplos negativos",
+            "C": "Reducir la complejidad temporal",
+            "D": "Convertir multi-label en multi-class"
+        },
+        "correct": "A",
+        "topic": "Procesamiento de lenguaje natural",
+        "explanation": "Se evalúa el modelo solo con la hipótesis para ver si aprende artefactos en los prompts."
+    },
+    {
+        "id": 99,
+        "text": "El concepto de 'data lineage' en MLOps NO incluye:",
+        "options": {
+            "A": "Origen y transformación de cada columna usada por el modelo",
+            "B": "Versionado de modelos en producción",
+            "C": "Rastreo de permisos de acceso a la base de datos fuente",
+            "D": "Histórico de pipelines que generaron los datasets"
+        },
+        "correct": "C",
+        "topic": "Implementación de modelos",
+        "explanation": "Lineage se enfoca en procedencia, transformaciones y versiones; permisos es asunto de seguridad."
+    },
+    {
+        "id": 100,
+        "text": "La principal razón por la que las redes de grafos (GCN) mejoran la clasificación de fraude en pagos es:",
+        "options": {
+            "A": "Aprovechan completamente la topología transaccional, propagando información entre nodos conectados",
+            "B": "Permiten embeddings de palabras más ricos",
+            "C": "Requieren menos memoria que SVM",
+            "D": "El training es siempre mini-batch estocástico exacto"
+        },
+        "correct": "A",
+        "topic": "Algoritmos supervisados",
+        "explanation": "Las relaciones entre clientes, tarjetas, IPs, etc., se modelan como gráfos; GCN captura patrones relacionales complejos."
+    }
+]

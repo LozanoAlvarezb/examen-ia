@@ -15,7 +15,7 @@ import {
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Exam } from 'shared/src/models';
+import { Exam, Question } from 'shared/src/models';
 import { fetchExams, fetchWeakQuestions, deleteExam } from '../services/api';
 
 const HomePage = () => {
@@ -23,6 +23,7 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [weakQuestionsCount, setWeakQuestionsCount] = useState(0);
+  const [weakQuestions, setWeakQuestions] = useState<Question[]>([]);
   const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
   const navigate = useNavigate();
 
@@ -32,11 +33,12 @@ const HomePage = () => {
         // Load exams and weak questions count in parallel
         const [examsData, weakQuestionsData] = await Promise.all([
           fetchExams(),
-          fetchWeakQuestions(1).catch(() => []) // Fetch only 1 to check if any exist
+          fetchWeakQuestions(100).catch(() => []) // Fetch up to 100 weak questions
         ]);
         
         console.log('Exams data:', examsData); // Log to verify data structure
         setExams(examsData);
+        setWeakQuestions(weakQuestionsData);
         setWeakQuestionsCount(weakQuestionsData.length);
       } catch (err: any) {
         setError(err.message || 'Failed to load exams');
@@ -62,6 +64,12 @@ const HomePage = () => {
     } finally {
       setDeleteLoading(null);
     }
+  };
+
+  const handleStartFailedQuestions = () => {
+    if (weakQuestions.length === 0) return;
+    // Let FocusIntro.tsx handle the weak-question flow
+    navigate('/focus');
   };
 
   if (loading) {
@@ -122,7 +130,7 @@ const HomePage = () => {
                   fullWidth
                   variant="contained"
                   color="warning"
-                  onClick={() => navigate('/focus')}
+                  onClick={handleStartFailedQuestions}
                 >
                   Start Practice
                 </Button>

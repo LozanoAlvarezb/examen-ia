@@ -27,12 +27,7 @@ const FocusIntro = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [weakQuestions, setWeakQuestions] = useState<Array<{
-    questionId: string;
-    timesSeen: number;
-    timesCorrect: number;
-    successRate: number;
-  }>>([]);
+  const [weakQuestions, setWeakQuestions] = useState<any[]>([]);
   const { resetSession } = useExamSessionStore();
 
   // State for negativeMark and timeLimit
@@ -61,7 +56,7 @@ const FocusIntro = () => {
 
   const handleStartPractice = async () => {
     try {
-      const questionIds = weakQuestions.map(q => q.questionId);
+      const questionIds = weakQuestions.map(q => q._id);
       const response = await startWeakAttempt(questionIds, negativeMark, timeLimit);
       
       // Store session data similar to regular exam
